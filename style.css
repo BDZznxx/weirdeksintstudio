@@ -1586,27 +1586,23 @@ input, textarea, button {
 }
 
 .stat-number {
-    font-size: 3.5rem !important;
+    font-size: 2.2rem !important;  /* ↓ Dari 3.5rem → 2.2rem */
     font-weight: 900 !important;
     line-height: 1 !important;
-    margin-bottom: 0.8rem !important;
+    margin-bottom: 0.6rem !important;  /* ↓ Dikecilin */
     
-    /* GRADIENT KEDIP 4 WARNA BIRU */
+    /* GRADIENT KEDIP 4 WARNA BIRU (Tetap sama) */
     background: linear-gradient(135deg, 
-        #1e3a8a 0%,      /* Biru Tua */
-        #1d4ed8 25%,     /* Biru Sedang */
-        #60a5fa 50%,     /* Putih Kebiruan */
-        #0c4a6e 75%,     /* Biru Gelap */
-        #1e40af 100%     /* Biru Tua Gelap */
+        #1e3a8a 0%, #1d4ed8 25%, #60a5fa 50%, 
+        #0c4a6e 75%, #1e40af 100%
     ) !important;
     background-size: 400% 400% !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
     background-clip: text !important;
     
-    /* KEDIP + SWAP */
     animation: statsKedip 2.5s ease-in-out infinite !important;
-    filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.8)) !important;
+    filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.6)) !important;  /* ↓ Shadow dikecilin */
     position: relative !important;
     z-index: 10 !important;
 }
@@ -1642,10 +1638,10 @@ input, textarea, button {
 .stat-label {
     color: var(--text-secondary) !important;
     font-weight: 600 !important;
-    font-size: 0.95rem !important;
-    letter-spacing: 0.5px !important;
+    font-size: 0.8rem !important;  /* ↓ Dari 0.95rem → 0.8rem */
+    letter-spacing: 0.3px !important;  /* ↓ Spacing dikecilin */
     text-transform: uppercase !important;
-    margin-top: 0.5rem !important;
+    margin-top: 0.3rem !important;  /* ↓ Margin dikecilin */
 }
 
 /* SWAP POSITION ANIMATION */
@@ -1688,7 +1684,7 @@ input, textarea, button {
     top: 10px;
     right: -20px;
     font-size: 1.2rem !important;
-    font-weight: 700 !important;
+    font-weight: 600 !important;
     color: rgba(59, 130, 246, 0.3) !important;
     animation: romawiFloat 3s ease-in-out infinite !important;
     z-index: 5 !important;
@@ -1703,14 +1699,14 @@ input, textarea, button {
 @media (max-width: 768px) {
     .stats-grid {
         grid-template-columns: repeat(3, 1fr) !important;
-        gap: 1.5rem !important;
+        gap: 1rem !important;  /* ↓ Gap dikecilin */
     }
+    
     .stat-number {
-        font-size: 2.8rem !important;
+        font-size: 1.8rem !important;  /* Super kecil */
     }
-    .stat-item::before {
-        font-size: 1rem !important;
-        right: -15px !important;
+    .stat-label {
+        font-size: 0.7rem !important;
     }
 }
 
@@ -1722,11 +1718,11 @@ input, textarea, button {
 }
 
 .stat-number[data-rating="true"] {
-    font-size: 2.8rem !important;
+    font-size: 1.9rem !important;  /* Rating lebih kecil lagi */
 }
 
 .stat-number[data-rating="true"]::after {
     content: '/5' !important;
-    font-size: 0.5em !important;
+    font-size: 0.3em !important;
     opacity: 0.7 !important;
 }
