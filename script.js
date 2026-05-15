@@ -16,27 +16,51 @@ const state = {
     isScrolled: false
 };
 
+
+async function fetchGlobalStats() {
+    try {
+        const response = await fetch('/simpanstats.php');
+        const stats = await response.json();
+        
+        
+        const visitorEl = document.querySelector('[data-visitor="true"]');
+        const ratingEl = document.querySelector('[data-rating="true"]');
+        const daysEl = document.querySelector('[data-days="true"]');
+        
+        if (visitorEl) visitorEl.setAttribute('data-target', (stats.visitors / 1000).toFixed(1));
+        if (ratingEl) ratingEl.setAttribute('data-target', stats.rating);
+        if (daysEl) daysEl.setAttribute('data-target', stats.days);
+        
+        console.log('✅ SERVER stats loaded:', stats);
+    } catch(e) {
+        console.log('🔄 Fallback to localStorage');
+    }
+}
+
 const init = async () => {
     elements.year.textContent = new Date().getFullYear();
     setupEventListeners();
     initAnimations();
     setTimeout(hidePreloader, 2500);
-    initStatsCounter(); 
+    initStatsCounter();
+
+    await fetchGlobalStats();
+    setInterval(fetchGlobalStats, 30000);  // Update setiap 30 detik
+};
     
-   
     initStatsCounter();
 };
 
 const setupEventListeners = () => {
-    // Navbar scroll
+    
     window.addEventListener('scroll', throttle(handleScroll, 16));
     
-    // Mobile menu
+    
     if (elements.hamburger && elements.navMenu) {
         elements.hamburger.addEventListener('click', toggleMobileMenu);
     }
     
-    // Nav links
+    
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
             if (state.isMenuOpen) toggleMobileMenu();
@@ -48,7 +72,7 @@ const setupEventListeners = () => {
         anchor.addEventListener('click', smoothScroll);
     });
     
-    // Contact form - Formspree native handling
+    
     if (elements.contactForm) {
         elements.contactForm.addEventListener('submit', handleContactFormNative);
     }
@@ -111,10 +135,10 @@ const handleContactFormNative = async (e) => {
     showLoadingState();
     
     try {
-        // Formspree akan handle submit secara native
+        
         elements.contactForm.submit();
         
-        // Tampilkan pesan sukses sementara (Formspree akan redirect)
+        
         setTimeout(() => {
             showSuccessMessage();
         }, 1000);
@@ -181,7 +205,7 @@ const hideLoadingState = () => {
 
 const showSuccessMessage = (name = '') => {
     if (elements.formMessage) {
-        elements.formMessage.innerHTML = `✅ <strong>Berhasil dikirim!</strong><br>Terima kasih${name ? ` ${escapeHtml(name)}` : ''} pesan Anda sudah terkirim ke <strong>eksintweird@gmail.com</strong>. Tim kami akan balas dalam 24 jam.`;
+        elements.formMessage.innerHTML = `✅ <strong>Berhasil dikirim!</strong><br>Terima kasih${name ? ` ${escapeHtml(name)}` : ''} pesan Anda sudah terkirim ke <strong>Tim Weird Eksint Studio</strong>. Tim kami akan balas dalam 24 jam.`;
         elements.formMessage.className = 'form-message success show';
     }
 };
@@ -325,7 +349,7 @@ class AdvancedStatsCounter {
 
     
     autoRating() {
-        
+        // Rating naik berdasarkan aktivitas
         const activityScore = Math.min(5, 4.7 + (this.stats.clickCount * 0.005) + (this.stats.dailyVisitors * 0.01));
         this.stats.totalRating += activityScore;
         this.stats.ratingCount++;
@@ -398,7 +422,7 @@ class AdvancedStatsCounter {
         const visitorEl = document.querySelector('[data-visitor="true"]');
         const ratingEl = document.querySelector('[data-rating="true"]');
 
-        
+        // Calculate values
         const activeDays = this.getActiveDays();
         const formattedVisitors = (this.stats.totalVisitors / 1000).toFixed(1);
         const avgRating = (this.stats.totalRating / this.stats.ratingCount).toFixed(1);
@@ -407,7 +431,7 @@ class AdvancedStatsCounter {
         if (visitorEl) visitorEl.setAttribute('data-target', formattedVisitors);
         if (ratingEl) ratingEl.setAttribute('data-target', avgRating);
 
-        
+        // Smooth animation
         if (animate) {
             this.animateNumbers();
         }
@@ -445,6 +469,8 @@ class AdvancedStatsCounter {
 
 document.addEventListener('DOMContentLoaded', () => {
     window.statsCounter = new AdvancedStatsCounter();
+    init();  // Panggil init yang sudah ada fetchGlobalStats
+});
     
     
     if (typeof initStatsCounter === 'function') {
