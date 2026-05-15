@@ -21,9 +21,9 @@ const init = async () => {
     setupEventListeners();
     initAnimations();
     setTimeout(hidePreloader, 2500);
-    initStatsCounter();  // ✅ Sudah ada
+    initStatsCounter(); 
     
-    // Panggil sekali untuk visitor
+   
     initStatsCounter();
 };
 
@@ -43,7 +43,7 @@ const setupEventListeners = () => {
         });
     });
     
-    // Smooth scroll
+    
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', smoothScroll);
     });
@@ -53,12 +53,12 @@ const setupEventListeners = () => {
         elements.contactForm.addEventListener('submit', handleContactFormNative);
     }
     
-    // Contact copy
+    
     document.querySelectorAll('.contact-item').forEach(item => {
         item.addEventListener('click', copyContactInfo);
     });
     
-    // Form validation
+    
     ['input', 'blur'].forEach(event => {
         ['name', 'phone', 'message'].forEach(field => {
             const el = document.getElementById(field);
@@ -101,7 +101,7 @@ const smoothScroll = (e) => {
     }
 };
 
-// 🔥 FORMSPREE NATIVE + VALIDASI CLIENT-SIDE
+
 const handleContactFormNative = async (e) => {
     e.preventDefault();
     
@@ -140,7 +140,7 @@ const validateForm = () => {
         }
     });
     
-    // Validasi nomor telepon
+    
     const phone = document.getElementById('phone')?.value;
     if (phone && !/^\+?[\d\s-()]{10,15}$/.test(phone.replace(/\s+/g, ''))) {
         showFieldError(
@@ -151,7 +151,7 @@ const validateForm = () => {
         isValid = false;
     }
     
-    // Validasi email jika diisi
+    
     const email = document.getElementById('email')?.value;
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         showFieldError(
@@ -253,7 +253,7 @@ const throttle = (func, limit) => {
     };
 };
 
-// Animations
+
 const initAnimations = () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -266,108 +266,202 @@ const initAnimations = () => {
     document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
 };
 
-const initStatsCounter = () => {
-    const statsGrid = document.querySelector('.stats-grid');
-    if (!statsGrid) return;
-    
-    // Visitor Counter (LocalStorage + Session)
-    let totalVisitors = parseInt(localStorage.getItem('totalVisitors') || '1250');
-    let todayVisitors = parseInt(sessionStorage.getItem('todayVisitors') || '0');
-    
-    // Increment hari & pengunjung
-    const lastVisit = localStorage.getItem('lastVisit');
-    const today = new Date().toDateString();
-    if (lastVisit !== today) {
-        totalVisitors += Math.floor(Math.random() * 50) + 10;  // +10-60 pengunjung
-        localStorage.setItem('totalVisitors', totalVisitors);
-        localStorage.setItem('lastVisit', today);
-        sessionStorage.setItem('todayVisitors', '1');
-    } else {
-        todayVisitors++;
-        sessionStorage.setItem('todayVisitors', todayVisitors);
+
+class AdvancedStatsCounter {
+    constructor() {
+        this.companyStartDate = new Date('2023-01-01');
+        this.init();
     }
+
+    init() {
+        this.loadStats();
+        this.setupAutoIncrement();
+        this.animateStats();
+        this.periodicUpdate();
+        this.trackClicks();
+    }
+
     
-    // Rating auto (4.8 - 5.0)
-    const rating = (4.8 + Math.random() * 0.2).toFixed(1);
+    loadStats() {
+        this.stats = {
+            totalVisitors: parseInt(localStorage.getItem('stats_totalVisitors') || '1247'),
+            dailyVisitors: parseInt(localStorage.getItem('stats_dailyVisitors') || '0'),
+            totalRating: parseFloat(localStorage.getItem('stats_totalRating') || '248.5'),
+            ratingCount: parseInt(localStorage.getItem('stats_ratingCount') || '52'),
+            lastVisitDate: localStorage.getItem('stats_lastVisitDate') || '',
+            clickCount: parseInt(localStorage.getItem('stats_clickCount') || '0')
+        };
+    }
+
+    saveStats() {
+        Object.keys(this.stats).forEach(key => {
+            localStorage.setItem(`stats_${key}`, this.stats[key]);
+        });
+    }
+
     
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                statsGrid.classList.add('animate-swap');
-                
-                const stats = document.querySelectorAll('.stat-number[data-target]');
-                stats.forEach((stat, index) => {
-                    const isVisitor = stat.getAttribute('data-visitor');
-                    const isRating = stat.getAttribute('data-rating');
-                    const romawi = stat.closest('.stat-item').getAttribute('data-romawi');
-                    
-                    let target;
-                    if (isVisitor) {
-                        target = totalVisitors / 1000;  // 1.25K → 1.3K
-                    } else if (isRating) {
-                        target = parseFloat(rating);
-                    } else {
-                        target = parseInt(stat.getAttribute('data-target'));
-                    }
-                    
-                    let current = 0;
-                    const increment = target / 60;
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= target) {
-                            if (isVisitor) {
-                                stat.textContent = `${target.toFixed(1)}${romawi}`;
-                            } else if (isRating) {
-                                stat.textContent = `${target}${romawi}`;
-                            } else {
-                                stat.textContent = `${Math.floor(target)} ${romawi}`;
-                            }
-                            clearInterval(timer);
-                        } else {
-                            if (isVisitor) {
-                                stat.textContent = `${current.toFixed(1)}${romawi}`;
-                            } else if (isRating) {
-                                stat.textContent = `${current.toFixed(1)}${romawi}`;
-                            } else {
-                                stat.textContent = `${Math.floor(current)} ${romawi}`;
-                            }
-                        }
-                    }, 30);
-                });
-                
-                // Auto rating increment (simulasi klik)
-                setTimeout(() => {
-                    updateRating();
-                }, 2000);
-                
-                observer.unobserve(entry.target);
+    getActiveDays() {
+        const now = new Date();
+        const diffTime = Math.abs(now - this.companyStartDate);
+        return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    }
+
+    
+    incrementVisitors() {
+        const today = new Date().toDateString();
+        
+        
+        if (this.stats.lastVisitDate !== today) {
+            this.stats.dailyVisitors = 1;
+            this.stats.lastVisitDate = today;
+        } else {
+            this.stats.dailyVisitors++;
+        }
+        
+        
+        this.stats.totalVisitors++;
+        this.saveStats();
+    }
+
+    
+    autoRating() {
+        
+        const activityScore = Math.min(5, 4.7 + (this.stats.clickCount * 0.005) + (this.stats.dailyVisitors * 0.01));
+        this.stats.totalRating += activityScore;
+        this.stats.ratingCount++;
+        this.saveStats();
+    }
+
+    
+    trackClicks() {
+        document.addEventListener('click', (e) => {
+            const isLink = e.target.closest('a');
+            const isButton = e.target.closest('button, .btn');
+            
+            if (isLink || isButton || e.target.closest('.stats-grid')) {
+                this.stats.clickCount++;
+                this.incrementVisitors(); // +1 visitor per click
+                this.autoRating(); // Update rating
+                this.updateDisplay();
+                this.saveStats();
             }
         });
-    }, { threshold: 0.3 });
-    
-    observer.observe(statsGrid);
-};
 
-// Rating Auto Increment
-let ratingClicks = 0;
-function updateRating() {
-    ratingClicks++;
-    const newRating = Math.min(5.0, 4.8 + (ratingClicks * 0.01));
-    const ratingStat = document.querySelector('.stat-number[data-rating="true"]');
-    if (ratingStat && ratingClicks < 20) {
-        ratingStat.textContent = `${newRating.toFixed(1)} ★`;
-        setTimeout(updateRating, 500 + Math.random() * 1000);
+        
+        let scrollCount = 0;
+        window.addEventListener('scroll', () => {
+            scrollCount++;
+            if (scrollCount % 50 === 0) { // Setiap 50px scroll
+                this.stats.clickCount += 0.1;
+                this.autoRating();
+            }
+        });
+    }
+
+    
+    setupAutoIncrement() {
+        
+        this.incrementVisitors();
+        this.autoRating();
+        
+        
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                this.stats.clickCount += 0.05;
+                this.autoRating();
+                this.updateDisplay();
+            }
+        }, 30000); // Setiap 30 detik
+    }
+
+    
+    animateStats() {
+        const statsGrid = document.querySelector('.stats-grid');
+        if (!statsGrid) return;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    statsGrid.classList.add('animate-swap');
+                    this.updateDisplay(true); // Force animate
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        observer.observe(statsGrid);
+    }
+
+    
+    updateDisplay(animate = false) {
+        const daysEl = document.querySelector('[data-days="true"]');
+        const visitorEl = document.querySelector('[data-visitor="true"]');
+        const ratingEl = document.querySelector('[data-rating="true"]');
+
+        
+        const activeDays = this.getActiveDays();
+        const formattedVisitors = (this.stats.totalVisitors / 1000).toFixed(1);
+        const avgRating = (this.stats.totalRating / this.stats.ratingCount).toFixed(1);
+
+        if (daysEl) daysEl.setAttribute('data-target', activeDays);
+        if (visitorEl) visitorEl.setAttribute('data-target', formattedVisitors);
+        if (ratingEl) ratingEl.setAttribute('data-target', avgRating);
+
+        
+        if (animate) {
+            this.animateNumbers();
+        }
+    }
+
+    animateNumbers() {
+        const numbers = document.querySelectorAll('.stat-number');
+        numbers.forEach(el => {
+            const target = parseFloat(el.getAttribute('data-target') || 0);
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                el.textContent = current.toFixed(target % 1 === 0 ? 0 : 1);
+            }, 30);
+        });
+    }
+
+    
+    periodicUpdate() {
+        setInterval(() => {
+            const today = new Date().toDateString();
+            if (this.stats.lastVisitDate !== today) {
+                this.incrementVisitors();
+            }
+            this.updateDisplay();
+        }, 60000); // 1 menit
     }
 }
 
-// Track link clicks for rating
-document.addEventListener('click', (e) => {
-    if (e.target.closest('a[href^="#"]') || 
-        e.target.closest('.btn-primary') || 
-        e.target.closest('.btn-secondary')) {
-        ratingClicks += 0.5;
+
+document.addEventListener('DOMContentLoaded', () => {
+    window.statsCounter = new AdvancedStatsCounter();
+    
+    
+    if (typeof initStatsCounter === 'function') {
+        initStatsCounter = () => {
+            window.statsCounter.incrementVisitors();
+            window.statsCounter.updateDisplay(true);
+        };
     }
 });
 
-// Init
+
+setTimeout(() => {
+    if (window.statsCounter) {
+        window.statsCounter.incrementVisitors();
+        window.statsCounter.updateDisplay(true);
+    }
+}, 1000);
+
+
 document.addEventListener('DOMContentLoaded', init);
