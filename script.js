@@ -47,9 +47,6 @@ const init = async () => {
     await fetchGlobalStats();
     setInterval(fetchGlobalStats, 30000);  // Update setiap 30 detik
 };
-    
-    initStatsCounter();
-};
 
 const setupEventListeners = () => {
     
@@ -467,27 +464,15 @@ class AdvancedStatsCounter {
 }
 
 
+
 document.addEventListener('DOMContentLoaded', () => {
     window.statsCounter = new AdvancedStatsCounter();
     init();  // Panggil init yang sudah ada fetchGlobalStats
-});
-    
-    
-    if (typeof initStatsCounter === 'function') {
-        initStatsCounter = () => {
+
+    setTimeout(() => {
+        if (window.statsCounter) {
             window.statsCounter.incrementVisitors();
             window.statsCounter.updateDisplay(true);
-        };
-    }
+        }
+    }, 1000);
 });
-
-
-setTimeout(() => {
-    if (window.statsCounter) {
-        window.statsCounter.incrementVisitors();
-        window.statsCounter.updateDisplay(true);
-    }
-}, 1000);
-
-
-document.addEventListener('DOMContentLoaded', init);
