@@ -1,0 +1,10 @@
+{
+  "admin": {
+    "username": "admin",
+    "password": "Lazarus211002@_",
+    "sessionTimeout": 1800000
+  },
+  "formspree": {
+    "endpoint": "https://formspree.io/f/mlgzyaao"
+  }
+}

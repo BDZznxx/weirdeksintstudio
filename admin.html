@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Weird Eksint Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* [SAMA PERSIS seperti sebelumnya, tambah mobile] */
+        @media (max-width: 768px) {
+            .dashboard-container { padding: 1rem; }
+            .stats-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .message-item { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- [SAMA PERSIS HTML sebelumnya] -->
+    
+    <script>
+        // 🔥 ADMIN DASHBOARD TANPA LOCALSTORAGE
+        // Cek login session aja
+        
+        const isLoggedIn = localStorage.getItem('admin_logged_in') === 'true';
+        if (!isLoggedIn) {
+            window.location.href = 'login.html';
+        }
+        
+        // TAMPILKAN STATUS FORMSPREE
+        document.getElementById('statsGrid').innerHTML = `
+            <div class="stat-card">
+                <div class="stat-number">✅ LIVE</div>
+                <div style="font-size:1.1rem;color:#10b981;font-weight:600">Form Aktif</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">📧 EMAIL</div>
+                <div style="font-size:1.1rem;color:#3b82f6;font-weight:600">Cek Inbox</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">50+/bln</div>
+                <div style="font-size:1.1rem;color:#64748b;font-weight:600">Formspree Gratis</div>
+            </div>
+        `;
+        
+        document.getElementById('messagesList').innerHTML = `
+            <div style="text-align:center;padding:3rem;color:#3b82f6">
+                <i class="fas fa-envelope-open" style="font-size:4rem;margin-bottom:1rem;color:#10b981"></i>
+                <h3>Pesan Masuk ke Email</h3>
+                <p>Cek inbox <strong>eksintweird@gmail.com</strong></p>
+                <p><em>Formspree kirim INSTAN ke email Anda</em></p>
+            </div>
+        `;
+        
+        function logout() {
+            localStorage.removeItem('admin_logged_in');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

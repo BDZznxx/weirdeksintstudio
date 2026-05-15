@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terima Kasih - Weird Eksint Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#10b981 0%,#059669 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;color:white}
+        .success-container{background:white;color:#1e293b;padding:4rem;border-radius:24px;box-shadow:0 30px 80px rgba(16,185,129,0.4);text-align:center;max-width:500px;width:100%;position:relative;overflow:hidden}
+        .success-container::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#10b981,#059669)}
+        .success-icon{font-size:6rem;color:#10b981;margin-bottom:2rem;animation:pulse 2s infinite}
+        .success-title{font-size:2.5rem;font-weight:800;margin-bottom:1rem}
+        .success-text{font-size:1.2rem;margin-bottom:2rem;line-height:1.6}
+        .contact-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+        .btn-back,.btn-telegram{padding:1rem 2rem;border-radius:50px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;font-size:1rem;transition:all 0.3s ease}
+        .btn-back{background:#3b82f6;color:white;box-shadow:0 10px 30px rgba(59,130,246,0.4)}
+        .btn-back:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(59,130,246,0.6)}
+        .btn-telegram{background:#0088cc;color:white;box-shadow:0 10px 30px rgba(0,136,204,0.4)}
+        .btn-telegram:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(0,136,204,0.6)}
+        @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+        @media (max-width:480px){.success-container{padding:2rem 1.5rem}.success-title{font-size:2rem}.contact-buttons{flex-direction:column;align-items:center}}
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="success-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h1 class="success-title">✅ Terima Kasih!</h1>
+        <p class="success-text">Brief proyek Anda sudah terkirim ke <strong>Team Weird Eksint Studio</strong><br>Tim Weird Eksint Studio akan menghubungi Anda dalam 24 jam.</p>
+        <div class="contact-buttons">
+            <a href="/" class="btn-back">
+                <i class="fas fa-home"></i>
+                Kembali ke Beranda
+            </a>
+            <a href="https://t.me/Lazarus991" class="btn-telegram" target="_blank">
+                <i class="fab fa-telegram"></i>
+                Chat Telegram
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com https://formspree.io; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io https://n8n.formspree.io;">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    
+    <title>Weird Eksint Studio - Perencana Bangunan</title>
+    <meta name="description" content="Konsultan arsitektur profesional di Pontianak. Desain rumah, RAB lengkap, project management. Konsultasi gratis sekarang!">
+    
+    <link rel="icon" type="image/jpeg" href="assets/images/logo.jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <img src="assets/images/logo.jpeg" alt="Weird Eksint Studio" class="logo" loading="lazy" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMTgiIGZpbGw9IiMzYjgyZjYiLz4KPHRleHQgeD0iMjAiIHk9IjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iUG9wcGlucywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0id2hpdGUiPldFUzwvdGV4dD4KPC9zdmc+'">
+                <span>Weird Eksint Studio</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Beranda</a></li>
+                <li><a href="#services" class="nav-link">Layanan</a></li>
+                <li><a href="#portfolio" class="nav-link">Portofolio</a></li>
+                <li><a href="#about" class="nav-link">Tentang</a></li>
+                <li><a href="#contact" class="nav-link">Kontak</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Preloader -->
+    <div id="preloader">
+    <div class="loader-container">
+        <!-- Logo Utama -->
+        <div class="main-logo">
+            <img src="assets/images/logo.jpeg" alt="Weird Eksint Studio" class="logo-img" 
+                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiByeD0iMjAiIGZpbGw9IiMyNTYzZWIiLz4KPHRleHQgeD0iNjAiIHk9IjY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iUG9wcGlucywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0id2hpdGUiPkxPR088L3RleHQ+Cjwvc3ZnPg=='">
+        </div>
+        
+        <!-- Ring Loading -->
+        <div class="loading-ring">
+            <div class="ring"></div>
+            <div class="ring-inner"></div>
+        </div>
+        
+        <!-- Text -->
+        <div class="loader-text">
+            <div class="text-line">
+                <span class="loading-word">Loading</span>
+                <span class="loading-dot">.</span>
+            </div>
+            <div class="text-line">
+                <span class="loading-word">Studio</span>
+                <span class="loading-dot">.</span>
+            </div>
+        </div>
+        
+        <!-- Progress -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Hero Section -->
+    <section id="home" class="hero-video">
+        <video class="hero-video-bg" autoplay muted loop playsinline preload="metadata" poster="assets/images/portofolio/project8.jpeg" onerror="this.style.display='none'">
+            <source src="assets/videos/vid1.mp4" type="video/mp4">
+            <img src="assets/images/portofolio/project8.jpeg" alt="Hero Background" class="hero-fallback" loading="lazy">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Mewujudkan <span class="gradient-text">Bangunan Impian</span> Anda</h1>
+            <p class="hero-subtitle">Perencana bangunan yang mampu menciptakan ruang fungsional dengan estetika modern</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Konsultasi Gratis</a>
+                <a href="#services" class="btn-secondary">Lihat Layanan</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services section-padding">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Layanan Kami</h2>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
+                    <h3>Desain Arsitektur</h3>
+                    <p>Desain bangunan sesuai kebutuhan, lokasi, dan budget Anda. 3D rendering lengkap.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>RAB Lengkap</h3>
+                    <p>Rincian Anggaran Biaya proyek yang transparan, akurat, dan detail material + upah tenaga kerja.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>Project Management</h3>
+                    <p>Pengawasan proyek dari awal hingga serah terima. Laporan mingguan dan quality control.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="portfolio section-padding">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Portofolio Terbaik</h2>
+            <div class="portfolio-grid">
+                <!-- Project 1 -->
+                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="0" tabindex="0">
+                    <img src="assets/images/portofolio/project1.jpeg" alt="Pasar Raya Jungkat" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3>Pasar Tradisional Jungkat</h3>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="100" tabindex="0">
+                    <img src="assets/images/portofolio/project2.png" alt="Mix Building Mall & Apartemen" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3>Mix Building Mall & Apartemen</h3>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="200" tabindex="0">
+                    <img src="assets/images/portofolio/project3.jpeg" alt="Rumah Hunian 3 Lantai" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3>Rumah Hunian 3 Lantai</h3>
+                    </div>
+                </div>
+                <!-- Project 4 -->
+                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="300" tabindex="0">
+                    <img src="assets/images/portofolio/project4.JPG" alt="Cluster Perumahan Elite" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3>Cluster Perumahan Elite</h3>
+                    </div>
+                </div>
+                <!-- Project 5 -->
+                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="400" tabindex="0">
+                    <img src="assets/images/portofolio/project5.jpeg" alt="Rumah Modern 2 Lantai" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3>Rumah Modern 2 Lantai</h3>
+                    </div>
+                </div>
+                <!-- Project 6 -->
+                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="500" tabindex="0">
+                    <img src="assets/images/portofolio/project6.png" alt="Rumah Minimalis 2 Lantai" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3>Rumah Minimalis 2 Lantai</h3>
+                    </div>
+                </div>
+                <!-- Project 7 -->
+                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="600" tabindex="0">
+                    <img src="assets/images/portofolio/project7.jpeg" alt="Interior Bar & Cafe" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3>Interior Bar & Cafe</h3>
+                    </div>
+                </div>
+                <!-- Project 8 -->
+                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="700" tabindex="0">
+                    <img src="assets/images/portofolio/project8.jpeg" alt="Vila Premium 2 Lantai" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3>Vila Premium 2 Lantai</h3>
+                    </div>
+                </div>
+                <!-- Project 9 -->
+                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="800" tabindex="0">
+                    <img src="assets/images/portofolio/project9.jpeg" alt="Interior Ruang Keluarga" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h3>Interior Ruang Keluarga</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about section-padding">
+        <div class="container">
+            <div class="about-header-center" data-aos="fade-up">
+                <h2 class="about-judul-kedip"><span class="gradient-kedip">Weird Eksint Studio</span></h2>
+                <p class="about-subtitle-center">Weird Eksint Studio didirikan oleh Eri pada tahun 2023. Weird Eksint Studio bergerak di bidang perencanaan bangunan dan interior desain dengan fokus pada kreativitas, fungsi, dan estetika modern. Weird Eksint Studio hadir untuk memberikan solusi desain yang inovatif, nyaman, dan sesuai dengan kebutuhan klien, baik untuk hunian, komersil, maupun ruang kerja.</p>
+            </div>
+            <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                <div class="team-photo-container">
+                    <img src="assets/images/team/profil.jpeg" alt="Eri" class="team-photo" loading="lazy">
+                </div>
+                <div class="team-info">
+                    <h4 class="nama-kedip-tengah">ERI</h4>
+                    <p class="jabatan-kedip-tengah">Principal Designer</p>
+                </div>
+            </div>
+<div class="stats-grid" data-aos="fade-up" data-aos-delay="800">
+    <!-- Hari Aktif -->
+    <div class="stat-item" data-romawi="730">
+        <div class="stat-number" data-target="0"></div>
+        <div class="stat-label">+ Hari Aktif</div>
+    </div>
+    <!-- Pengunjung -->
+    <div class="stat-item" data-romawi="0">
+        <div class="stat-number" data-target="0" data-visitor="true"></div>
+        <div class="stat-label">+ Pengunjung</div>
+    </div>
+    <!-- Rating -->
+    <div class="stat-item" data-romawi="0">
+        <div class="stat-number" data-target="0,0" data-rating="true"></div>
+        <div class="stat-label">Rating</div>
+    </div>
+</div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact section-padding">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Konsultasi Gratis</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item" data-copy="Lazarus991" data-aos="fade-right">
+                        <i class="fab fa-telegram"></i>
+                        <h3>Telegram</h3>
+                        <p>@Lazarus991</p>
+                    </div>
+                    <div class="contact-item" data-copy="eksintweird@gmail.com" data-aos="fade-right" data-aos-delay="100">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>eksintweird@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper" data-aos="fade-left">
+                    <h3><i class="fas fa-paper-plane"></i> Kirim Brief Proyek</h3>
+                    <p style="text-align: center; margin-bottom: 2rem; color: var(--text-secondary);">Form ini akan terkirim ke<strong>Tim Weird Eksint Studio</strong></p>
+                    <form id="contactForm" action="https://formspree.io/f/mlgzyaao" method="POST" novalidate>
+                        <input type="hidden" name="_subject" value="New Project Brief - Weird Eksint Studio">
+                        <input type="hidden" name="_next" value="https://weird-eksint-studio.netlify.app/thank-you.html">
+                        
+                        <div class="form-group">
+                            <input type="text" name="name" id="name" placeholder="Nama Lengkap *" required maxlength="50">
+                            <span class="error-message" data-error="name"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" id="phone" placeholder="No. WhatsApp/Telegram *" required maxlength="15">
+                            <span class="error-message" data-error="phone"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" id="email" placeholder="Email (Opsional)">
+                            <span class="error-message" data-error="email"></span>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" id="message" placeholder="Detail proyek Anda... (jenis bangunan, lokasi, budget, dll)" required maxlength="1000" rows="5"></textarea>
+                            <span class="error-message" data-error="message"></span>
+                        </div>
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <i class="fas fa-rocket"></i> Kirim Brief Proyek
+                        </button>
+                    </form>
+                    <div id="formMessage" class="form-message"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Float -->
+    <a href="https://t.me/Lazarus991?text=Saya%20tertarik%20dengan%20layanan%20Weird%20Eksint%20Studio" class="whatsapp-float" target="_blank" rel="noopener">
+        <i class="fab fa-telegram"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> Weird Eksint Studio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js" defer></script>
+</body>
+</html>
