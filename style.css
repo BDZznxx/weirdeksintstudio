@@ -1727,64 +1727,118 @@ input, textarea, button {
     opacity: 0.7 !important;
 }
 
-/* Floating Telegram Button */
+/* Floating Telegram Button - Optimized for All Devices */
 .telegram-float {
   position: fixed;
-  bottom: 25px;
-  right: 25px;
-  width: 60px;
-  height: 60px;
-  background-color: #229ED9;           /* Warna resmi Telegram */
+  bottom: 20px;
+  right: 20px;
+  width: 62px;
+  height: 62px;
+  background-color: #229ED9;        /* Warna Telegram resmi */
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
-  box-shadow: 0 4px 12px rgba(34, 158, 217, 0.4);
-  z-index: 1000;
-  transition: all 0.3s ease;
+  font-size: 30px;
+  box-shadow: 0 5px 15px rgba(34, 158, 217, 0.4);
+  z-index: 9999;
   text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  touch-action: manipulation;       /* Optimal untuk touch */
 }
 
-.telegram-float:hover {
+/* Hover & Active Effect */
+.telegram-float:hover,
+.telegram-float:active {
   background-color: #1a8ac4;
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(34, 158, 217, 0.5);
+  transform: scale(1.12);
+  box-shadow: 0 8px 25px rgba(34, 158, 217, 0.5);
 }
 
-.telegram-float i {
-  transition: transform 0.3s ease;
-}
-
-.telegram-float:hover i {
-  transform: rotate(20deg);
-}
-
-/* Optional: Pulse Animation */
+/* Pulse Animation */
 .telegram-float::after {
   content: '';
   position: absolute;
-  width: 60px;
-  height: 60px;
-  background: rgba(34, 158, 217, 0.3);
+  width: 62px;
+  height: 62px;
+  background: rgba(34, 158, 217, 0.35);
   border-radius: 50%;
-  animation: pulse 2s infinite;
+  animation: telegramPulse 2.5s infinite ease-out;
   z-index: -1;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(1.6); opacity: 0; }
+@keyframes telegramPulse {
+  0%   { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.7); opacity: 0; }
 }
 
-/* Responsive */
+/* Tooltip untuk Desktop */
+.telegram-float::before {
+  content: "Chat Telegram";
+  position: absolute;
+  right: 75px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #1f2937;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+.telegram-float:hover::before {
+  opacity: 1;
+  visibility: visible;
+  right: 80px;
+}
+
+/* ==================== RESPONSIVE OPTIMIZATION ==================== */
+
+/* Smartphone Kecil (≤ 480px) */
 @media (max-width: 480px) {
+  .telegram-float {
+    width: 58px;
+    height: 58px;
+    font-size: 28px;
+    bottom: 18px;
+    right: 18px;
+  }
+  
+  .telegram-float::after {
+    width: 58px;
+    height: 58px;
+  }
+}
+
+/* Smartphone Sangat Kecil (≤ 360px) */
+@media (max-width: 360px) {
   .telegram-float {
     width: 55px;
     height: 55px;
-    bottom: 20px;
-    right: 20px;
     font-size: 26px;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+/* iPhone dengan Safe Area (Notch & Dynamic Island) */
+@supports (padding: max(0px)) {
+  .telegram-float {
+    bottom: max(20px, env(safe-area-inset-bottom) + 10px);
+    right: max(20px, env(safe-area-inset-right) + 10px);
+  }
+}
+
+/* Hindari overlap dengan keyboard atau bottom bar */
+@media (max-height: 700px) {
+  .telegram-float {
+    bottom: 80px; /* Memberi ruang lebih jika keyboard muncul */
   }
 }
