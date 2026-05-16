@@ -1778,7 +1778,7 @@ input, textarea, button {
   100% { transform: scale(1.6); opacity: 0; }
 }
 
-
+/* Responsive */
 @media (max-width: 480px) {
   .telegram-float {
     width: 55px;
