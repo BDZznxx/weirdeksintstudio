@@ -516,6 +516,19 @@ function initChatNotification() {
         }, 32);
     }
 
+        // Optimasi khusus mobile
+    function isMobile() {
+        return window.innerWidth <= 480;
+    }
+
+    if (isMobile()) {
+        // Kurangi delay di HP
+        setTimeout(() => {
+            chatNotif.classList.add('show');
+            // ... lanjutan kode typing
+        }, 3200);   // Lebih cepat di HP
+    }
+
     // Mulai setelah halaman benar-benar load
     setTimeout(() => {
         chatNotif.classList.add('show');
