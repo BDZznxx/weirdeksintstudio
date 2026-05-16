@@ -464,15 +464,102 @@ class AdvancedStatsCounter {
 }
 
 
+// ==================== CHAT NOTIFICATION FIXED ====================
+function initChatNotification() {
+    const chatNotif = document.getElementById('chatNotification');
+    const chatBody = document.getElementById('chatBody');
+    const closeBtn = document.getElementById('closeChatBtn');
+
+    if (!chatNotif || !chatBody || !closeBtn) {
+        console.warn('Chat notification elements not found!');
+        return;
+    }
+
+    // Jangan tampilkan lagi jika user pernah close
+    if (localStorage.getItem('chatClosed') === 'true') {
+        return;
+    }
+
+    const messages = [
+        "Halo! 👋 Selamat datang di Weird Eksint Studio",
+        "Ada yang bisa kami bantu hari ini?",
+        "Kami siap membantu Anda membuat desain rumah, RAB lengkap, atau konsultasi proyek."
+    ];
+
+    function showTypingIndicator() {
+        chatBody.innerHTML = `
+            <div class="typing-container" id="typingIndicator">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>
+        `;
+    }
+
+    function typeMessage(text, callback) {
+        const messageEl = document.createElement('div');
+        messageEl.className = 'message bot';
+        chatBody.appendChild(messageEl);
+
+        let i = 0;
+        messageEl.textContent = '';
+
+        const interval = setInterval(() => {
+            if (i < text.length) {
+                messageEl.textContent += text.charAt(i);
+                i++;
+            } else {
+                clearInterval(interval);
+                messageEl.classList.add('show');
+                if (callback) setTimeout(callback, 700);
+            }
+        }, 32);
+    }
+
+    // Mulai setelah halaman benar-benar load
+    setTimeout(() => {
+        chatNotif.classList.add('show');
+        
+        showTypingIndicator();
+
+        setTimeout(() => {
+            const typing = document.getElementById('typingIndicator');
+            if (typing) typing.remove();
+
+            typeMessage(messages[0], () => {
+                showTypingIndicator();
+                setTimeout(() => {
+                    const typing2 = document.getElementById('typingIndicator');
+                    if (typing2) typing2.remove();
+                    typeMessage(messages[1], () => {
+                        showTypingIndicator();
+                        setTimeout(() => {
+                            const typing3 = document.getElementById('typingIndicator');
+                            if (typing3) typing3.remove();
+                            typeMessage(messages[2]);
+                        }, 900);
+                    });
+                }, 1100);
+            });
+        }, 1300);
+    }, 4200); // Muncul setelah 4.2 detik
+
+    // Close button
+    closeBtn.addEventListener('click', () => {
+        chatNotif.classList.remove('show');
+        localStorage.setItem('chatClosed', 'true');
+    });
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     window.statsCounter = new AdvancedStatsCounter();
+    initChatNotification();
     init();  // Panggil init yang sudah ada fetchGlobalStats
 
-    setTimeout(() => {
+   setTimeout(() => {
         if (window.statsCounter) {
             window.statsCounter.incrementVisitors();
             window.statsCounter.updateDisplay(true);
         }
     }, 1000);
-});
+}); 
