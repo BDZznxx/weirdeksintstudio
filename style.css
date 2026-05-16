@@ -1726,3 +1726,65 @@ input, textarea, button {
     font-size: 0.3em !important;
     opacity: 0.7 !important;
 }
+
+/* Floating Telegram Button */
+.telegram-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  background-color: #229ED9;           /* Warna resmi Telegram */
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 4px 12px rgba(34, 158, 217, 0.4);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.telegram-float:hover {
+  background-color: #1a8ac4;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(34, 158, 217, 0.5);
+}
+
+.telegram-float i {
+  transition: transform 0.3s ease;
+}
+
+.telegram-float:hover i {
+  transform: rotate(20deg);
+}
+
+/* Optional: Pulse Animation */
+.telegram-float::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: rgba(34, 158, 217, 0.3);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+
+@media (max-width: 480px) {
+  .telegram-float {
+    width: 55px;
+    height: 55px;
+    bottom: 20px;
+    right: 20px;
+    font-size: 26px;
+  }
+}
