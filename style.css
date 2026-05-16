@@ -1727,329 +1727,377 @@ input, textarea, button {
     opacity: 0.7 !important;
 }
 
-/* Floating Telegram Button - Optimized for All Devices */
+/* ── Floating Trigger Button (Telegram) ─────────────────────── */
 .telegram-float {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 62px;
-  height: 62px;
-  background-color: #229ED9;        /* Warna Telegram resmi */
-  color: white;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  background: #229ED9;
+  color: #fff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
-  box-shadow: 0 5px 15px rgba(34, 158, 217, 0.4);
-  z-index: 9999;
+  font-size: 26px;
+  box-shadow: 0 4px 18px rgba(34,158,217,0.45);
+  z-index: 10000;
   text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  touch-action: manipulation;       /* Optimal untuk touch */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
-
-/* Hover & Active Effect */
+ 
 .telegram-float:hover,
 .telegram-float:active {
-  background-color: #1a8ac4;
-  transform: scale(1.12);
-  box-shadow: 0 8px 25px rgba(34, 158, 217, 0.5);
+  transform: scale(1.1);
+  box-shadow: 0 8px 28px rgba(34,158,217,0.55);
 }
-
-/* Pulse Animation */
+ 
+/* Pulse ring */
 .telegram-float::after {
   content: '';
   position: absolute;
-  width: 62px;
-  height: 62px;
-  background: rgba(34, 158, 217, 0.35);
+  inset: 0;
   border-radius: 50%;
-  animation: telegramPulse 2.5s infinite ease-out;
+  background: rgba(34,158,217,0.3);
+  animation: tgPulse 2.4s ease-out infinite;
   z-index: -1;
 }
-
-@keyframes telegramPulse {
-  0%   { transform: scale(1); opacity: 0.8; }
-  100% { transform: scale(1.7); opacity: 0; }
+ 
+@keyframes tgPulse {
+  0%   { transform: scale(1);   opacity: 0.75; }
+  100% { transform: scale(1.9); opacity: 0;    }
 }
-
-/* Tooltip untuk Desktop */
-.telegram-float::before {
-  content: "Chat Telegram";
-  position: absolute;
-  right: 75px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #1f2937;
-  color: white;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-size: 14px;
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  pointer-events: none;
-}
-
-.telegram-float:hover::before {
-  opacity: 1;
-  visibility: visible;
-  right: 80px;
-}
-
-/* Typing Animation */
-.typing-indicator {
-    display: inline-block;
-    width: 20px;
-}
-
-.typing-dots::after {
-    content: ' .';
-    animation: typingDots 1.4s steps(4, end) infinite;
-}
-
-@keyframes typingDots {
-    0%   { content: '.'; }
-    33%  { content: '..'; }
-    66%  { content: '...'; }
-    100% { content: ''; }
-}
-
-/* Message Bubble */
-.message {
-    margin-bottom: 12px;
+ 
+/* Tooltip desktop only */
+@media (hover: hover) and (pointer: fine) {
+  .telegram-float::before {
+    content: "Chat Telegram";
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: #1f2937;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    white-space: nowrap;
     opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.4s ease;
-}
-
-.message.show {
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, right 0.2s ease;
+  }
+  .telegram-float:hover::before {
     opacity: 1;
-    transform: translateY(0);
+    visibility: visible;
+    right: calc(100% + 16px);
+  }
 }
-
+ 
+/* ── Chat Bubble Container ───────────────────────────────────── */
+.chat-notification {
+  position: fixed;
+  bottom: 92px;           /* tepat di atas tombol telegram */
+  right: 16px;
+  width: min(340px, calc(100vw - 32px));
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.07);
+  overflow: hidden;
+  z-index: 9999;
+ 
+  /* hidden state */
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transform-origin: bottom right;
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.34,1.56,0.64,1),
+              transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+ 
+.chat-notification.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+ 
+/* ── Header ─────────────────────────────────────────────────── */
+.chat-header {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+ 
+.chat-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.4);
+  flex-shrink: 0;
+}
+ 
+.chat-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+ 
+.chat-info {
+  flex: 1;
+  min-width: 0;
+}
+ 
+.chat-info h4 {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+ 
+.chat-info .status {
+  color: rgba(255,255,255,0.85);
+  font-size: 11.5px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+ 
+/* Online dot */
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background: #4ade80;
+  border-radius: 50%;
+  display: inline-block;
+  animation: dotBlink 1.8s ease-in-out infinite;
+}
+ 
+@keyframes dotBlink {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0.35; }
+}
+ 
+/* Close button */
+.close-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s;
+  line-height: 1;
+  padding: 0;
+}
+ 
+.close-btn:hover { background: rgba(255,255,255,0.35); }
+ 
+/* ── Body (bubble messages) ──────────────────────────────────── */
+.chat-body {
+  padding: 14px 14px 10px;
+  background: #f8fafc;
+  min-height: 90px;
+  max-height: 220px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+ 
+.chat-body::-webkit-scrollbar { width: 4px; }
+.chat-body::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+ 
+/* Bubble */
+.message {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+ 
+.message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+ 
 .message.bot {
-    background: #f1f5f9;
-    padding: 14px 18px;
-    border-radius: 18px 18px 18px 6px;
-    max-width: 85%;
-    font-size: 0.97rem;
-    line-height: 1.55;
-    color: var(--text-primary);
-    position: relative;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  padding: 10px 14px;
+  border-radius: 16px 16px 16px 4px;
+  max-width: 92%;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #334155;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  word-break: break-word;
 }
-
-/* Typing Container */
+ 
+/* Typing indicator */
 .typing-container {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 18px;
-    background: #f1f5f9;
-    border-radius: 18px 18px 18px 6px;
-    width: fit-content;
-    margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 14px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px 16px 16px 4px;
+  width: fit-content;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
-
+ 
 .typing-dot {
-    width: 7px;
-    height: 7px;
-    background: #64748b;
-    border-radius: 50%;
-    animation: typingBounce 1.2s infinite;
+  width: 6px;
+  height: 6px;
+  background: #94a3b8;
+  border-radius: 50%;
+  animation: typingBounce 1.2s ease-in-out infinite;
 }
-
-.typing-dot:nth-child(2) { animation-delay: 0.2s; }
-.typing-dot:nth-child(3) { animation-delay: 0.4s; }
-
+ 
+.typing-dot:nth-child(2) { animation-delay: 0.15s; }
+.typing-dot:nth-child(3) { animation-delay: 0.3s;  }
+ 
 @keyframes typingBounce {
-    0%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-6px); }
+  0%,80%,100% { transform: translateY(0);    opacity: 0.6; }
+  40%          { transform: translateY(-5px); opacity: 1;   }
 }
-
-/* ==================== RESPONSIVE OPTIMIZATION ==================== */
-
-/* Smartphone Kecil (≤ 480px) */
-@media (max-width: 480px) {
+ 
+/* ── Footer (CTA buttons) ────────────────────────────────────── */
+.chat-footer {
+  padding: 10px 12px 12px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  border-top: 1px solid #f1f5f9;
+}
+ 
+.chat-btn {
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 13.5px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  transition: filter 0.2s ease, transform 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+ 
+.chat-btn:active { transform: scale(0.97); }
+ 
+.chat-btn.telegram {
+  background: #229ED9;
+  color: #fff;
+}
+ 
+.chat-btn.telegram:hover { filter: brightness(1.08); }
+ 
+.chat-btn.primary {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: #fff;
+}
+ 
+.chat-btn.primary:hover { filter: brightness(1.08); }
+ 
+/* ── Responsive Tuning ───────────────────────────────────────── */
+ 
+/* Tablet / small desktop */
+@media (max-width: 768px) {
+  .chat-notification {
+    bottom: 88px;
+    right: 12px;
+    width: min(320px, calc(100vw - 24px));
+    border-radius: 18px;
+  }
   .telegram-float {
-    width: 58px;
-    height: 58px;
-    font-size: 28px;
-    bottom: 18px;
-    right: 18px;
-  }
-  
-  .telegram-float::after {
-    width: 58px;
-    height: 58px;
+    bottom: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    font-size: 24px;
   }
 }
-
-/* Smartphone Sangat Kecil (≤ 360px) */
+ 
+/* Phones */
+@media (max-width: 480px) {
+  .chat-notification {
+    bottom: 84px;
+    right: 10px;
+    width: calc(100vw - 20px);
+    border-radius: 16px;
+  }
+  .telegram-float {
+    bottom: 16px;
+    right: 16px;
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+  }
+  .message.bot { font-size: 13px; }
+  .chat-btn    { font-size: 13px; min-height: 42px; }
+}
+ 
+/* Very small phones (≤360px) */
 @media (max-width: 360px) {
   .telegram-float {
-    width: 55px;
-    height: 55px;
-    font-size: 26px;
-    bottom: 15px;
-    right: 15px;
+    width: 46px;
+    height: 46px;
+    font-size: 20px;
+    bottom: 14px;
+    right: 14px;
   }
+  .chat-notification { bottom: 74px; }
 }
-
-/* iPhone dengan Safe Area (Notch & Dynamic Island) */
+ 
+/* iPhone notch / Dynamic Island safe area */
 @supports (padding: max(0px)) {
   .telegram-float {
-    bottom: max(20px, env(safe-area-inset-bottom) + 10px);
-    right: max(20px, env(safe-area-inset-right) + 10px);
+    bottom: max(20px, calc(env(safe-area-inset-bottom) + 10px));
+    right:  max(20px, calc(env(safe-area-inset-right)  + 10px));
+  }
+  .chat-notification {
+    bottom: max(88px, calc(env(safe-area-inset-bottom) + 74px));
   }
 }
-
-/* Hindari overlap dengan keyboard atau bottom bar */
-@media (max-height: 700px) {
-  .telegram-float {
-    bottom: 80px; /* Memberi ruang lebih jika keyboard muncul */
-  }
+ 
+/* Keyboard pop-up — dorong ke atas */
+@media (max-height: 600px) {
+  .chat-notification { bottom: 110px; max-height: 55vh; }
+}
+ 
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .telegram-float::after,
+  .typing-dot,
+  .status-dot { animation: none; }
+  .chat-notification { transition: opacity 0.15s; }
 }
 
-/* ===================== CHAT NOTIFICATION - MOBILE OPTIMIZED ===================== */
-.chat-notification {
-    position: fixed;
-    bottom: 85px;
-    right: 20px;
-    width: 340px;
-    max-width: calc(100vw - 40px);
-    background: var(--white-glass);
-    backdrop-filter: blur(20px);
-    border-radius: 20px;
-    box-shadow: var(--shadow-large);
-    border: 1px solid var(--glass-border);
-    overflow: hidden;
-    z-index: 9998;
-    opacity: 0;
-    transform: translateY(30px) scale(0.95);
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    visibility: hidden;
-}
-
-.chat-notification.show {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    visibility: visible;
-}
-
-/* Header */
-.chat-header {
-    background: linear-gradient(135deg, var(--blue-primary), var(--blue-secondary));
-    color: white;
-    padding: 14px 18px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.chat-avatar {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid rgba(255,255,255,0.4);
-    flex-shrink: 0;
-}
-
-.chat-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Body */
-.chat-body {
-    padding: 16px;
-    background: var(--white-pure);
-    min-height: 130px;
-    max-height: 260px;
-    overflow-y: auto;
-}
-
-/* Message */
-.message.bot {
-    background: #f1f5f9;
-    padding: 13px 16px;
-    border-radius: 18px 18px 18px 6px;
-    max-width: 88%;
-    font-size: 15.5px;
-    line-height: 1.5;
-}
-
-/* Typing */
-.typing-container {
-    padding: 12px 16px;
-    background: #f1f5f9;
-    border-radius: 18px 18px 18px 6px;
-    width: fit-content;
-}
-
-/* Footer */
-.chat-footer {
-    padding: 12px;
-    background: var(--white-pure);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border-top: 1px solid var(--glass-border);
-}
-
-.chat-btn {
-    padding: 13px 16px;
-    border-radius: 14px;
-    font-weight: 600;
-    font-size: 15px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    min-height: 48px; /* Touch friendly */
-}
-
-/* ==================== RESPONSIVE MOBILE ==================== */
-@media (max-width: 480px) {
-    .chat-notification {
-        width: 92vw;
-        right: 4vw;
-        bottom: 75px;           /* Naikkan agar tidak overlap floating button */
-        border-radius: 18px;
-    }
-    
-    .chat-body {
-        min-height: 110px;
-        padding: 14px;
-    }
-    
-    .message.bot {
-        font-size: 15px;
-        padding: 12px 15px;
-    }
-    
-    .chat-footer {
-        padding: 10px;
-        gap: 8px;
-    }
-    
-    .chat-btn {
-        font-size: 14.5px;
-        padding: 14px 16px;
-    }
-}
-
-/* iPhone Safe Area */
-@supports (padding: max(0px)) {
-    .chat-notification {
-        bottom: max(85px, env(safe-area-inset-bottom) + 70px);
-    }
-}
 
 /* Hindari overlap dengan keyboard */
 @media (max-height: 680px) {
