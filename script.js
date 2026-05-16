@@ -464,115 +464,95 @@ class AdvancedStatsCounter {
 }
 
 
-// ==================== CHAT NOTIFICATION FIXED ====================
 function initChatNotification() {
-    const chatNotif = document.getElementById('chatNotification');
-    const chatBody = document.getElementById('chatBody');
-    const closeBtn = document.getElementById('closeChatBtn');
-
-    if (!chatNotif || !chatBody || !closeBtn) {
-        console.warn('Chat notification elements not found!');
-        return;
-    }
-
-    // Jangan tampilkan lagi jika user pernah close
-    if (localStorage.getItem('chatClosed') === 'true') {
-        return;
-    }
-
-    const messages = [
-        "Halo! 👋 Selamat datang di Weird Eksint Studio",
-        "Ada yang bisa kami bantu hari ini?",
-        "Kami siap membantu anda membuat desain rumah, RAB lengkap, atau konsultasi proyek."
-    ];
-
-    function showTypingIndicator() {
-        chatBody.innerHTML = `
-            <div class="typing-container" id="typingIndicator">
-                <div class="typing-dot"></div>
-                <div class="typing-dot"></div>
-                <div class="typing-dot"></div>
-            </div>
-        `;
-    }
-
-    function typeMessage(text, callback) {
-        const messageEl = document.createElement('div');
-        messageEl.className = 'message bot';
-        chatBody.appendChild(messageEl);
-
-        let i = 0;
-        messageEl.textContent = '';
-
-        const interval = setInterval(() => {
-            if (i < text.length) {
-                messageEl.textContent += text.charAt(i);
-                i++;
-            } else {
-                clearInterval(interval);
-                messageEl.classList.add('show');
-                if (callback) setTimeout(callback, 700);
-            }
-        }, 32);
-    }
-
-        // Optimasi khusus mobile
-    function isMobile() {
-        return window.innerWidth <= 480;
-    }
-
-    if (isMobile()) {
-        // Kurangi delay di HP
-        setTimeout(() => {
-            chatNotif.classList.add('show');
-            // ... lanjutan kode typing
-        }, 3200);   // Lebih cepat di HP
-    }
-
-    // Mulai setelah halaman benar-benar load
+  const chatNotif = document.getElementById('chatNotification');
+  const chatBody  = document.getElementById('chatBody');
+  const closeBtn  = document.getElementById('closeChatBtn');
+ 
+  /* ── Elemen tidak ada di halaman ini — stop ──────────────── */
+  if (!chatNotif || !chatBody || !closeBtn) return;
+ 
+  /* ── Sudah pernah ditutup user → tidak muncul lagi ───────── */
+  if (localStorage.getItem('wes_chat_closed') === '1') return;
+ 
+  /* ── Pesan sambutan ─────────────────────────────────────── */
+  const messages = [
+    "Halo! 👋 Selamat datang di Weird Eksint Studio",
+    "Ada yang bisa kami bantu hari ini? 😊",
+    "Kami siap membantu desain rumah, RAB lengkap, atau konsultasi proyek Anda."
+  ];
+ 
+  /* ── Helper: tampilkan typing bubble ─────────────────────── */
+  function showTyping() {
+    const el = document.createElement('div');
+    el.className = 'typing-container';
+    el.id = 'wes-typing';
+    el.innerHTML = `
+      <div class="typing-dot"></div>
+      <div class="typing-dot"></div>
+      <div class="typing-dot"></div>`;
+    chatBody.appendChild(el);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    return el;
+  }
+ 
+  /* ── Helper: ketik pesan karakter per karakter ───────────── */
+  function typeMessage(text, onDone) {
+    /* Hapus typing indicator jika masih ada */
+    const old = document.getElementById('wes-typing');
+    if (old) old.remove();
+ 
+    const bubble = document.createElement('div');
+    bubble.className = 'message bot';
+    chatBody.appendChild(bubble);
+ 
+    let i = 0;
+    const speed = 28; /* ms per karakter */
+ 
+    const tick = setInterval(() => {
+      bubble.textContent += text.charAt(i);
+      i++;
+      chatBody.scrollTop = chatBody.scrollHeight;
+ 
+      if (i >= text.length) {
+        clearInterval(tick);
+        bubble.classList.add('show');
+        if (typeof onDone === 'function') setTimeout(onDone, 600);
+      }
+    }, speed);
+  }
+ 
+  /* ── Kirim semua pesan berantai ─────────────────────────── */
+  function sendMessages(index) {
+    if (index >= messages.length) return;
+ 
+    const typingEl = showTyping();
+ 
+    /* Durasi "ngetik" proporsional dengan panjang pesan */
+    const thinkTime = 800 + messages[index].length * 18;
+ 
     setTimeout(() => {
-        chatNotif.classList.add('show');
-        
-        showTypingIndicator();
-
-        setTimeout(() => {
-            const typing = document.getElementById('typingIndicator');
-            if (typing) typing.remove();
-
-            typeMessage(messages[0], () => {
-                showTypingIndicator();
-                setTimeout(() => {
-                    const typing2 = document.getElementById('typingIndicator');
-                    if (typing2) typing2.remove();
-                    typeMessage(messages[1], () => {
-                        showTypingIndicator();
-                        setTimeout(() => {
-                            const typing3 = document.getElementById('typingIndicator');
-                            if (typing3) typing3.remove();
-                            typeMessage(messages[2]);
-                        }, 900);
-                    });
-                }, 1100);
-            });
-        }, 1300);
-    }, 2200); // Muncul setelah 4.2 detik
-
-    // Close button
-    closeBtn.addEventListener('click', () => {
-        chatNotif.classList.remove('show');
-        localStorage.setItem('chatClosed', 'true');
-    });
+      typingEl.remove();
+      typeMessage(messages[index], () => sendMessages(index + 1));
+    }, thinkTime);
+  }
+ 
+  /* ── Delay sebelum chatbot muncul ───────────────────────── */
+  /* HP lebih cepat supaya tidak terasa lambat */
+  const isMobile   = window.matchMedia('(max-width: 768px)').matches;
+  const showDelay  = isMobile ? 2800 : 4000; /* ms */
+ 
+  const openTimer = setTimeout(() => {
+    chatNotif.classList.add('show');
+    /* Mulai urutan pesan setelah bubble tampak */
+    setTimeout(() => sendMessages(0), 400);
+  }, showDelay);
+ 
+  /* ── Tombol tutup ───────────────────────────────────────── */
+  closeBtn.addEventListener('click', () => {
+    chatNotif.classList.remove('show');
+    clearTimeout(openTimer);            /* batalkan jika belum muncul */
+    localStorage.setItem('wes_chat_closed', '1'); /* simpan permanen */
+  });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    window.statsCounter = new AdvancedStatsCounter();
-    initChatNotification();
-    init();  // Panggil init yang sudah ada fetchGlobalStats
-
-   setTimeout(() => {
-        if (window.statsCounter) {
-            window.statsCounter.incrementVisitors();
-            window.statsCounter.updateDisplay(true);
-        }
-    }, 1000);
-}); 
