@@ -556,3 +556,15 @@ function initChatNotification() {
   });
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    window.statsCounter = new AdvancedStatsCounter();
+    initChatNotification();
+    init();  // Panggil init yang sudah ada fetchGlobalStats
+
+   setTimeout(() => {
+        if (window.statsCounter) {
+            window.statsCounter.incrementVisitors();
+            window.statsCounter.updateDisplay(true);
+        }
+    }, 1000);
+}); 
