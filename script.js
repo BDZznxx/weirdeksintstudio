@@ -483,7 +483,7 @@ function initChatNotification() {
     const messages = [
         "Halo! 👋 Selamat datang di Weird Eksint Studio",
         "Ada yang bisa kami bantu hari ini?",
-        "Kami siap membantu Anda membuat desain rumah, RAB lengkap, atau konsultasi proyek."
+        "Kami siap membantu anda membuat desain rumah, RAB lengkap, atau konsultasi proyek."
     ];
 
     function showTypingIndicator() {
@@ -555,7 +555,7 @@ function initChatNotification() {
                 }, 1100);
             });
         }, 1300);
-    }, 4200); // Muncul setelah 4.2 detik
+    }, 2200); // Muncul setelah 4.2 detik
 
     // Close button
     closeBtn.addEventListener('click', () => {
