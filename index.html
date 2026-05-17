@@ -304,22 +304,19 @@
                 </div>
             </div>
             <div class="stats-grid" data-aos="fade-up" data-aos-delay="800">
-    <!-- Hari Aktif -->
-    <div class="stat-item" data-romawi="0">
-        <div class="stat-number" data-target="0" data-days="true"></div>
-        <div class="stat-label">+ Hari Aktif</div>
-    </div>
-    <!-- Pengunjung -->
-    <div class="stat-item" data-romawi="0">
-        <div class="stat-number" data-target="0" data-visitor="true"></div>
-        <div class="stat-label">+ Pengunjung</div>
-    </div>
-    <!-- Rating -->
-    <div class="stat-item" data-romawi="0">
-        <div class="stat-number" data-target="0,0" data-rating="true"></div>
-        <div class="stat-label">Rating</div>
-    </div>
-</div>
+                <div class="stat-item" data-romawi="0">
+                    <div class="stat-number" id="stat-days" data-target="0" data-days="true"></div>
+                    <div class="stat-label">+ Hari Aktif</div>
+                </div>
+                <div class="stat-item" data-romawi="0">
+                    <div class="stat-number" id="stat-visitors" data-target="0" data-visitor="true"></div>
+                    <div class="stat-label">+ Pengunjung</div>
+                </div>
+                <div class="stat-item" data-romawi="0">
+                    <div class="stat-number" id="stat-rating" data-target="0" data-rating="true"></div>
+                    <div class="stat-label">Rating</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -415,6 +412,11 @@
             </div>
         </div>
     </footer>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' });</script>
+ 
+    <!-- Stats Firebase (module) -->
+    <script type="module" src="stats.js"></script>
 
     <!-- Scripts -->
     <script src="script.js" defer></script>
