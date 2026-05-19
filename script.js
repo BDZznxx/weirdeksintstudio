@@ -615,39 +615,19 @@ const denahP1 = `<svg viewBox="0 0 420 300" width="100%" xmlns="http://www.w3.or
   <text x="10" y="288" font-size="8" fill="#555">■ Biru = KT  ■ Hijau = Ruang Tamu  ■ Kuning = Dapur/Makan  ■ Abu = Carport</text>
 </svg>`;
 
-const denahP2 = `<svg viewBox="0 0 420 310" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif" font-size="9">
-  <rect x="0" y="0" width="420" height="310" fill="#F0EDE8"/>
-  <text x="10" y="16" font-size="10" fill="#888" font-weight="600" letter-spacing="1">DENAH 2 LANTAI — NEO-FUTURISTIK</text>
-  <text x="10" y="32" font-size="9" fill="#555" font-weight="700">LANTAI 1 (130 m²)</text>
-  <rect x="10" y="38" width="290" height="120" rx="3" fill="none" stroke="#333" stroke-width="2"/>
-  <rect x="10" y="38" width="140" height="80" fill="#C7D2FE" stroke="#4338CA" stroke-width="1.2"/>
-  <text x="80" y="75" text-anchor="middle" fill="#3730A3" font-weight="600">RUANG TAMU</text>
-  <text x="80" y="87" text-anchor="middle" fill="#3730A3" font-size="8">OPEN PLAN</text>
-  <rect x="10" y="118" width="140" height="40" fill="#C7D2FE" stroke="#4338CA" stroke-width="1.2"/>
-  <text x="80" y="142" text-anchor="middle" fill="#3730A3" font-size="8">R. KELUARGA</text>
-  <rect x="150" y="38" width="70" height="80" fill="#FDE68A" stroke="#D97706" stroke-width="1.2"/>
-  <text x="185" y="75" text-anchor="middle" fill="#78350F" font-weight="600">DAPUR</text>
-  <rect x="220" y="38" width="80" height="80" fill="#A7F3D0" stroke="#059669" stroke-width="1.2"/>
-  <text x="260" y="75" text-anchor="middle" fill="#065F46" font-weight="600">DINING</text>
-  <rect x="150" y="118" width="70" height="40" fill="#E0E7FF" stroke="#4338CA" stroke-width="1"/>
-  <text x="185" y="142" text-anchor="middle" fill="#3730A3" font-size="8">KM TAMU</text>
-  <rect x="220" y="118" width="80" height="40" fill="#FEF3C7" stroke="#D97706" stroke-width="1"/>
-  <text x="260" y="142" text-anchor="middle" fill="#92400E" font-size="8">TANGGA</text>
-  <rect x="10" y="166" width="290" height="35" fill="#D1FAE5" stroke="#059669" stroke-width="1" stroke-dasharray="5,3"/>
-  <text x="155" y="187" text-anchor="middle" fill="#065F46" font-size="8">BALKON ORGANIK</text>
-  <text x="10" y="180" font-size="9" fill="#555" font-weight="700">LANTAI 2 (130 m²)</text>
-  <rect x="10" y="186" width="290" height="100" rx="3" fill="none" stroke="#333" stroke-width="2"/>
-  <rect x="10" y="186" width="130" height="100" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.2"/>
-  <text x="75" y="231" text-anchor="middle" fill="#1E3A8A" font-weight="600">KT. MASTER</text>
-  <text x="75" y="243" text-anchor="middle" fill="#1E3A8A">+ EN-SUITE</text>
-  <rect x="140" y="186" width="60" height="50" fill="#E0E7FF" stroke="#4338CA" stroke-width="1"/>
-  <text x="170" y="213" text-anchor="middle" fill="#3730A3">KM</text>
-  <rect x="200" y="186" width="100" height="100" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.2"/>
-  <text x="250" y="231" text-anchor="middle" fill="#1E3A8A" font-weight="600">KT 2</text>
-  <rect x="140" y="236" width="60" height="50" fill="#E0E7FF" stroke="#4338CA" stroke-width="1"/>
-  <text x="170" y="263" text-anchor="middle" fill="#3730A3">KM 2</text>
-  <text x="10" y="298" font-size="8" fill="#555">■ Biru = KT  ■ Ungu = Living  ■ Kuning = Dapur  ■ Hijau = Balkon</text>
-</svg>`;
+const denahP2 = `<svg viewBox="0 0 420 450" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif" font-size="9"> <rect x="0" y="0" width="420" height="450" fill="#F0EDE8"/> <text x="10" y="16" font-size="10" fill="#888" font-weight="600" letter-spacing="1">DENAH 3 LANTAI — NEO-FUTURISTIK</text>
+<!-- LANTAI 1 (Lantai Dasar) -->
+
+<text x="10" y="34" font-size="9" fill="#555" font-weight="700">LANTAI 1 (130 m²)</text> <rect x="10" y="40" width="290" height="120" rx="3" fill="none" stroke="#333" stroke-width="2"/>
+<!-- Ruang Tamu --> <rect x="10" y="40" width="140" height="80" fill="#C7D2FE" stroke="#4338CA" stroke-width="1.2"/> <text x="80" y="78" text-anchor="middle" fill="#3730A3" font-weight="600">RUANG TAMU</text> <text x="80" y="90" text-anchor="middle" fill="#3730A3" font-size="8">OPEN PLAN</text> <!-- Ruang Keluarga --> <rect x="10" y="120" width="140" height="40" fill="#C7D2FE" stroke="#4338CA" stroke-width="1.2"/> <text x="80" y="144" text-anchor="middle" fill="#3730A3" font-size="8">R. KELUARGA</text> <!-- Dapur --> <rect x="150" y="40" width="70" height="80" fill="#FDE68A" stroke="#D97706" stroke-width="1.2"/> <text x="185" y="78" text-anchor="middle" fill="#78350F" font-weight="600">DAPUR</text> <!-- Dining --> <rect x="220" y="40" width="80" height="80" fill="#A7F3D0" stroke="#059669" stroke-width="1.2"/> <text x="260" y="78" text-anchor="middle" fill="#065F46" font-weight="600">DINING</text> <!-- Kamar Mandi Tamu --> <rect x="150" y="120" width="70" height="40" fill="#E0E7FF" stroke="#4338CA" stroke-width="1"/> <text x="185" y="144" text-anchor="middle" fill="#3730A3" font-size="8">KM TAMU</text> <!-- Tangga --> <rect x="220" y="120" width="80" height="40" fill="#FEF3C7" stroke="#D97706" stroke-width="1"/> <text x="260" y="144" text-anchor="middle" fill="#92400E" font-size="8">TANGGA</text> <!-- Carport / Teras --> <rect x="10" y="168" width="290" height="30" fill="#D1FAE5" stroke="#059669" stroke-width="1" stroke-dasharray="5,3"/> <text x="155" y="187" text-anchor="middle" fill="#065F46" font-size="8">CARPORT & TERAS</text> <!-- LANTAI 2 (Lantai 1) -->
+
+<text x="10" y="212" font-size="9" fill="#555" font-weight="700">LANTAI 2 (130 m²)</text> <rect x="10" y="220" width="290" height="100" rx="3" fill="none" stroke="#333" stroke-width="2"/>
+<!-- Kamar Tidur Master --> <rect x="10" y="220" width="130" height="100" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.2"/> <text x="75" y="265" text-anchor="middle" fill="#1E3A8A" font-weight="600">KT. MASTER</text> <text x="75" y="277" text-anchor="middle" fill="#1E3A8A" font-size="8">+ EN-SUITE</text> <!-- Kamar Mandi dalam --> <rect x="140" y="220" width="60" height="50" fill="#E0E7FF" stroke="#4338CA" stroke-width="1"/> <text x="170" y="248" text-anchor="middle" fill="#3730A3">KM MASTER</text> <!-- Kamar Tidur 2 --> <rect x="200" y="220" width="100" height="100" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.2"/> <text x="250" y="265" text-anchor="middle" fill="#1E3A8A" font-weight="600">KT 2</text> <!-- Kamar Tidur 3 --> <rect x="140" y="270" width="60" height="50" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.2"/> <text x="170" y="300" text-anchor="middle" fill="#1E3A8A" font-weight="600">KT 3</text> <!-- Kamar Mandi Bersama --> <rect x="200" y="270" width="100" height="50" fill="#E0E7FF" stroke="#4338CA" stroke-width="1"/> <text x="250" y="300" text-anchor="middle" fill="#3730A3" font-size="8">KM BERSAMA</text> <!-- Balkon --> <rect x="10" y="328" width="290" height="25" fill="#D1FAE5" stroke="#059669" stroke-width="1" stroke-dasharray="5,3"/> <text x="155" y="344" text-anchor="middle" fill="#065F46" font-size="8">BALKON</text> <!-- LANTAI 3 (Lantai 2 / Attic) -->
+
+<text x="10" y="366" font-size="9" fill="#555" font-weight="700">LANTAI 3 (100 m²)</text> <rect x="10" y="374" width="290" height="70" rx="3" fill="none" stroke="#333" stroke-width="2"/>
+<!-- Ruang Kerja / Home Office --> <rect x="10" y="374" width="95" height="70" fill="#DDD6FE" stroke="#7C3AED" stroke-width="1.2"/> <text x="57" y="412" text-anchor="middle" fill="#5B21B6" font-weight="600">HOME</text> <text x="57" y="424" text-anchor="middle" fill="#5B21B6" font-weight="600">OFFICE</text> <!-- Ruang Jemur / Laundry --> <rect x="105" y="374" width="80" height="70" fill="#FDE68A" stroke="#D97706" stroke-width="1.2"/> <text x="145" y="412" text-anchor="middle" fill="#78350F" font-weight="600">LAUNDRY</text> <!-- Ruang Utilities --> <rect x="185" y="374" width="55" height="70" fill="#E5E7EB" stroke="#6B7280" stroke-width="1"/> <text x="212" y="405" text-anchor="middle" fill="#374151" font-size="8">UTIL</text> <text x="212" y="417" text-anchor="middle" fill="#374151" font-size="8">ROOM</text> <!-- Roof Terrace --> <rect x="240" y="374" width="60" height="70" fill="#D1FAE5" stroke="#059669" stroke-width="1.2"/> <text x="270" y="412" text-anchor="middle" fill="#065F46" font-weight="600">ROOF</text> <text x="270" y="424" text-anchor="middle" fill="#065F46" font-weight="600">TERRACE</text> <!-- Legend -->
+
+<text x="10" y="455" font-size="8" fill="#555">■ Biru = Kamar Tidur ■ Ungu = Ruang Tamu/Keluarga ■ Kuning = Dapur/Laundry ■ Hijau = Balkon/Teras</text> </svg>`;
 
 /* ── PROJECT 3: Rumah 2 Lantai Modern Tropis — Atap Datar, Kayu, Carport Depan
    Luas ≈ 260 m² (13m × 10m per lantai)
