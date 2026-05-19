@@ -578,16 +578,16 @@ document.addEventListener('DOMContentLoaded', () => {
   ============================================================ */
   const projects = [
     {
-      name: "Pasar Tradisional Jungkat",
-      type: "Komersial",
+      name: "Rumah Hunian Moderen 3 Lantai",
+      type: "Komersil",
       emoji: "🏪",
-      color: "#E1F5EE",
+      color: "#FFFFFF",
       desc: "Revitalisasi pasar tradisional Jungkat dengan konsep modern yang mempertahankan nuansa lokal. Fasad terbuka dengan atap joglo modern, sirkulasi udara alami, dan zonasi pedagang yang tertata rapi.",
       info: [
-        { label: "Luas Bangunan", value: "4.200 m²" },
-        { label: "Jumlah Kios",   value: "120 unit"  },
-        { label: "Lantai",        value: "2 Lantai"  },
-        { label: "Tahun",         value: "2022"      }
+        { label: "Luas Bangunan", value: "Coming soon m²" },
+        { label: "Jumlah Kios",   value: "Coming soon unit"  },
+        { label: "Lantai",        value: "3 Lantai"  },
+        { label: "Tahun",         value: "2026"      }
       ],
       denah: `<svg viewBox="0 0 380 260" width="380" height="260" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
         <rect x="10" y="10" width="360" height="240" rx="4" fill="#F8F6F2" stroke="#ccc" stroke-width="1"/>
@@ -616,16 +616,16 @@ document.addEventListener('DOMContentLoaded', () => {
       ]
     },
     {
-      name: "Mix Building Mall & Apartemen",
-      type: "Mixed-Use",
+      name: "Rumah Hunian Minimalis 2 Lantai",
+      type: "Residnsial",
       emoji: "🏢",
-      color: "#E6F1FB",
+      color: "#FFFFFF",
       desc: "Konsep bangunan campuran yang mengintegrasikan mal retail, tower apartemen premium, dan fasilitas publik dalam satu kawasan terpadu dengan aksesibilitas tinggi dan konsep Transit-Oriented Development.",
       info: [
-        { label: "Luas Lahan",      value: "12.000 m²" },
-        { label: "Tinggi Tower",    value: "32 Lantai"  },
-        { label: "Unit Apartemen",  value: "280 unit"   },
-        { label: "Tahun",           value: "2023"       }
+        { label: "Luas Lahan",      value: "Coming soon m²" },
+        { label: "Tinggi Tower",    value: "2 Lantai"  },
+        { label: "Unit Apartemen",  value: "1 unit"   },
+        { label: "Tahun",           value: "2026"       }
       ],
       denah: `<svg viewBox="0 0 380 260" width="380" height="260" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
         <rect x="10" y="10" width="360" height="240" rx="4" fill="#F8F6F2" stroke="#ccc" stroke-width="1"/>
@@ -711,16 +711,16 @@ document.addEventListener('DOMContentLoaded', () => {
       ]
     },
     {
-      name: "Cluster Perumahan Elite",
+      name: "Rumah Hunian Minimalis 2 Lantai",
       type: "Residensial",
       emoji: "🏘️",
-      color: "#EAF3DE",
+      color: "#FFFFFF",
       desc: "Perencanaan kawasan cluster tertutup premium dengan fasilitas lengkap: clubhouse, kolam renang, jogging track, dan taman hijau yang nyaman bagi seluruh penghuni.",
       info: [
-        { label: "Luas Kawasan", value: "3.5 Ha"  },
-        { label: "Jumlah Unit",  value: "64 unit" },
-        { label: "Tipe Rumah",   value: "60/80/120" },
-        { label: "Tahun",        value: "2022"    }
+        { label: "Luas Kawasan", value: "Coming soon m2"  },
+        { label: "Jumlah Unit",  value: "1 unit" },
+        { label: "Tipe Rumah",   value: "Coming soon" },
+        { label: "Tahun",        value: "2026"    }
       ],
       denah: `<svg viewBox="0 0 380 260" width="380" height="260" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
         <rect x="5" y="5" width="370" height="250" rx="4" fill="#EAF3DE" stroke="#ccc" stroke-width="1"/>
@@ -751,16 +751,15 @@ document.addEventListener('DOMContentLoaded', () => {
       ]
     },
     {
-      name: "Rumah Modern 2 Lantai",
-      type: "Residensial",
-      emoji: "🏡",
+      name: "Weird Coffee",
+      type: "Komersil",
+      emoji: "☕",
       color: "#FBEAF0",
-      desc: "Rumah modern 2 lantai dengan fasad minimalis clean, atap dak beton, jendela kaca besar, dan balkon privat. Desain interior open plan memperluas kesan ruang pada lahan terbatas.",
+      desc: "Coffee Shop .",
       info: [
-        { label: "Luas Tanah",    value: "150 m²" },
-        { label: "Luas Bangunan", value: "210 m²" },
-        { label: "Kamar Tidur",   value: "4 KT"   },
-        { label: "Tahun",         value: "2023"   }
+        { label: "Luas Tanah",    value: "Coming soon m²" },
+        { label: "Luas Bangunan", value: "Coming soon m²" },
+        { label: "Tahun",         value: "2026"   }
       ],
       denah: `<svg viewBox="0 0 380 260" width="380" height="260" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
         <rect x="5" y="5" width="370" height="250" rx="4" fill="#F8F6F2" stroke="#ccc" stroke-width="1"/>
@@ -799,16 +798,16 @@ document.addEventListener('DOMContentLoaded', () => {
       ]
     },
     {
-      name: "Rumah Minimalis 2 Lantai",
+      name: "Rumah Minimalis",
       type: "Residensial",
       emoji: "🏠",
       color: "#EEEDFE",
       desc: "Rumah minimalis 2 lantai yang mengoptimalkan setiap sudut ruang. Palet warna putih-abu dengan aksen kayu natural menciptakan atmosfer bersih, tenang, dan hangat.",
       info: [
-        { label: "Luas Tanah",    value: "120 m²" },
-        { label: "Luas Bangunan", value: "160 m²" },
-        { label: "Kamar Tidur",   value: "3 KT"   },
-        { label: "Tahun",         value: "2024"   }
+        { label: "Luas Tanah",    value: "Coming soon m²" },
+        { label: "Luas Bangunan", value: "Coming soon m²" },
+        { label: "Kamar Tidur",   value: "Coming soon KT"   },
+        { label: "Tahun",         value: "2026"   }
       ],
       denah: `<svg viewBox="0 0 380 260" width="380" height="260" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
         <rect x="5" y="5" width="370" height="250" rx="4" fill="#F8F6F2" stroke="#ccc" stroke-width="1"/>
@@ -841,16 +840,16 @@ document.addEventListener('DOMContentLoaded', () => {
       ]
     },
     {
-      name: "Interior Bar & Cafe",
-      type: "Interior",
-      emoji: "☕",
+      name: "Rumah Hunian 3 Lantai Moderen",
+      type: "Residensial",
+      emoji: "🏠",
       color: "#FAECE7",
-      desc: "Desain interior bar dan kafe berkonsep industrial chic. Perpaduan bata ekspos, besi hitam, dan pencahayaan Edison warm-white menciptakan suasana hangat dan sangat instagrammable.",
+      desc: "Rumah Hunian 3 Lantai.",
       info: [
-        { label: "Luas Ruang", value: "280 m²"        },
-        { label: "Kapasitas",  value: "80 kursi"       },
+        { label: "Luas Ruang", value: "Coming Soon m²"        },
+        { label: "Kapasitas",  value: "Coming Soo"       },
         { label: "Konsep",     value: "Industrial Chic"},
-        { label: "Tahun",      value: "2023"           }
+        { label: "Tahun",      value: "2026"           }
       ],
       denah: `<svg viewBox="0 0 380 260" width="380" height="260" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
         <rect x="5" y="5" width="370" height="250" rx="4" fill="#F8F6F2" stroke="#ccc" stroke-width="1"/>
@@ -879,16 +878,16 @@ document.addEventListener('DOMContentLoaded', () => {
       ]
     },
     {
-      name: "Vila Premium 2 Lantai",
+      name: "Rumah Hunian 2 Lantai",
       type: "Residensial",
-      emoji: "🌴",
+      emoji: "🏠",
       color: "#E1F5EE",
       desc: "Vila premium 2 lantai dengan kolam renang infinity dan view alam terbuka. Konsep resort tropis dengan material batu andesit, kayu ulin, dan kaca maksimal untuk menyatu dengan alam.",
       info: [
-        { label: "Luas Tanah",    value: "500 m²"  },
-        { label: "Luas Bangunan", value: "350 m²"  },
-        { label: "Kamar Tidur",   value: "3 Suite" },
-        { label: "Tahun",         value: "2024"    }
+        { label: "Luas Tanah",    value: "Coming Soon m²"  },
+        { label: "Luas Bangunan", value: "Coming Soon m²"  },
+        { label: "Kamar Tidur",   value: "Coming Soon" },
+        { label: "Tahun",         value: "2026"    }
       ],
       denah: `<svg viewBox="0 0 380 260" width="380" height="260" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
         <rect x="5" y="5" width="370" height="250" rx="4" fill="#E1F5EE" stroke="#ccc" stroke-width="1"/>
@@ -918,43 +917,6 @@ document.addEventListener('DOMContentLoaded', () => {
       ]
     },
     {
-      name: "Interior Ruang Keluarga",
-      type: "Interior",
-      emoji: "🛋️",
-      color: "#FAEEDA",
-      desc: "Desain interior ruang keluarga bertemakan japandi — perpaduan estetika Jepang dan Skandinavia. Material kayu terang, kain linen, dan tanaman hijau menciptakan ruang yang tenang dan fungsional.",
-      info: [
-        { label: "Luas Ruang",    value: "36 m²"         },
-        { label: "Konsep",        value: "Japandi"        },
-        { label: "Material",      value: "Kayu + Linen"  },
-        { label: "Tahun",         value: "2024"           }
-      ],
-      denah: `<svg viewBox="0 0 380 260" width="380" height="260" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
-        <rect x="5" y="5" width="370" height="250" rx="4" fill="#F8F6F2" stroke="#ccc" stroke-width="1"/>
-        <rect x="10" y="10" width="255" height="155" rx="3" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
-        <text x="137" y="91" text-anchor="middle" font-size="11" fill="#633806">Area Duduk Utama</text>
-        <rect x="273" y="10" width="102" height="155" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
-        <text x="324" y="91" text-anchor="middle" font-size="10" fill="#0C447C">Media Wall</text>
-        <text x="324" y="106" text-anchor="middle" font-size="9" fill="#185FA5">/ TV Unit</text>
-        <rect x="10" y="173" width="120" height="77" rx="3" fill="#C0DD97" stroke="#3B6D11" stroke-width="1"/>
-        <text x="70" y="215" text-anchor="middle" font-size="10" fill="#27500A">Area Tanaman</text>
-        <rect x="138" y="173" width="237" height="77" rx="3" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
-        <text x="256" y="215" text-anchor="middle" font-size="10" fill="#444441">Sirkulasi + Pintu Akses</text>
-      </svg>`,
-      legend: [
-        { color: "#FAC775", label: "Area Duduk"    },
-        { color: "#B5D4F4", label: "Media Wall/TV" },
-        { color: "#C0DD97", label: "Area Tanaman"  },
-        { color: "#D3D1C7", label: "Sirkulasi"     }
-      ],
-      files: [
-        { icon: "ti-file-3d",       name: "Ruang_Keluarga_3D.skp", size: "19 MB",  type: "SketchUp", url: "#" },
-        { icon: "ti-file-vector",   name: "Layout_Furnitur.dwg",   size: "3.5 MB", type: "AutoCAD",  url: "#" },
-        { icon: "ti-file-type-pdf", name: "Daftar_Material.pdf",   size: "4.2 MB", type: "PDF",      url: "#" }
-      ]
-    }
-  ];
- 
   /* ============================================================
      STATE & FUNGSI UTAMA
   ============================================================ */
