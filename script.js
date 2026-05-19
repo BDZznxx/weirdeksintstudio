@@ -1140,7 +1140,7 @@ const projects = [
     ]
   },
   {
-    name: "Rumah Hunian 2 Lantai Neo-Futuristik",
+    name: "Rumah Hunian 3 Lantai Neo-Futuristik",
     type: "Residensial",
     emoji: "🏠",
     color: "#E6F1FB",
@@ -1148,8 +1148,8 @@ const projects = [
     info: [
       { label: "Luas Bangunan",  value: "260 m²" },
       { label: "Luas per Lantai", value: "130 m²" },
-      { label: "Jumlah Lantai",  value: "2 Lantai" },
-      { label: "Kamar Tidur",    value: "2 KT + 2 KM" },
+      { label: "Jumlah Lantai",  value: "3 Lantai" },
+      { label: "Kamar Tidur",    value: "3 KT + 2 KM" },
       { label: "Garasi",         value: "2 Mobil" },
       { label: "Tahun",          value: "2026" }
     ],
