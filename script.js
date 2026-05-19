@@ -563,85 +563,95 @@ AOS.init({ duration: 700, once: true });
   ============================================================ */
   const projects = [
     {
-      name: "Pasar Tradisional Jungkat",
-      type: "Komersial",
-      emoji: "🏪",
+      name: "Rumah Hunian Moderen 3 Lantai",
+      type: "Residensial",
+      emoji: "🏠",
       color: "#E1F5EE",
-      desc: "Revitalisasi pasar tradisional Jungkat dengan konsep modern yang mempertahankan nuansa lokal. Fasad terbuka dengan atap joglo modern, sirkulasi udara alami, dan zonasi pedagang yang tertata rapi.",
+      desc: "Rumah dengan konsep moderen yang memiliki teknologi pada setiap lantai nya.",
       info: [
-        { label: "Luas Bangunan", value: "4.200 m²" },
-        { label: "Jumlah Kios",   value: "120 unit"  },
-        { label: "Lantai",        value: "2 Lantai"  },
-        { label: "Tahun",         value: "2022"      }
+        { label: "Luas Bangunan", value: "360 m²" },
+        { label: "Luas perlantai", value :120 m²" },
+        { label: "Lantai",        value: "3 Lantai"  },
+        { label: "Tahun",         value: "2026"      }
       ],
-      denah: `<svg viewBox="0 0 380 260" width="380" height="260" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
-        <rect x="10" y="10" width="360" height="240" rx="4" fill="#F8F6F2" stroke="#ccc" stroke-width="1"/>
-        <rect x="20" y="20" width="160" height="95" rx="3" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
-        <text x="100" y="70" text-anchor="middle" font-size="11" fill="#085041" font-weight="500">Zona Basah</text>
-        <rect x="192" y="20" width="168" height="95" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
-        <text x="276" y="70" text-anchor="middle" font-size="11" fill="#0C447C" font-weight="500">Zona Kering</text>
-        <rect x="20" y="130" width="340" height="36" rx="3" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
-        <text x="190" y="152" text-anchor="middle" font-size="11" fill="#633806">Koridor Utama &amp; Akses Pengunjung</text>
-        <rect x="20" y="178" width="340" height="62" rx="3" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
-        <text x="190" y="213" text-anchor="middle" font-size="11" fill="#444441">Area Parkir Kendaraan</text>
-        <rect x="160" y="20" width="32" height="95" fill="#F8F6F2" stroke="#ccc" stroke-width="0.5"/>
-        <text x="176" y="70" text-anchor="middle" font-size="9" fill="#7a7a8c">Toilet</text>
+      denah: `<svg viewBox="0 0 380 280" width="380" height="280" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
+        <rect x="5" y="5" width="370" height="270" rx="4" fill="#F8F6F2" stroke="#ccc" stroke-width="1"/>
+        <text x="12" y="22" font-size="10" fill="#7a7a8c" font-weight="500">Lantai 1</text>
+        <rect x="10" y="28" width="110" height="70" rx="3" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
+        <text x="65" y="66" text-anchor="middle" font-size="10" fill="#085041">Ruang Tamu</text>
+        <rect x="128" y="28" width="90" height="70" rx="3" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
+        <text x="173" y="66" text-anchor="middle" font-size="10" fill="#633806">Dapur</text>
+        <rect x="226" y="28" width="70" height="70" rx="3" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
+        <text x="261" y="66" text-anchor="middle" font-size="10" fill="#633806">KM</text>
+        <rect x="304" y="28" width="66" height="70" rx="3" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
+        <text x="337" y="66" text-anchor="middle" font-size="10" fill="#444441">Garasi</text>
+        <rect x="10" y="105" width="360" height="14" rx="2" fill="#FAC775" stroke="#BA7517" stroke-width="0.5" opacity="0.5"/>
+        <text x="190" y="116" text-anchor="middle" font-size="8" fill="#633806">Koridor</text>
+        <text x="12" y="138" font-size="10" fill="#7a7a8c" font-weight="500">Lantai 2</text>
+        <rect x="10" y="124" width="130" height="62" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
+        <text x="75" y="158" text-anchor="middle" font-size="10" fill="#0C447C">KT Master</text>
+        <rect x="148" y="124" width="100" height="62" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
+        <text x="198" y="158" text-anchor="middle" font-size="10" fill="#0C447C">KT 2</text>
+        <rect x="256" y="124" width="114" height="62" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
+        <text x="313" y="158" text-anchor="middle" font-size="10" fill="#0C447C">KT 3</text>
+        <text x="12" y="208" font-size="10" fill="#7a7a8c" font-weight="500">Lantai 3</text>
+        <rect x="10" y="196" width="180" height="72" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
+        <text x="100" y="236" text-anchor="middle" font-size="10" fill="#0C447C">KT 4 &amp; KT 5</text>
       </svg>`,
       legend: [
-        { color: "#9FE1CB", label: "Zona Basah"    },
-        { color: "#B5D4F4", label: "Zona Kering"   },
-        { color: "#FAC775", label: "Sirkulasi"     },
-        { color: "#D3D1C7", label: "Area Parkir"   }
+        { color: "#C0DD97", label: "Unit Rumah"   },
+        { color: "#B5D4F4", label: "Fasilitas"    },
+        { color: "#FAC775", label: "Jalan Cluster"},
+        { color: "#9FE1CB", label: "RTH / Taman"  }
       ],
       files: [
-        { icon: "ti-file-3d",       name: "Konsep_3D_Pasar_Jungkat.skp",   size: "48.2 MB", type: "SketchUp", url: "#" },
-        { icon: "ti-file-vector",   name: "Denah_Pasar_Jungkat_Lt1.dwg",   size: "12.4 MB", type: "AutoCAD",  url: "#" },
-        { icon: "ti-file-vector",   name: "Denah_Pasar_Jungkat_Lt2.dwg",   size: "10.1 MB", type: "AutoCAD",  url: "#" },
-        { icon: "ti-file-type-pdf", name: "Presentasi_Konsep_Pasar.pdf",   size: "8.6 MB",  type: "PDF",      url: "#" }
+        { icon: "ti-file-3d",       name: "3Drumahhunian3lantai.skp",   size: "48.2 MB", type: "SketchUp", url: "#" },
+        { icon: "ti-file-vector",   name: "Denah_hunian3lantai.dwg",   size: "12.4 MB", type: "AutoCAD",  url: "#" },
+        { icon: "ti-file-type-pdf", name: "Presentasi_Konsep_bangunan.pdf",   size: "8.6 MB",  type: "PDF",      url: "#" }
       ]
     },
     {
-      name: "Mix Building Mall & Apartemen",
-      type: "Mixed-Use",
-      emoji: "🏢",
+      name: "Rumah Hunian 2 Lantai Minimalis",
+      type: "Residensial",
+      emoji: "🏠",
       color: "#E6F1FB",
-      desc: "Konsep bangunan campuran yang mengintegrasikan mal retail, tower apartemen premium, dan fasilitas publik dalam satu kawasan terpadu dengan aksesibilitas tinggi dan konsep Transit-Oriented Development.",
+      desc: "Bangunan ini memiliki konsep bentuk geometris tegas dan bersih, bukaan kaca besar untuk pencahayaan alami, memiliki atap datar.",
       info: [
-        { label: "Luas Lahan",      value: "12.000 m²" },
-        { label: "Tinggi Tower",    value: "32 Lantai"  },
-        { label: "Unit Apartemen",  value: "280 unit"   },
-        { label: "Tahun",           value: "2023"       }
+        { label: "Luas Bangunan", value: "260 m²" },
+        { label: "Luas perlantai", value :130 m²" },
+        { label: "Lantai",        value: "2 Lantai"  },
+        { label: "Tahun",         value: "2026"      }
       ],
-      denah: `<svg viewBox="0 0 380 260" width="380" height="260" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
-        <rect x="10" y="10" width="360" height="240" rx="4" fill="#F8F6F2" stroke="#ccc" stroke-width="1"/>
-        <rect x="150" y="10" width="80" height="240" rx="0" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
-        <text x="190" y="130" text-anchor="middle" font-size="10" fill="#444441">Core &amp; Lift</text>
-        <rect x="20" y="25" width="120" height="60" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
-        <text x="80" y="58" text-anchor="middle" font-size="10" fill="#0C447C">Unit A – 2BR</text>
-        <rect x="20" y="100" width="120" height="60" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
-        <text x="80" y="133" text-anchor="middle" font-size="10" fill="#0C447C">Unit B – 2BR</text>
-        <rect x="20" y="175" width="120" height="65" rx="3" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
-        <text x="80" y="211" text-anchor="middle" font-size="10" fill="#085041">Area Komersial</text>
-        <rect x="240" y="25" width="120" height="60" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
-        <text x="300" y="58" text-anchor="middle" font-size="10" fill="#0C447C">Unit C – 1BR</text>
-        <rect x="240" y="100" width="120" height="60" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
-        <text x="300" y="133" text-anchor="middle" font-size="10" fill="#0C447C">Unit D – 1BR</text>
-        <rect x="240" y="175" width="120" height="65" rx="3" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
-        <text x="300" y="211" text-anchor="middle" font-size="10" fill="#085041">Area Komersial</text>
-        <rect x="142" y="18" width="96" height="12" fill="#FAC775" stroke="#BA7517" stroke-width="0.5" opacity="0.7"/>
-        <rect x="142" y="165" width="96" height="12" fill="#FAC775" stroke="#BA7517" stroke-width="0.5" opacity="0.7"/>
-        <text x="190" y="27" text-anchor="middle" font-size="8" fill="#633806">Koridor</text>
-        <text x="190" y="174" text-anchor="middle" font-size="8" fill="#633806">Koridor</text>
+      denah: `<svg viewBox="0 0 380 280" width="380" height="280" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
+        <rect x="5" y="5" width="370" height="270" rx="4" fill="#F8F6F2" stroke="#ccc" stroke-width="1"/>
+        <text x="12" y="22" font-size="10" fill="#7a7a8c" font-weight="500">Lantai 1</text>
+        <rect x="10" y="28" width="110" height="70" rx="3" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
+        <text x="65" y="66" text-anchor="middle" font-size="10" fill="#085041">Ruang Tamu</text>
+        <rect x="128" y="28" width="90" height="70" rx="3" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
+        <text x="173" y="66" text-anchor="middle" font-size="10" fill="#633806">Dapur</text>
+        <rect x="226" y="28" width="70" height="70" rx="3" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
+        <text x="261" y="66" text-anchor="middle" font-size="10" fill="#633806">KM</text>
+        <rect x="304" y="28" width="66" height="70" rx="3" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
+        <text x="337" y="66" text-anchor="middle" font-size="10" fill="#444441">Garasi</text>
+        <rect x="10" y="105" width="360" height="14" rx="2" fill="#FAC775" stroke="#BA7517" stroke-width="0.5" opacity="0.5"/>
+        <text x="190" y="116" text-anchor="middle" font-size="8" fill="#633806">Koridor</text>
+        <text x="12" y="138" font-size="10" fill="#7a7a8c" font-weight="500">Lantai 2</text>
+        <rect x="10" y="124" width="130" height="62" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
+        <text x="75" y="158" text-anchor="middle" font-size="10" fill="#0C447C">KT Master</text>
+        <rect x="148" y="124" width="100" height="62" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
+        <text x="198" y="158" text-anchor="middle" font-size="10" fill="#0C447C">KT 2</text>
+        <rect x="256" y="124" width="114" height="62" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
+        <text x="313" y="158" text-anchor="middle" font-size="10" fill="#0C447C">KT 3</text>
       </svg>`,
       legend: [
-        { color: "#B5D4F4", label: "Unit Apartemen"  },
-        { color: "#9FE1CB", label: "Area Komersial"  },
-        { color: "#D3D1C7", label: "Core & Lift"     },
-        { color: "#FAC775", label: "Koridor"         }
+        { color: "#C0DD97", label: "Unit Rumah"   },
+        { color: "#B5D4F4", label: "Fasilitas"    },
+        { color: "#FAC775", label: "Jalan Cluster"},
+        { color: "#9FE1CB", label: "RTH / Taman"  }
       ],
       files: [
-        { icon: "ti-file-3d",       name: "MixBuilding_Massing_Model.rvt",   size: "124 MB", type: "Revit",    url: "#" },
-        { icon: "ti-file-vector",   name: "Denah_Tipikal_Apartemen.dwg",     size: "18.7 MB", type: "AutoCAD", url: "#" },
+        { icon: "ti-file-3d",       name: "Rumah2lantai_Massing_Model.rvt",   size: "124 MB", type: "Revit",    url: "#" },
+        { icon: "ti-file-vector",   name: "Denah.dwg",     size: "18.7 MB", type: "AutoCAD", url: "#" },
         { icon: "ti-file-type-pdf", name: "Konsep_Desain_Lengkap.pdf",       size: "22 MB",  type: "PDF",      url: "#" }
       ]
     },
@@ -652,7 +662,6 @@ AOS.init({ duration: 700, once: true });
       color: "#FAEEDA",
       desc: "Desain rumah 3 lantai bergaya kontemporer tropis. Memaksimalkan pencahayaan alami melalui void di tengah bangunan dan material fasad kayu ulin yang tahan iklim Kalimantan.",
       info: [
-        { label: "Luas Tanah",     value: "300 m²"        },
         { label: "Luas Bangunan",  value: "420 m²"        },
         { label: "Kamar Tidur",    value: "5 KT + 1 ART"  },
         { label: "Tahun",          value: "2023"           }
@@ -696,32 +705,36 @@ AOS.init({ duration: 700, once: true });
       ]
     },
     {
-      name: "Cluster Perumahan Elite",
+      name: "Rumah Hunian Minimalis 2 Lantai",
       type: "Residensial",
       emoji: "🏘️",
       color: "#EAF3DE",
-      desc: "Perencanaan kawasan cluster tertutup premium dengan fasilitas lengkap: clubhouse, kolam renang, jogging track, dan taman hijau yang nyaman bagi seluruh penghuni.",
+      desc: "Perencanaan rumah minimalis 2 lantai .",
       info: [
-        { label: "Luas Kawasan", value: "3.5 Ha"  },
-        { label: "Jumlah Unit",  value: "64 unit" },
-        { label: "Tipe Rumah",   value: "60/80/120" },
-        { label: "Tahun",        value: "2022"    }
+        { label: "Luas Bangunan",  value: "130 m²"        },
+        { label: "Kamar Tidur",    value: "4 KT + 1 ART"  },
+        { label: "Tahun",          value: "2026"           }
       ],
-      denah: `<svg viewBox="0 0 380 260" width="380" height="260" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
-        <rect x="5" y="5" width="370" height="250" rx="4" fill="#EAF3DE" stroke="#ccc" stroke-width="1"/>
-        <rect x="170" y="5" width="40" height="250" fill="#FAC775" opacity="0.5"/>
-        <rect x="5" y="120" width="370" height="20" fill="#FAC775" opacity="0.5"/>
-        <text x="190" y="134" text-anchor="middle" font-size="9" fill="#633806">Jalan Utama Cluster</text>
-        ${[0,1,2,3].map(i=>`<rect x="${15+i*38}" y="15" width="30" height="24" rx="2" fill="#C0DD97" stroke="#3B6D11" stroke-width="0.7"/><text x="${30+i*38}" y="31" text-anchor="middle" font-size="8" fill="#27500A">Unit</text>`).join('')}
-        ${[0,1,2,3].map(i=>`<rect x="${218+i*38}" y="15" width="30" height="24" rx="2" fill="#C0DD97" stroke="#3B6D11" stroke-width="0.7"/><text x="${233+i*38}" y="31" text-anchor="middle" font-size="8" fill="#27500A">Unit</text>`).join('')}
-        ${[0,1,2,3].map(i=>`<rect x="${15+i*38}" y="52" width="30" height="24" rx="2" fill="#C0DD97" stroke="#3B6D11" stroke-width="0.7"/><text x="${30+i*38}" y="68" text-anchor="middle" font-size="8" fill="#27500A">Unit</text>`).join('')}
-        ${[0,1,2,3].map(i=>`<rect x="${218+i*38}" y="52" width="30" height="24" rx="2" fill="#C0DD97" stroke="#3B6D11" stroke-width="0.7"/><text x="${233+i*38}" y="68" text-anchor="middle" font-size="8" fill="#27500A">Unit</text>`).join('')}
-        ${[0,1,2,3].map(i=>`<rect x="${15+i*38}" y="150" width="30" height="24" rx="2" fill="#C0DD97" stroke="#3B6D11" stroke-width="0.7"/><text x="${30+i*38}" y="166" text-anchor="middle" font-size="8" fill="#27500A">Unit</text>`).join('')}
-        ${[0,1,2,3].map(i=>`<rect x="${218+i*38}" y="150" width="30" height="24" rx="2" fill="#C0DD97" stroke="#3B6D11" stroke-width="0.7"/><text x="${233+i*38}" y="166" text-anchor="middle" font-size="8" fill="#27500A">Unit</text>`).join('')}
-        <rect x="15" y="186" width="140" height="58" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
-        <text x="85" y="219" text-anchor="middle" font-size="10" fill="#0C447C">Club House + Pool</text>
-        <rect x="218" y="186" width="152" height="58" rx="3" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
-        <text x="294" y="219" text-anchor="middle" font-size="10" fill="#085041">Taman RTH</text>
+      denah: `<svg viewBox="0 0 380 280" width="380" height="280" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
+        <rect x="5" y="5" width="370" height="270" rx="4" fill="#F8F6F2" stroke="#ccc" stroke-width="1"/>
+        <text x="12" y="22" font-size="10" fill="#7a7a8c" font-weight="500">Lantai 1</text>
+        <rect x="10" y="28" width="110" height="70" rx="3" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
+        <text x="65" y="66" text-anchor="middle" font-size="10" fill="#085041">Ruang Tamu</text>
+        <rect x="128" y="28" width="90" height="70" rx="3" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
+        <text x="173" y="66" text-anchor="middle" font-size="10" fill="#633806">Dapur</text>
+        <rect x="226" y="28" width="70" height="70" rx="3" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
+        <text x="261" y="66" text-anchor="middle" font-size="10" fill="#633806">KM</text>
+        <rect x="304" y="28" width="66" height="70" rx="3" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
+        <text x="337" y="66" text-anchor="middle" font-size="10" fill="#444441">Garasi</text>
+        <rect x="10" y="105" width="360" height="14" rx="2" fill="#FAC775" stroke="#BA7517" stroke-width="0.5" opacity="0.5"/>
+        <text x="190" y="116" text-anchor="middle" font-size="8" fill="#633806">Koridor</text>
+        <text x="12" y="138" font-size="10" fill="#7a7a8c" font-weight="500">Lantai 2</text>
+        <rect x="10" y="124" width="130" height="62" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
+        <text x="75" y="158" text-anchor="middle" font-size="10" fill="#0C447C">KT Master</text>
+        <rect x="148" y="124" width="100" height="62" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
+        <text x="198" y="158" text-anchor="middle" font-size="10" fill="#0C447C">KT 2</text>
+        <rect x="256" y="124" width="114" height="62" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
+        <text x="313" y="158" text-anchor="middle" font-size="10" fill="#0C447C">KT 3</text>
       </svg>`,
       legend: [
         { color: "#C0DD97", label: "Unit Rumah"   },
@@ -730,112 +743,22 @@ AOS.init({ duration: 700, once: true });
         { color: "#9FE1CB", label: "RTH / Taman"  }
       ],
       files: [
-        { icon: "ti-file-3d",       name: "Cluster_Siteplan_3D.skp", size: "67 MB",   type: "SketchUp", url: "#" },
-        { icon: "ti-file-vector",   name: "Siteplan_Cluster.dwg",    size: "24 MB",   type: "AutoCAD",  url: "#" },
-        { icon: "ti-file-type-pdf", name: "Brosur_Cluster.pdf",      size: "5.4 MB",  type: "PDF",      url: "#" }
+        { icon: "ti-file-3d",       name: "rumah2LT_3D.skp", size: "67 MB",   type: "SketchUp", url: "#" },
+        { icon: "ti-file-vector",   name: "Denah.dwg",    size: "24 MB",   type: "AutoCAD",  url: "#" },
+        { icon: "ti-file-type-pdf", name: "Konsep.pdf",      size: "5.4 MB",  type: "PDF",      url: "#" }
       ]
     },
     {
-      name: "Rumah Modern 2 Lantai",
-      type: "Residensial",
-      emoji: "🏡",
-      color: "#FBEAF0",
-      desc: "Rumah modern 2 lantai dengan fasad minimalis clean, atap dak beton, jendela kaca besar, dan balkon privat. Desain interior open plan memperluas kesan ruang pada lahan terbatas.",
-      info: [
-        { label: "Luas Tanah",    value: "150 m²" },
-        { label: "Luas Bangunan", value: "210 m²" },
-        { label: "Kamar Tidur",   value: "4 KT"   },
-        { label: "Tahun",         value: "2023"   }
-      ],
-      denah: `<svg viewBox="0 0 380 260" width="380" height="260" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
-        <rect x="5" y="5" width="370" height="250" rx="4" fill="#F8F6F2" stroke="#ccc" stroke-width="1"/>
-        <text x="12" y="20" font-size="10" fill="#7a7a8c" font-weight="500">Lantai 1</text>
-        <rect x="10" y="25" width="115" height="85" rx="3" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
-        <text x="67" y="71" text-anchor="middle" font-size="10" fill="#085041">Ruang Tamu</text>
-        <rect x="133" y="25" width="110" height="85" rx="3" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
-        <text x="188" y="71" text-anchor="middle" font-size="10" fill="#085041">Ruang Keluarga</text>
-        <rect x="251" y="25" width="75" height="45" rx="3" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
-        <text x="288" y="51" text-anchor="middle" font-size="10" fill="#633806">Dapur</text>
-        <rect x="251" y="78" width="75" height="32" rx="3" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
-        <text x="288" y="98" text-anchor="middle" font-size="9" fill="#633806">Gudang</text>
-        <rect x="334" y="25" width="40" height="85" rx="3" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
-        <text x="354" y="71" text-anchor="middle" font-size="8" fill="#444441">Garasi</text>
-        <rect x="10" y="116" width="364" height="10" fill="#FAC775" opacity="0.4"/>
-        <text x="12" y="142" font-size="10" fill="#7a7a8c" font-weight="500">Lantai 2</text>
-        <rect x="10" y="130" width="175" height="110" rx="3" fill="#F4C0D1" stroke="#993556" stroke-width="1"/>
-        <text x="97" y="189" text-anchor="middle" font-size="10" fill="#72243E">KT Master + KM En Suite</text>
-        <rect x="193" y="130" width="95" height="50" rx="3" fill="#F4C0D1" stroke="#993556" stroke-width="1"/>
-        <text x="240" y="159" text-anchor="middle" font-size="10" fill="#72243E">KT 2</text>
-        <rect x="296" y="130" width="78" height="50" rx="3" fill="#F4C0D1" stroke="#993556" stroke-width="1"/>
-        <text x="335" y="159" text-anchor="middle" font-size="10" fill="#72243E">KT 3</text>
-        <rect x="193" y="188" width="181" height="52" rx="3" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
-        <text x="283" y="218" text-anchor="middle" font-size="10" fill="#085041">Ruang Keluarga + Balkon</text>
-      </svg>`,
-      legend: [
-        { color: "#F4C0D1", label: "Kamar Tidur"          },
-        { color: "#9FE1CB", label: "Ruang Tamu/Keluarga"  },
-        { color: "#FAC775", label: "Dapur & KM"           },
-        { color: "#D3D1C7", label: "Garasi / Tangga"      }
-      ],
-      files: [
-        { icon: "ti-file-3d",       name: "RumahModern_Render.skp", size: "28 MB",  type: "SketchUp", url: "#" },
-        { icon: "ti-file-vector",   name: "Denah_Lt1_Lt2.dwg",      size: "7.1 MB", type: "AutoCAD",  url: "#" },
-        { icon: "ti-file-type-pdf", name: "Gambar_Kerja.pdf",       size: "9 MB",   type: "PDF",      url: "#" }
-      ]
-    },
-    {
-      name: "Rumah Minimalis 2 Lantai",
-      type: "Residensial",
-      emoji: "🏠",
-      color: "#EEEDFE",
-      desc: "Rumah minimalis 2 lantai yang mengoptimalkan setiap sudut ruang. Palet warna putih-abu dengan aksen kayu natural menciptakan atmosfer bersih, tenang, dan hangat.",
-      info: [
-        { label: "Luas Tanah",    value: "120 m²" },
-        { label: "Luas Bangunan", value: "160 m²" },
-        { label: "Kamar Tidur",   value: "3 KT"   },
-        { label: "Tahun",         value: "2024"   }
-      ],
-      denah: `<svg viewBox="0 0 380 260" width="380" height="260" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
-        <rect x="5" y="5" width="370" height="250" rx="4" fill="#F8F6F2" stroke="#ccc" stroke-width="1"/>
-        <text x="12" y="20" font-size="10" fill="#7a7a8c" font-weight="500">Lantai 1</text>
-        <rect x="10" y="25" width="120" height="90" rx="3" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
-        <text x="70" y="73" text-anchor="middle" font-size="10" fill="#085041">Ruang Tamu</text>
-        <rect x="138" y="25" width="120" height="90" rx="3" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
-        <text x="198" y="73" text-anchor="middle" font-size="10" fill="#633806">Dapur + Makan</text>
-        <rect x="266" y="25" width="104" height="90" rx="3" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
-        <text x="318" y="73" text-anchor="middle" font-size="10" fill="#444441">Garasi</text>
-        <rect x="10" y="122" width="364" height="10" fill="#FAC775" opacity="0.4"/>
-        <text x="12" y="148" font-size="10" fill="#7a7a8c" font-weight="500">Lantai 2</text>
-        <rect x="10" y="136" width="180" height="108" rx="3" fill="#CECBF6" stroke="#534AB7" stroke-width="1"/>
-        <text x="100" y="194" text-anchor="middle" font-size="10" fill="#3C3489">KT Master + KM</text>
-        <rect x="198" y="136" width="110" height="108" rx="3" fill="#CECBF6" stroke="#534AB7" stroke-width="1"/>
-        <text x="253" y="194" text-anchor="middle" font-size="10" fill="#3C3489">KT 2</text>
-        <rect x="316" y="136" width="58" height="108" rx="3" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
-        <text x="345" y="190" text-anchor="middle" font-size="8" fill="#633806">KM + Tangga</text>
-      </svg>`,
-      legend: [
-        { color: "#CECBF6", label: "Kamar Tidur"          },
-        { color: "#9FE1CB", label: "Ruang Tamu/Keluarga"  },
-        { color: "#FAC775", label: "Dapur & KM"           },
-        { color: "#D3D1C7", label: "Garasi / Tangga"      }
-      ],
-      files: [
-        { icon: "ti-file-3d",       name: "Minimalis_2L_Model.skp", size: "22 MB",  type: "SketchUp", url: "#" },
-        { icon: "ti-file-vector",   name: "Denah_Minimalis.dwg",    size: "5.8 MB", type: "AutoCAD",  url: "#" },
-        { icon: "ti-file-type-pdf", name: "RAB_dan_Gambar.pdf",     size: "11 MB",  type: "PDF",      url: "#" }
-      ]
-    },
-    {
-      name: "Interior Bar & Cafe",
-      type: "Interior",
+      name: "Weird Coffee",
+      type: "Komersil",
       emoji: "☕",
-      color: "#FAECE7",
-      desc: "Desain interior bar dan kafe berkonsep industrial chic. Perpaduan bata ekspos, besi hitam, dan pencahayaan Edison warm-white menciptakan suasana hangat dan sangat instagrammable.",
+      color: "#FBEAF0",
+      desc: "Memiliki konsep Fasad Box.",
       info: [
-        { label: "Luas Ruang", value: "280 m²"        },
-        { label: "Kapasitas",  value: "80 kursi"       },
-        { label: "Konsep",     value: "Industrial Chic"},
-        { label: "Tahun",      value: "2023"           }
+        { label: "Luas Bangunan", value: "50 m²"        },
+        { label: "Kapasitas",  value: "15 kursi"       },
+        { label: "Konsep",     value: "Fasad Box"},
+        { label: "Tahun",      value: "2026"           }
       ],
       denah: `<svg viewBox="0 0 380 260" width="380" height="260" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
         <rect x="5" y="5" width="370" height="250" rx="4" fill="#F8F6F2" stroke="#ccc" stroke-width="1"/>
@@ -858,85 +781,138 @@ AOS.init({ duration: 700, once: true });
         { color: "#FAC775", label: "Outdoor"      }
       ],
       files: [
-        { icon: "ti-file-3d",       name: "Cafe_Interior_3D.skp",       size: "41 MB",  type: "SketchUp", url: "#" },
-        { icon: "ti-file-vector",   name: "Denah_Furnitur_Layout.dwg",  size: "8.3 MB", type: "AutoCAD",  url: "#" },
-        { icon: "ti-file-type-pdf", name: "Mood_Board_Material.pdf",    size: "17 MB",  type: "PDF",      url: "#" }
+        { icon: "ti-file-3d",       name: "3D_Weird Coffee.skp", size: "28 MB",  type: "SketchUp", url: "#" },
+        { icon: "ti-file-vector",   name: "Denah_Weird Coffee.dwg",      size: "7.1 MB", type: "AutoCAD",  url: "#" },
+        { icon: "ti-file-type-pdf", name: "Konsep.pdf",       size: "9 MB",   type: "PDF",      url: "#" }
       ]
     },
     {
-      name: "Vila Premium 2 Lantai",
+      name: "Rumah Minimalis ",
       type: "Residensial",
-      emoji: "🌴",
-      color: "#E1F5EE",
-      desc: "Vila premium 2 lantai dengan kolam renang infinity dan view alam terbuka. Konsep resort tropis dengan material batu andesit, kayu ulin, dan kaca maksimal untuk menyatu dengan alam.",
+      emoji: "🏠",
+      color: "#EEEDFE",
+      desc: "Rumah minimalis yang mengoptimalkan setiap sudut ruang. Palet warna putih-abu dengan aksen kayu natural menciptakan atmosfer bersih, tenang, dan hangat.",
       info: [
-        { label: "Luas Tanah",    value: "500 m²"  },
-        { label: "Luas Bangunan", value: "350 m²"  },
-        { label: "Kamar Tidur",   value: "3 Suite" },
-        { label: "Tahun",         value: "2024"    }
-      ],
-      denah: `<svg viewBox="0 0 380 260" width="380" height="260" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
-        <rect x="5" y="5" width="370" height="250" rx="4" fill="#E1F5EE" stroke="#ccc" stroke-width="1"/>
-        <rect x="10" y="10" width="155" height="115" rx="3" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
-        <text x="87" y="71" text-anchor="middle" font-size="10" fill="#085041">Living + Dining</text>
-        <rect x="173" y="10" width="95" height="115" rx="3" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
-        <text x="220" y="71" text-anchor="middle" font-size="10" fill="#085041">KT Suite 1</text>
-        <rect x="276" y="10" width="98" height="115" rx="3" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
-        <text x="325" y="71" text-anchor="middle" font-size="10" fill="#444441">Servis + Garasi</text>
-        <rect x="10" y="133" width="265" height="112" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
-        <text x="142" y="193" text-anchor="middle" font-size="12" fill="#0C447C" font-weight="500">Kolam Renang</text>
-        <text x="142" y="210" text-anchor="middle" font-size="10" fill="#185FA5">Infinity Pool</text>
-        <rect x="283" y="133" width="91" height="112" rx="3" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
-        <text x="328" y="193" text-anchor="middle" font-size="10" fill="#633806">Sun Deck</text>
-        <text x="328" y="208" text-anchor="middle" font-size="9" fill="#633806">&amp; Bale</text>
-      </svg>`,
-      legend: [
-        { color: "#9FE1CB", label: "Area Indoor"    },
-        { color: "#B5D4F4", label: "Kolam Renang"   },
-        { color: "#FAC775", label: "Outdoor / Deck"  },
-        { color: "#D3D1C7", label: "Area Servis"    }
-      ],
-      files: [
-        { icon: "ti-file-3d",       name: "Vila_Premium_Render.skp",   size: "58 MB",  type: "SketchUp", url: "#" },
-        { icon: "ti-file-vector",   name: "Denah_Vila_Lengkap.dwg",    size: "13 MB",  type: "AutoCAD",  url: "#" },
-        { icon: "ti-file-type-pdf", name: "Konsep_Material_Vila.pdf",  size: "19 MB",  type: "PDF",      url: "#" }
-      ]
-    },
-    {
-      name: "Interior Ruang Keluarga",
-      type: "Interior",
-      emoji: "🛋️",
-      color: "#FAEEDA",
-      desc: "Desain interior ruang keluarga bertemakan japandi — perpaduan estetika Jepang dan Skandinavia. Material kayu terang, kain linen, dan tanaman hijau menciptakan ruang yang tenang dan fungsional.",
-      info: [
-        { label: "Luas Ruang",    value: "36 m²"         },
-        { label: "Konsep",        value: "Japandi"        },
-        { label: "Material",      value: "Kayu + Linen"  },
-        { label: "Tahun",         value: "2024"           }
+        { label: "Luas Bangunan", value: "150 m²" },
+        { label: "Kamar Tidur",   value: "3 KT"   },
+        { label: "Tahun",         value: "2026"   }
       ],
       denah: `<svg viewBox="0 0 380 260" width="380" height="260" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
         <rect x="5" y="5" width="370" height="250" rx="4" fill="#F8F6F2" stroke="#ccc" stroke-width="1"/>
-        <rect x="10" y="10" width="255" height="155" rx="3" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
-        <text x="137" y="91" text-anchor="middle" font-size="11" fill="#633806">Area Duduk Utama</text>
-        <rect x="273" y="10" width="102" height="155" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
-        <text x="324" y="91" text-anchor="middle" font-size="10" fill="#0C447C">Media Wall</text>
-        <text x="324" y="106" text-anchor="middle" font-size="9" fill="#185FA5">/ TV Unit</text>
-        <rect x="10" y="173" width="120" height="77" rx="3" fill="#C0DD97" stroke="#3B6D11" stroke-width="1"/>
-        <text x="70" y="215" text-anchor="middle" font-size="10" fill="#27500A">Area Tanaman</text>
-        <rect x="138" y="173" width="237" height="77" rx="3" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
-        <text x="256" y="215" text-anchor="middle" font-size="10" fill="#444441">Sirkulasi + Pintu Akses</text>
+        <text x="12" y="20" font-size="10" fill="#7a7a8c" font-weight="500">Lantai 1</text>
+        <rect x="10" y="25" width="120" height="90" rx="3" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
+        <text x="70" y="73" text-anchor="middle" font-size="10" fill="#085041">Ruang Tamu</text>
+        <rect x="138" y="25" width="120" height="90" rx="3" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
+        <text x="198" y="73" text-anchor="middle" font-size="10" fill="#633806">Dapur + Makan</text>
+        <rect x="266" y="25" width="104" height="90" rx="3" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
+        <text x="75" y="158" text-anchor="middle" font-size="10" fill="#0C447C">KT Master</text>
+        <rect x="148" y="124" width="100" height="62" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
+        <text x="198" y="158" text-anchor="middle" font-size="10" fill="#0C447C">KT 2</text>
+        <text x="318" y="73" text-anchor="middle" font-size="10" fill="#444441">Garasi</text>
+        <rect x="10" y="122" width="364" height="10" fill="#FAC775" opacity="0.4"/>
       </svg>`,
       legend: [
-        { color: "#FAC775", label: "Area Duduk"    },
-        { color: "#B5D4F4", label: "Media Wall/TV" },
-        { color: "#C0DD97", label: "Area Tanaman"  },
-        { color: "#D3D1C7", label: "Sirkulasi"     }
+        { color: "#CECBF6", label: "Kamar Tidur"          },
+        { color: "#9FE1CB", label: "Ruang Tamu/Keluarga"  },
+        { color: "#FAC775", label: "Dapur & KM"           },
+        { color: "#D3D1C7", label: "Garasi / Tangga"      }
       ],
       files: [
-        { icon: "ti-file-3d",       name: "Ruang_Keluarga_3D.skp", size: "19 MB",  type: "SketchUp", url: "#" },
-        { icon: "ti-file-vector",   name: "Layout_Furnitur.dwg",   size: "3.5 MB", type: "AutoCAD",  url: "#" },
-        { icon: "ti-file-type-pdf", name: "Daftar_Material.pdf",   size: "4.2 MB", type: "PDF",      url: "#" }
+        { icon: "ti-file-3d",       name: "Minimalis_1L_Model.skp", size: "22 MB",  type: "SketchUp", url: "#" },
+        { icon: "ti-file-vector",   name: "Denah_Minimalis.dwg",    size: "5.8 MB", type: "AutoCAD",  url: "#" },
+        { icon: "ti-file-type-pdf", name: "RAB_dan_Gambar.pdf",     size: "11 MB",  type: "PDF",      url: "#" }
       ]
+    },
+    {
+      name: "Rumah Hunian 3 Lantai Moderen",
+      type: "Residensial",
+      emoji: "🏠",
+      color: "#FAECE7",
+      desc: "Memiliki konsep Neo Futuristik Minimalist.",
+      info: [
+        { label: "Luas Bangunan",  value: "350 m²"        },
+        { label: "Kamar Tidur",    value: "5 KT + 1 ART"  },
+        { label: "Tahun",          value: "2026"           }
+      ],
+      denah: `<svg viewBox="0 0 380 280" width="380" height="280" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
+        <rect x="5" y="5" width="370" height="270" rx="4" fill="#F8F6F2" stroke="#ccc" stroke-width="1"/>
+        <text x="12" y="22" font-size="10" fill="#7a7a8c" font-weight="500">Lantai 1</text>
+        <rect x="10" y="28" width="110" height="70" rx="3" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
+        <text x="65" y="66" text-anchor="middle" font-size="10" fill="#085041">Ruang Tamu</text>
+        <rect x="128" y="28" width="90" height="70" rx="3" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
+        <text x="173" y="66" text-anchor="middle" font-size="10" fill="#633806">Dapur</text>
+        <rect x="226" y="28" width="70" height="70" rx="3" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
+        <text x="261" y="66" text-anchor="middle" font-size="10" fill="#633806">KM</text>
+        <rect x="304" y="28" width="66" height="70" rx="3" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
+        <text x="337" y="66" text-anchor="middle" font-size="10" fill="#444441">Garasi</text>
+        <rect x="10" y="105" width="360" height="14" rx="2" fill="#FAC775" stroke="#BA7517" stroke-width="0.5" opacity="0.5"/>
+        <text x="190" y="116" text-anchor="middle" font-size="8" fill="#633806">Koridor</text>
+        <text x="12" y="138" font-size="10" fill="#7a7a8c" font-weight="500">Lantai 2</text>
+        <rect x="10" y="124" width="130" height="62" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
+        <text x="75" y="158" text-anchor="middle" font-size="10" fill="#0C447C">KT Master</text>
+        <rect x="148" y="124" width="100" height="62" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
+        <text x="198" y="158" text-anchor="middle" font-size="10" fill="#0C447C">KT 2</text>
+        <rect x="256" y="124" width="114" height="62" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
+        <text x="313" y="158" text-anchor="middle" font-size="10" fill="#0C447C">KT 3</text>
+        <text x="12" y="208" font-size="10" fill="#7a7a8c" font-weight="500">Lantai 3</text>
+        <rect x="10" y="196" width="180" height="72" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
+        <text x="100" y="236" text-anchor="middle" font-size="10" fill="#0C447C">KT 4 &amp; KT 5</text>
+        <rect x="198" y="196" width="172" height="72" rx="3" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
+        <text x="284" y="236" text-anchor="middle" font-size="10" fill="#085041">Rooftop Lounge</text>
+      </svg>`,
+      legend: [
+        { color: "#B5D4F4", label: "Kamar Tidur"   },
+        { color: "#9FE1CB", label: "Ruang Hidup"   },
+        { color: "#FAC775", label: "Dapur & KM"    },
+        { color: "#D3D1C7", label: "Garasi/Tangga" }
+      ],
+      files: [
+        { icon: "ti-file-3d",       name: "Rumah_Premium_3D.skp",   size: "58 MB",  type: "SketchUp", url: "#" },
+        { icon: "ti-file-vector",   name: "Denah_Lengkap.dwg",    size: "13 MB",  type: "AutoCAD",  url: "#" },
+        { icon: "ti-file-type-pdf", name: "Konsep_Material.pdf",  size: "19 MB",  type: "PDF",      url: "#" }
+      ]
+    },
+    {
+      name: "Rumah Hunian 2 Lantai",
+      type: "Residnsial",
+      emoji: "🏠",
+      color: "#FAEEDA",
+      desc: "Desain .",
+      info: [
+        { label: "Luas Bangunan",  value: "280 m²"        },
+        { label: "Kamar Tidur",    value: "3 KT + 1 ART"  },
+        { label: "Tahun",          value: "2026"           }
+      ],
+      denah: `<svg viewBox="0 0 380 280" width="380" height="280" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
+        <rect x="5" y="5" width="370" height="270" rx="4" fill="#F8F6F2" stroke="#ccc" stroke-width="1"/>
+        <text x="12" y="22" font-size="10" fill="#7a7a8c" font-weight="500">Lantai 1</text>
+        <rect x="10" y="28" width="110" height="70" rx="3" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
+        <text x="65" y="66" text-anchor="middle" font-size="10" fill="#085041">Ruang Tamu</text>
+        <rect x="128" y="28" width="90" height="70" rx="3" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
+        <text x="173" y="66" text-anchor="middle" font-size="10" fill="#633806">Dapur</text>
+        <rect x="226" y="28" width="70" height="70" rx="3" fill="#FAC775" stroke="#BA7517" stroke-width="1"/>
+        <text x="261" y="66" text-anchor="middle" font-size="10" fill="#633806">KM</text>
+        <rect x="304" y="28" width="66" height="70" rx="3" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
+        <text x="190" y="116" text-anchor="middle" font-size="8" fill="#633806">Koridor</text>
+        <text x="12" y="138" font-size="10" fill="#7a7a8c" font-weight="500">Lantai 2</text>
+        <rect x="10" y="124" width="130" height="62" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
+        <text x="75" y="158" text-anchor="middle" font-size="10" fill="#0C447C">KT Master</text>
+        <rect x="148" y="124" width="100" height="62" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
+        <text x="198" y="158" text-anchor="middle" font-size="10" fill="#0C447C">KT 2</text>
+        <rect x="256" y="124" width="114" height="62" rx="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="1"/>
+        <text x="313" y="158" text-anchor="middle" font-size="10" fill="#0C447C">KT 3</text>
+      </svg>`,
+      legend: [
+        { color: "#B5D4F4", label: "Kamar Tidur"   },
+        { color: "#9FE1CB", label: "Ruang Hidup"   },
+        { color: "#FAC775", label: "Dapur & KM"    },
+      ],
+      files: [
+        { icon: "ti-file-3d",       name: "Rumah_Premium2LT_3D.skp",   size: "58 MB",  type: "SketchUp", url: "#" },
+        { icon: "ti-file-vector",   name: "Denah_Lengkap.dwg",    size: "13 MB",  type: "AutoCAD",  url: "#" },
+        { icon: "ti-file-type-pdf", name: "Konsep_Material.pdf",  size: "19 MB",  type: "PDF",      url: "#" }
+      ]
+    },
     }
   ];
  
