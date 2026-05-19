@@ -30,6 +30,12 @@
     --text-muted: rgba(255, 255, 255, 0.65);
     --accent: #c9a96e;
 
+    --zona-publik: #4f46e5;
+    --zona-privat: #0891b2;
+    --zona-servis: #ea580c; 
+    --zona-hijau: #16a34a; 
+    --zona-transit: #8b5cf6;
+
 }
 
 
