@@ -615,69 +615,88 @@ const denahP1 = `<svg viewBox="0 0 420 300" width="100%" xmlns="http://www.w3.or
   <text x="10" y="288" font-size="8" fill="#555">■ Biru = KT  ■ Hijau = Ruang Tamu  ■ Kuning = Dapur/Makan  ■ Abu = Carport</text>
 </svg>`;
 
-/* ── PROJECT 2: Rumah 2 Lantai Neo-Futuristik — Putih, Bentuk Melengkung, Balkon Organik
-   Luas ≈ 260 m² (130/lantai, 13m × 10m)
-   ── */
-const denahP2 = `<svg viewBox="0 0 420 320" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif" font-size="9">
-  <rect x="0" y="0" width="420" height="320" fill="#F0EDE8"/>
-  <text x="10" y="16" font-size="10" fill="#888" font-weight="600" letter-spacing="1">DENAH 2 LANTAI — BENTUK NEO-FUTURISTIK</text>
-
-  <!-- LANTAI 1 -->
-  <text x="10" y="32" font-size="9" fill="#555" font-weight="700">LANTAI 1 (130 m²)</text>
-  <!-- Bentuk melengkung kiri atas — simulasikan dengan rounded rect -->
-  <rect x="10" y="38" width="270" height="110" rx="18" fill="#F0F4FF" stroke="#6366F1" stroke-width="2"/>
-
-  <!-- Ruang Tamu Open-Plan -->
-  <rect x="18" y="46" width="120" height="94" rx="14" fill="#C7D2FE" stroke="#4338CA" stroke-width="1.2"/>
-  <text x="78" y="89" text-anchor="middle" fill="#312E81" font-weight="600">RUANG TAMU</text>
-  <text x="78" y="101" text-anchor="middle" fill="#312E81">OPEN PLAN</text>
-  <text x="78" y="113" text-anchor="middle" fill="#312E81">6×4.7 m</text>
-
-  <!-- Dapur + Dining -->
-  <rect x="146" y="46" width="120" height="94" rx="14" fill="#FDE68A" stroke="#D97706" stroke-width="1.2"/>
-  <text x="206" y="89" text-anchor="middle" fill="#78350F" font-weight="600">DAPUR +</text>
-  <text x="206" y="101" text-anchor="middle" fill="#78350F">DINING</text>
-  <text x="206" y="113" text-anchor="middle" fill="#78350F">6×4.7 m</text>
-
-  <!-- Balkon organik lantai 1 -->
-  <ellipse cx="380" cy="90" rx="42" ry="55" fill="#D1FAE5" stroke="#059669" stroke-width="1.5" stroke-dasharray="5,3"/>
-  <text x="380" y="87" text-anchor="middle" fill="#065F46" font-weight="600">GARASI</text>
-  <text x="380" y="99" text-anchor="middle" fill="#065F46">2 Mobil</text>
-
-  <!-- KM Tamu -->
-  <rect x="10" y="148" width="60" height="40" rx="8" fill="#E0E7FF" stroke="#4338CA" stroke-width="1"/>
-  <text x="40" y="170" text-anchor="middle" fill="#3730A3" font-weight="500">KM</text>
-
-  <!-- Utilitas/Laundry -->
-  <rect x="78" y="148" width="60" height="40" rx="8" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1"/>
-  <text x="108" y="170" text-anchor="middle" fill="#6B7280" font-weight="500">LAUNDRY</text>
-
-  <!-- LANTAI 2 -->
-  <text x="10" y="208" font-size="9" fill="#555" font-weight="700">LANTAI 2 (130 m²) — BENTUK MELENGKUNG ORGANIK</text>
-  <!-- Bidang melengkung khas render -->
-  <rect x="10" y="216" width="270" height="80" rx="24" fill="#FEF3C7" stroke="#D97706" stroke-width="2"/>
-
-  <!-- KT Master + Balkon Organik -->
-  <rect x="18" y="224" width="120" height="64" rx="18" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.2"/>
-  <text x="78" y="252" text-anchor="middle" fill="#1E3A8A" font-weight="600">KT. MASTER</text>
-  <text x="78" y="264" text-anchor="middle" fill="#1E3A8A">6×3.2 m</text>
-
-  <!-- KT 2 -->
-  <rect x="146" y="224" width="100" height="64" rx="18" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.2"/>
-  <text x="196" y="252" text-anchor="middle" fill="#1E3A8A" font-weight="600">KT 2</text>
-  <text x="196" y="264" text-anchor="middle" fill="#1E3A8A">5×3.2 m</text>
-
-  <!-- Balkon melengkung khas -->
-  <path d="M 254,216 Q 380,200 390,280 Q 380,300 254,296 Z" fill="#BBF7D0" stroke="#16A34A" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.8"/>
-  <text x="330" y="256" text-anchor="middle" fill="#166534" font-weight="600">BALKON</text>
-  <text x="330" y="268" text-anchor="middle" fill="#166534">ORGANIK</text>
-
-  <!-- KM Lantai 2 -->
-  <rect x="10" y="296" width="60" height="20" rx="4" fill="#E0E7FF" stroke="#4338CA" stroke-width="1"/>
-  <text x="40" y="308" text-anchor="middle" fill="#3730A3" font-size="8">KM Master</text>
-
-  <text x="10" y="318" font-size="8" fill="#555">■ Ungu = Ruang Publik  ■ Biru = KT  ■ Kuning = Dapur  ■ Hijau = Taman/Balkon</text>
-</svg>`;
+const floorData = {
+  1: { title: 'Lantai 1 — Area Publik & Servis', subtitle: 'Luas bersih ±130 m² · Ketinggian plafon 3.2 m', area: '130', height: '3.2', rooms: '6', char: 'Publik + Servis' },
+  2: { title: 'Lantai 2 — Kamar Tidur & Balkon Organik', subtitle: 'Luas bersih ±130 m² · Ketinggian plafon 3.0 m', area: '130', height: '3.0', rooms: '5 + balkon', char: 'Privat' },
+  3: { title: 'Lantai 3 — Rooftop Living', subtitle: 'Luas bersih ±130 m² · Ketinggian plafon 2.9 m', area: '130', height: '2.9', rooms: '6 + sky garden', char: 'Rekreasi' }
+};
+ 
+const roomData = {
+  rt:    { name: 'Ruang Tamu', badge: 'Publik', color: '#C8A87A', colorBg: '#EAD9BC', desc: 'Ruang tamu open-plan dengan konsep mengalir ke area dapur dan dining. Desain melengkung dinding khas neo-futuristik.', specs: [['Ukuran','6.5 × 4.5 m'],['Luas','± 29 m²'],['Plafon','3.2 m'],['Orientasi','Timur']] },
+  dd:    { name: 'Dapur + Dining', badge: 'Semi-Publik', color: '#5A8C6E', colorBg: '#D4E8D8', desc: 'Dapur dengan island modern, terhubung langsung ke ruang makan. Jendela besar menghadap ke taman belakang.', specs: [['Ukuran','6 × 4.5 m'],['Luas','± 27 m²'],['Island','1.8 × 1 m'],['Jendela','4 buah']] },
+  gr:    { name: 'Garasi', badge: 'Servis', color: '#888', colorBg: '#E8E5DF', desc: 'Garasi untuk 2 kendaraan dengan akses langsung ke foyer. Dilengkapi storage dan titik pengisian EV.', specs: [['Ukuran','6 × 4.5 m'],['Kapasitas','2 mobil'],['Tinggi','2.5 m'],['Akses','Otomatis']] },
+  km1:   { name: 'KM Tamu', badge: 'Utilitas', color: '#4A7A9B', colorBg: '#C4D8E8', desc: 'Kamar mandi tamu di lantai dasar. Dilengkapi wastafel dan toilet, akses dari area foyer.', specs: [['Ukuran','2.5 × 2.5 m'],['Luas','± 6 m²'],['Perlengkapan','Toilet + wastafel'],['Ventilasi','Jendela kecil']] },
+  ld:    { name: 'Laundry + Gudang', badge: 'Servis', color: '#3D8C84', colorBg: '#C0DEDD', desc: 'Area laundry lengkap dengan mesin cuci dan pengering, terhubung ke gudang penyimpanan.', specs: [['Ukuran','3 × 2.5 m'],['Luas','± 7.5 m²'],['Kapasitas','2 mesin'],['Gudang','± 6 m²']] },
+  tg:    { name: 'Tangga + Lift', badge: 'Sirkulasi', color: '#C46A5A', colorBg: '#EDD0CA', desc: 'Tangga beton dengan pegangan melengkung dan lift 3 lantai. Titik sirkulasi vertikal utama bangunan.', specs: [['Lebar tangga','1.2 m'],['Lift','1 × 1.2 m'],['Kapasitas lift','4 orang'],['Material','Beton + kaca']] },
+  kb:    { name: 'Kamar Bantu', badge: 'Servis', color: '#7A6B9B', colorBg: '#D8D2EC', desc: 'Kamar untuk pembantu atau tamu dengan toilet pribadi, akses dari area servis belakang.', specs: [['Ukuran','3 × 4 m'],['Luas','± 12 m²'],['Toilet','En-suite'],['Akses','Pintu servis']] },
+  tm:    { name: 'Taman Depan', badge: 'Outdoor', color: '#5A8C6E', colorBg: '#C8DDD1', desc: 'Taman kecil di area depan, dengan tanaman hias dan penerangan malam. Menciptakan kesan masuk yang mengesankan.', specs: [['Luas','± 8 m²'],['Vegetasi','Tanaman hias'],['Penerangan','LED outdoor'],['Material','Rumput + batu']] },
+  foy:   { name: 'Foyer / Void', badge: 'Transisi', color: '#C8A87A', colorBg: '#F4F2EE', desc: 'Area transisi penghubung garasi, taman, dan ruang dalam. Void ke lantai atas menghadirkan volume ruang yang megah.', specs: [['Ukuran','13 × 4 m'],['Void','Ke lt. 2'],['Lantai','Marmer/granit'],['Pintu','Utama + garasi']] },
+  km_m:  { name: 'KT Master', badge: 'Privat', color: '#4A7A9B', colorBg: '#C4D8E8', desc: 'Kamar tidur master dengan view ke balkon organik. Walk-in closet terpisah dan terhubung langsung ke KM en-suite.', specs: [['Ukuran','7 × 5.5 m'],['Luas','± 38 m²'],['Walk-in','2.5 × 2 m'],['View','Balkon organik']] },
+  kme:   { name: 'KM Master En-suite', badge: 'Privat', color: '#4A7A9B', colorBg: '#C4D8E8', desc: 'Kamar mandi en-suite master dengan bathtub freestanding, shower rain, dan double vanity.', specs: [['Ukuran','3.5 × 3 m'],['Bathtub','Freestanding'],['Shower','Rain shower'],['Vanity','Double sink']] },
+  kt2:   { name: 'KT 2', badge: 'Privat', color: '#7A6B9B', colorBg: '#D8D2EC', desc: 'Kamar tidur anak atau tamu dengan jendela besar ke sisi taman. Dilengkapi built-in wardrobe.', specs: [['Ukuran','5 × 4.5 m'],['Luas','± 22 m²'],['Wardrobe','Built-in'],['Jendela','Ke taman']] },
+  kt3:   { name: 'KT 3', badge: 'Privat', color: '#7A6B9B', colorBg: '#D8D2EC', desc: 'Kamar tidur ketiga dengan akses ke KM bersama. Posisi tengah bangunan dengan pencahayaan alami yang baik.', specs: [['Ukuran','4.5 × 4.5 m'],['Luas','± 20 m²'],['Wardrobe','Built-in'],['KM','Bersama']] },
+  kmb:   { name: 'KM Bersama', badge: 'Utilitas', color: '#3D8C84', colorBg: '#C0DEDD', desc: 'Kamar mandi bersama untuk KT 2 dan KT 3. Shower, bathtub, dan toilet terpisah.', specs: [['Ukuran','3.5 × 2.5 m'],['Shower','Ya'],['Bathtub','Soaking'],['Toilet','Terpisah']] },
+  tg2:   { name: 'Tangga + Lift Lt. 2', badge: 'Sirkulasi', color: '#C46A5A', colorBg: '#EDD0CA', desc: 'Titik sirkulasi lt. 2 dengan tangga melengkung dan lift. Terhubung ke balkon organik di sisi kanan.', specs: [['Lebar','1.2 m'],['Lift','3 lantai'],['Arah','Ke lt. 1 & 3'],['Material','Kaca + baja']] },
+  stu:   { name: 'Studio / Home Office', badge: 'Kerja', color: '#C46A5A', colorBg: '#EDD0CA', desc: 'Ruang kerja dan studio kreatif di lantai paling atas. Plafon tinggi dan pencahayaan alami yang optimal untuk produktivitas.', specs: [['Ukuran','6 × 5 m'],['Luas','± 30 m²'],['Plafon','2.9 m'],['View','Teras rooftop']] },
+  kt4:   { name: 'KT 4 / Guest Room', badge: 'Privat', color: '#7A6B9B', colorBg: '#D8D2EC', desc: 'Kamar tamu dengan akses ke sky garden. Dirancang sebagai ruang privat dengan nuansa hotel bintang.', specs: [['Ukuran','5.5 × 5 m'],['Luas','± 27 m²'],['View','Sky garden'],['Termasuk','En-suite']] },
+  pool:  { name: 'Mini Pool / Jacuzzi', badge: 'Rekreasi', color: '#4A7A9B', colorBg: '#C4D8E8', desc: 'Kolam renang mini dan jacuzzi di rooftop. Desain custom dengan tepi infinity ke arah taman. Fitur paling premium bangunan ini.', specs: [['Ukuran','5 × 4 m'],['Kedalaman','1.2 m'],['Jacuzzi','6 orang'],['Pemanas','Solar']] },
+  rk3:   { name: 'Ruang Keluarga Lt. 3', badge: 'Semi-Privat', color: '#C8A87A', colorBg: '#EAD9BC', desc: 'Lounge keluarga atas untuk bersantai. Terhubung ke sky garden dan area rooftop terrace.', specs: [['Ukuran','5 × 5 m'],['Luas','± 25 m²'],['Akses','Sky garden'],['Fungsi','Lounge santai']] },
+  km3:   { name: 'KM Lantai 3', badge: 'Utilitas', color: '#3D8C84', colorBg: '#C0DEDD', desc: 'Kamar mandi untuk tamu lt. 3, pool area, dan sky garden. Shower outdoor dan area bilas tersendiri.', specs: [['Ukuran','3 × 3 m'],['Shower','Outdoor feel'],['Bilas','+ Sauna'],['Material','Batu alam']] },
+  tg3:   { name: 'Tangga + Lift Lt. 3', badge: 'Sirkulasi', color: '#C46A5A', colorBg: '#EDD0CA', desc: 'Sirkulasi vertikal lantai 3 dengan skylight di atas void tangga. Cahaya alami turun hingga lantai 1.', specs: [['Skylight','2 × 2 m'],['Void','Ke lt. 1–2'],['Material','Kaca double'],['Lift','Lt. 1 s/d 3']] },
+};
+ 
+let currentFloor = 1;
+let selectedRoom = null;
+ 
+function switchFloor(n) {
+  currentFloor = n;
+  document.querySelectorAll('.floor-tab').forEach((t,i) => t.classList.toggle('active', i === n-1));
+  document.querySelectorAll('.floor-view').forEach((v,i) => v.classList.toggle('active', i === n-1));
+ 
+  const d = floorData[n];
+  document.getElementById('planTitle').textContent = d.title;
+  document.getElementById('planSubtitle').textContent = d.subtitle;
+  document.getElementById('statsTitle').textContent = 'Statistik Lantai ' + n;
+  document.getElementById('statArea').innerHTML = d.area + ' <small>m²</small>';
+  document.getElementById('statHeight').innerHTML = d.height + ' <small>m</small>';
+  document.getElementById('statRooms').innerHTML = d.rooms + ' <small>ruang</small>';
+  document.getElementById('statChar').textContent = d.char;
+ 
+  resetDetail();
+  selectedRoom = null;
+}
+ 
+function showRoom(id) {
+  const r = roomData[id];
+  if (!r) return;
+ 
+  if (selectedRoom) {
+    const prev = document.getElementById('room-' + selectedRoom);
+    if (prev) prev.classList.remove('selected');
+  }
+  selectedRoom = id;
+  const el = document.getElementById('room-' + id);
+  if (el) el.classList.add('selected');
+ 
+  const card = document.getElementById('detailCard');
+  card.innerHTML = `
+    <h3 style="margin-bottom:4px">${r.name}</h3>
+    <span class="detail-badge" style="background:${r.colorBg};color:${r.color}">${r.badge}</span>
+    <p class="detail-desc">${r.desc}</p>
+    <div class="detail-specs">
+      ${r.specs.map(([k,v]) => `<div class="spec-item"><div class="spec-key">${k}</div><div class="spec-val">${v}</div></div>`).join('')}
+    </div>
+  `;
+}
+ 
+function resetDetail() {
+  document.getElementById('detailCard').innerHTML = `
+    <div class="detail-placeholder">
+      <div class="icon">⊹</div>
+      <div>Klik ruangan pada denah<br>untuk melihat detail</div>
+    </div>
+  `;
+}
 
 /* ── PROJECT 3: Rumah 2 Lantai Modern Tropis — Atap Datar, Kayu, Carport Depan
    Luas ≈ 260 m² (13m × 10m per lantai)
