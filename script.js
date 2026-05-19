@@ -570,7 +570,7 @@ AOS.init({ duration: 700, once: true });
       desc: "Rumah dengan konsep moderen yang memiliki teknologi pada setiap lantai nya.",
       info: [
         { label: "Luas Bangunan", value: "360 m²" },
-        { label: "Luas perlantai", value :120 m²" },
+        { label: "Luas perlantai", value :" 120 m²" },
         { label: "Lantai",        value: "3 Lantai"  },
         { label: "Tahun",         value: "2026"      }
       ],
