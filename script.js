@@ -544,7 +544,7 @@ AOS.init({ duration: 700, once: true });
    DENAH SVG — AKURAT SESUAI BENTUK BANGUNAN DARI RENDER
    ============================================================ */
 
-/* ── PROJECT 1: Rumah Modern 1 Lantai — Atap Segitiga Ganda, Kaca Lebar, Carport Samping
+/* ── PROJECT 1: Mansion classic modern 3 lantai
    Luas Bangunan ≈ 180 m² (18m × 10m)
    Zona: Ruang Tamu + Dining open-plan besar (kaca), 3 KT, 2 KM, Dapur, Carport kanan
    ── */
@@ -1112,30 +1112,29 @@ const denahP8 = `<svg viewBox="0 0 420 280" width="100%" xmlns="http://www.w3.or
    ============================================================ */
 const projects = [
   {
-    name: "Rumah Hunian Modern 1 Lantai",
+    name: "Mansion classic modern 3 lantai",
     type: "Residensial",
     emoji: "🏠",
     color: "#E1F5EE",
-    desc: "Rumah 1 lantai modern dengan konsep terbuka bergaya barn-modern. Atap segitiga ganda (dual gable) dengan curtain wall kaca tinggi memaksimalkan cahaya alami. Carport terintegrasi di sisi kanan, teras semi-outdoor menghadap taman stepping stone. Fasad: beton ekspos + cladding kayu vertikal + kaca hitam framing.",
+    desc: "Rumah mewah bergaya Modern Classic Neo-European dengan fasad megah berwarna hitam putih yang elegan.",
     info: [
-      { label: "Luas Bangunan", value: "180 m²" },
-      { label: "Luas Tanah",    value: "±320 m²" },
-      { label: "Jumlah Lantai", value: "1 Lantai" },
-      { label: "Kamar Tidur",   value: "3 KT + 2 KM" },
-      { label: "Carport",       value: "1 Mobil" },
+      { label: "Luas Bangunan", value: "600 m²" },
+      { label: "Jumlah Lantai", value: "3 Lantai" },
+      { label: "Kamar Tidur",   value: "6 KT + 4 KM" },
+      { label: "Carport",       value: "2 Mobil" },
       { label: "Tahun",         value: "2026" }
     ],
     denah: denahP1,
     legend: [
-      { color: "#BBF7D0", label: "Ruang Tamu + Kaca" },
+      { color: "#BBF7D0", label: "Ruang Tamu" },
       { color: "#BFDBFE", label: "Kamar Tidur" },
       { color: "#FDE68A", label: "Dapur / Dining" },
       { color: "#D1D5DB", label: "Carport" },
       { color: "#93C5FD", label: "Curtain Wall Kaca" }
     ],
     files: [
-      { icon: "ti-file-3d",       name: "Rumah1Lantai_Modern.skp",   size: "38.2 MB", type: "SketchUp", url: "#" },
-      { icon: "ti-file-vector",   name: "Denah_Lantai1.dwg",         size: "9.4 MB",  type: "AutoCAD",  url: "#" },
+      { icon: "ti-file-3d",       name: "Rumah3Lantai_classic.skp",   size: "38.2 MB", type: "SketchUp", url: "#" },
+      { icon: "ti-file-vector",   name: "Denah_3 Lantai.dwg",         size: "9.4 MB",  type: "AutoCAD",  url: "#" },
       { icon: "ti-file-type-pdf", name: "Gambar_Kerja_Lengkap.pdf",  size: "12.6 MB", type: "PDF",      url: "#" }
     ]
   },
