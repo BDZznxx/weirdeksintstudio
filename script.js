@@ -548,105 +548,92 @@ AOS.init({ duration: 700, once: true });
    Luas Bangunan ≈ 600 m² (30m × 20m)
    Zona: Ruang Tamu + Dining open-plan besar (kaca), 3 KT, 2 KM, Dapur, Carport kanan
    ── */
-const denahP1 = `<svg viewBox="0 0 440 280" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif" font-size="9">
-  <!-- Background -->
-  <rect x="0" y="0" width="440" height="280" fill="#F5F3EF"/>
+const denahP1 = `<svg viewBox="0 0 480 320" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
+  <!-- BACKGROUND -->
+  <rect x="0" y="0" width="480" height="320" fill="#F8F7F2"/>
 
-  <!-- LABEL LANTAI -->
-  <text x="10" y="16" font-size="10" fill="#666" font-weight="600" letter-spacing="1">DENAH LANTAI 1 — SKALA 1:100 (30m × 20m = 300 × 200px)</text>
+  <!-- JUDUL -->
+  <text x="15" y="25" font-size="12" fill="#444" font-weight="700">DENAH LANTAI 1 — MANSION CLASSIC 600 m²</text>
+  <text x="15" y="40" font-size="9" fill="#888">30m × 20m (Skala 1:100)</text>
 
-  <!-- GRID REFERENCES -->
-  <line x1="10" y1="30" x2="10" y2="250" stroke="#CCC" stroke-width="0.5"/>
-  <line x1="110" y1="30" x2="110" y2="250" stroke="#CCC" stroke-width="0.5"/>
-  <line x1="210" y1="30" x2="210" y2="250" stroke="#CCC" stroke-width="0.5"/>
+  <!-- BANGUNAN UTAMA 30×20m → 300×200px -->
+  <rect x="15" y="50" width="300" height="200" rx="2" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="2"/>
 
-  <!-- BANGUNAN UTAMA (30m × 20m → 300×200px) -->
-  <rect x="10" y="30" width="300" height="200" rx="1" fill="#FFFEF8" stroke="#2D2D2D" stroke-width="2"/>
+  <!-- CARPORT (6m × 5m → 60×50px) -->
+  <rect x="315" y="50" width="80" height="70" rx="2" fill="#E5E5E5" stroke="#666" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="355" y="82" text-anchor="middle" fill="#555" font-weight="600" font-size="10">CARPORT</text>
+  <text x="355" y="95" text-anchor="middle" fill="#666" font-size="8">6 × 5 m</text>
+  <!-- Mobil icon -->
+  <rect x="335" y="60" width="40" height="14" rx="3" fill="#999"/>
+  <circle cx="340" cy="77" r="4" fill="#333"/>
+  <circle cx="370" cy="77" r="4" fill="#333"/>
 
-  <!-- CARPORT KANAN (6m × 4m → 60×40px = 60×40) -->
-  <rect x="310" y="30" width="110" height="70" rx="1" fill="#E8E6E0" stroke="#6B6B6B" stroke-width="1.5" stroke-dasharray="5,3"/>
-  <text x="365" y="62" text-anchor="middle" fill="#555" font-weight="600">CARPORT</text>
-  <text x="365" y="74" text-anchor="middle" fill="#555" font-size="8">6 × 4 m</text>
-  <!-- Car icon -->
-  <path d="M345 45 h40 a3 3 0 0 1 3 3 v8 a2 2 0 0 1 -2 2 h-2 a2 2 0 0 1 -2 -2 v-6 h-34 v6 a2 2 0 0 1 -2 2 h-2 a2 2 0 0 1 -2 -2 v-8 a3 3 0 0 1 3 -3 z" fill="none" stroke="#777" stroke-width="1"/>
+  <!-- TERAS DEPAN (30m × 2m → 300×20px) -->
+  <rect x="15" y="250" width="300" height="25" rx="1" fill="#D4EDDA" stroke="#28A745" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="165" y="267" text-anchor="middle" fill="#155724" font-size="9" font-weight="500">TERAS DEPAN</text>
 
-  <!-- RUANG TAMU + Dining OPEN-PLAN (18m × 10m) -->
-  <!-- Area Kaca Besar (Curtain Wall) -->
-  <rect x="10" y="30" width="300" height="25" fill="#B5D8EB" stroke="#2563EB" stroke-width="0.8"/>
-  <text x="160" y="48" text-anchor="middle" fill="#1E40AF" font-size="7" font-weight="500">CURTAIN WALL - KACA BESAR</text>
+  <!-- RUANG TAMU (9m × 7m) -->
+  <rect x="15" y="50" width="130" height="100" rx="1" fill="#C6F6D5" stroke="#22C55E" stroke-width="1.5"/>
+  <text x="80" y="95" text-anchor="middle" fill="#14532D" font-weight="600" font-size="10">RUANG TAMU</text>
+  <text x="80" y="110" fill="#166534" font-size="8">9 × 7 m</text>
 
-  <!-- RUANG TAMU (9m × 8m) -->
-  <rect x="10" y="55" width="140" height="110" rx="1" fill="#C8F0D8" stroke="#166534" stroke-width="1.2"/>
-  <text x="80" y="105" text-anchor="middle" fill="#14532D" font-weight="600">RUANG TAMU</text>
-  <text x="80" y="118" text-anchor="middle" fill="#14532D" font-size="8">9 × 8 m</text>
-  <!-- Sofa icon -->
-  <rect x="50" y="95" width="60" height="20" rx="2" fill="#22C55E" opacity="0.3"/>
+  <!-- KURSI SOFA ICON -->
+  <rect x="55" y="85" width="50" height="15" rx="2" fill="#22C55E" opacity="0.3"/>
 
-  <!-- DINING (9m × 8m) open-plan dengan Ruang Tamu -->
-  <rect x="150" y="55" width="140" height="110" rx="1" fill="#FDE68A" stroke="#B45309" stroke-width="1.2"/>
-  <text x="220" y="105" text-anchor="middle" fill="#78350F" font-weight="600">DINING AREA</text>
-  <text x="220" y="118" text-anchor="middle" fill="#78350F" font-size="8">9 × 8 m</text>
-  <!-- Table icon -->
-  <circle cx="220" cy="100" r="15" fill="#F59E0B" opacity="0.4"/>
+  <!-- DINING (9m × 7m) -->
+  <rect x="145" y="50" width="130" height="100" rx="1" fill="#FEF3C7" stroke="#D97706" stroke-width="1.5"/>
+  <text x="210" y="95" text-anchor="middle" fill="#78350F" font-weight="600" font-size="10">DINING</text>
+  <text x="210" y="110" fill="#92400E" font-size="8">9 × 7 m</text>
+  <!-- MEJA ICON -->
+  <circle cx="210" cy="90" r="12" fill="#F59E0B" opacity="0.4"/>
 
-  <!-- PEMBAGI RUANG TAMU - DINING (garis putus) -->
-  <line x1="150" y1="55" x2="150" y2="165" stroke="#B45309" stroke-width="1" stroke-dasharray="4,2"/>
+  <!-- PEMBatas RUANG TAMU - DINING (garis putus) -->
+  <line x1="145" y1="50" x2="145" y2="150" stroke="#D97706" stroke-width="1" stroke-dasharray="5,3"/>
 
   <!-- DAPUR (4m × 4m) -->
-  <rect x="290" y="55" width="80" height="60" rx="1" fill="#FDE68A" stroke="#D97706" stroke-width="1.2"/>
-  <text x="330" y="88" text-anchor="middle" fill="#92400E" font-weight="600">DAPUR</text>
-  <text x="330" y="100" text-anchor="middle" fill="#92400E" font-size="8">4 × 4 m</text>
+  <rect x="275" y="50" width="60" height="55" rx="1" fill="#FDE68A" stroke="#D97706" stroke-width="1.2"/>
+  <text x="305" y="80" text-anchor="middle" fill="#92400E" font-weight="600" font-size="9">DAPUR</text>
+  <text x="305" y="94" fill="#B45309" font-size="7">4 × 4 m</text>
 
-  <!-- KORIDOR / HALL -->
-  <rect x="10" y="165" width="300" height="30" rx="1" fill="#E5E5E5" stroke="#999" stroke-width="0.5"/>
-  <text x="160" y="184" text-anchor="middle" fill="#666" font-size="7">KORIDOR</text>
+  <!-- KORIDOR -->
+  <rect x="15" y="150" width="300" height="25" rx="1" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="0.5"/>
+  <text x="165" y="167" text-anchor="middle" fill="#6B7280" font-size="8">KORIDOR</text>
 
-  <!-- KM 1 (Master - 3m × 2.5m) -->
-  <rect x="10" y="195" width="80" height="35" rx="1" fill="#E0E7FF" stroke="#4338CA" stroke-width="1"/>
-  <text x="50" y="216" text-anchor="middle" fill="#3730A3" font-weight="600" font-size="8">KM 1</text>
+  <!-- KM 1 / KAMAR MANDI (2.5m × 2m) -->
+  <rect x="15" y="175" width="50" height="40" rx="1" fill="#E0E7FF" stroke="#4338CA" stroke-width="1"/>
+  <text x="40" y="200" text-anchor="middle" fill="#3730A3" font-weight="600" font-size="9">KM 1</text>
 
   <!-- KT MASTER (5m × 4m) -->
-  <rect x="100" y="195" width="100" height="60" rx="1" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.2"/>
-  <text x="150" y="220" text-anchor="middle" fill="#1E3A8A" font-weight="600">KT. MASTER</text>
-  <text x="150" y="233" text-anchor="middle" fill="#1E3A8A" font-size="8">5 × 4 m</text>
+  <rect x="65" y="175" width="90" height="75" rx="1" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.5"/>
+  <text x="110" y="215" text-anchor="middle" fill="#1E40AF" font-weight="600" font-size="10">KT MASTER</text>
+  <text x="110" y="230" fill="#1E3A8A" font-size="8">5 × 4 m</text>
 
-  <!-- KM 2 (3m × 2.5m) -->
-  <rect x="210" y="195" width="80" height="35" rx="1" fill="#E0E7FF" stroke="#4338CA" stroke-width="1"/>
-  <text x="250" y="216" text-anchor="middle" fill="#3730A3" font-weight="600" font-size="8">KM 2</text>
+  <!-- KM 2 (2.5m × 2m) -->
+  <rect x="155" y="175" width="50" height="40" rx="1" fill="#E0E7FF" stroke="#4338CA" stroke-width="1"/>
+  <text x="180" y="200" text-anchor="middle" fill="#3730A3" font-weight="600" font-size="9">KM 2</text>
 
   <!-- KT 2 (4m × 3.5m) -->
-  <rect x="210" y="195" width="80" height="60" rx="1" fill="none" stroke="#1D4ED8" stroke-width="1.2"/>
-  <!-- Overlap rect above, KT shown as smaller area within KM area visual -->
-
-  <!-- KT 2 AREA (4m × 3.5m) -->
-  <rect x="210" y="195" width="80" height="60" rx="1" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.2" opacity="0.6"/>
-  <text x="250" y="230" text-anchor="middle" fill="#1E3A8A" font-weight="600">KT 2</text>
+  <rect x="205" y="175" width="70" height="75" rx="1" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.5"/>
+  <text x="240" y="215" text-anchor="middle" fill="#1E40AF" font-weight="600" font-size="10">KT 2</text>
+  <text x="240" y="230" fill="#1E3A8A" font-size="8">4 × 3.5 m</text>
 
   <!-- KT 3 (4m × 3.5m) -->
-  <rect x="290" y="195" width="80" height="60" rx="1" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.2"/>
-  <text x="330" y="230" text-anchor="middle" fill="#1E3A8A" font-weight="600">KT 3</text>
-  <text x="330" y="243" text-anchor="middle" fill="#1E3A8A" font-size="8">4 × 3.5 m</text>
-
-  <!-- TERAS DEPAN (30m × 2m) -->
-  <rect x="10" y="230" width="300" height="35" rx="1" fill="#D6EFD8" stroke="#16A34A" stroke-width="1" stroke-dasharray="5,3"/>
-  <text x="160" y="252" text-anchor="middle" fill="#166534" font-weight="500" font-size="8">TERAS DEPAN</text>
+  <rect x="275" y="175" width="60" height="75" rx="1" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.5"/>
+  <text x="305" y="215" text-anchor="middle" fill="#1E40AF" font-weight="600" font-size="10">KT 3</text>
+  <text x="305" y="230" fill="#1E3A8A" font-size="8">4 × 3.5 m</text>
 
   <!-- PINTU MASUK -->
-  <g>
-    <line x1="150" y1="165" x2="150" y2="195" stroke="#DC2626" stroke-width="2"/>
-    <path d="M150,165 Q180,165 180,195" fill="none" stroke="#DC2626" stroke-width="1.5"/>
-    <text x="165" y="160" text-anchor="middle" fill="#991B1B" font-size="6" font-weight="600">PINTU</text>
+  <g stroke="#DC2626" stroke-width="2">
+    <line x1="145" y1="150" x2="145" y2="175"/>
+    <path d="M145,150 Q170,150 170,175" fill="none"/>
   </g>
-
-  <!-- KETERANGAN ROOM COUNT -->
-  <text x="380" y="140" text-anchor="middle" fill="#666" font-size="7" font-weight="500">3 KT</text>
-  <text x="380" y="152" text-anchor="middle" fill="#666" font-size="7" font-weight="500">2 KM</text>
-  <text x="380" y="164" text-anchor="middle" fill="#666" font-size="7" font-weight="500">Ruang Tamu + Dining</text>
-  <text x="380" y="176" text-anchor="middle" fill="#666" font-size="7" font-weight="500">Dapur</text>
+  <text x="155" y="145" fill="#991B1B" font-size="7" font-weight="600">PINTU</text>
 
   <!-- LEGENDA -->
-  <rect x="10" y="272" width="380" height="1" fill="#DDD"/>
-  <text x="10" y="282" font-size="7" fill="#555">■ Biru = Kamar Tidur  ■ Hijau = Ruang Tamu  ■ Kuning = Dapur/Dining  ■ Abu-Abu = Carport  ■ Biru Muda = KM</text>
+  <rect x="15" y="290" width="400" height="1" fill="#DDD"/>
+  <text x="15" y="305" font-size="8" fill="#666">
+    □ <tspan fill="#C6F6D5">Ruang Tamu</tspan> <tspan fill="#BFDBFE">Kamar Tidur</tspan> <tspan fill="#FEF3C7">Dining</tspan> <tspan fill="#FDE68A">Dapur</tspan> <tspan fill="#E0E7FF">Kamar Mandi</tspan> <tspan fill="#E5E5E5">Carport</tspan>
+  </text>
 </svg>`;
 
 const denahP2 = `<svg viewBox="0 0 420 450" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif" font-size="9"> <rect x="0" y="0" width="420" height="450" fill="#F0EDE8"/> <text x="10" y="16" font-size="10" fill="#888" font-weight="600" letter-spacing="1">DENAH 3 LANTAI — NEO-FUTURISTIK</text>
