@@ -546,94 +546,212 @@ AOS.init({ duration: 700, once: true });
 
 /* ── PROJECT 1: Mansion classic modern 3 lantai
    Luas Bangunan ≈ 600 m² (30m × 20m)
-   Zona: Ruang Tamu + Dining open-plan besar (kaca), 3 KT, 2 KM, Dapur, Carport kanan
+   Zona: Ruang Tamu + Dining open-plan besar (kaca), 6 KT, 3 KM, Dapur, Carport kanan
    ── */
-const denahP1 = `<svg viewBox="0 0 480 320" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
-  <!-- BACKGROUND -->
-  <rect x="0" y="0" width="480" height="320" fill="#F8F7F2"/>
-
-  <!-- JUDUL -->
-  <text x="15" y="25" font-size="12" fill="#444" font-weight="700">DENAH LANTAI 1 — MANSION CLASSIC 600 m²</text>
-  <text x="15" y="40" font-size="9" fill="#888">30m × 20m (Skala 1:100)</text>
-
-  <!-- BANGUNAN UTAMA 30×20m → 300×200px -->
-  <rect x="15" y="50" width="300" height="200" rx="2" fill="#FFFFFF" stroke="#2D2D2D" stroke-width="2"/>
-
-  <!-- CARPORT (6m × 5m → 60×50px) -->
-  <rect x="315" y="50" width="80" height="70" rx="2" fill="#E5E5E5" stroke="#666" stroke-width="1.5" stroke-dasharray="4,2"/>
-  <text x="355" y="82" text-anchor="middle" fill="#555" font-weight="600" font-size="10">CARPORT</text>
-  <text x="355" y="95" text-anchor="middle" fill="#666" font-size="8">6 × 5 m</text>
-  <!-- Mobil icon -->
-  <rect x="335" y="60" width="40" height="14" rx="3" fill="#999"/>
-  <circle cx="340" cy="77" r="4" fill="#333"/>
-  <circle cx="370" cy="77" r="4" fill="#333"/>
-
-  <!-- TERAS DEPAN (30m × 2m → 300×20px) -->
-  <rect x="15" y="250" width="300" height="25" rx="1" fill="#D4EDDA" stroke="#28A745" stroke-width="1" stroke-dasharray="3,2"/>
-  <text x="165" y="267" text-anchor="middle" fill="#155724" font-size="9" font-weight="500">TERAS DEPAN</text>
-
-  <!-- RUANG TAMU (9m × 7m) -->
-  <rect x="15" y="50" width="130" height="100" rx="1" fill="#C6F6D5" stroke="#22C55E" stroke-width="1.5"/>
-  <text x="80" y="95" text-anchor="middle" fill="#14532D" font-weight="600" font-size="10">RUANG TAMU</text>
-  <text x="80" y="110" fill="#166534" font-size="8">9 × 7 m</text>
-
-  <!-- KURSI SOFA ICON -->
-  <rect x="55" y="85" width="50" height="15" rx="2" fill="#22C55E" opacity="0.3"/>
-
-  <!-- DINING (9m × 7m) -->
-  <rect x="145" y="50" width="130" height="100" rx="1" fill="#FEF3C7" stroke="#D97706" stroke-width="1.5"/>
-  <text x="210" y="95" text-anchor="middle" fill="#78350F" font-weight="600" font-size="10">DINING</text>
-  <text x="210" y="110" fill="#92400E" font-size="8">9 × 7 m</text>
-  <!-- MEJA ICON -->
-  <circle cx="210" cy="90" r="12" fill="#F59E0B" opacity="0.4"/>
-
-  <!-- PEMBatas RUANG TAMU - DINING (garis putus) -->
-  <line x1="145" y1="50" x2="145" y2="150" stroke="#D97706" stroke-width="1" stroke-dasharray="5,3"/>
-
-  <!-- DAPUR (4m × 4m) -->
-  <rect x="275" y="50" width="60" height="55" rx="1" fill="#FDE68A" stroke="#D97706" stroke-width="1.2"/>
-  <text x="305" y="80" text-anchor="middle" fill="#92400E" font-weight="600" font-size="9">DAPUR</text>
-  <text x="305" y="94" fill="#B45309" font-size="7">4 × 4 m</text>
-
-  <!-- KORIDOR -->
-  <rect x="15" y="150" width="300" height="25" rx="1" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="0.5"/>
-  <text x="165" y="167" text-anchor="middle" fill="#6B7280" font-size="8">KORIDOR</text>
-
-  <!-- KM 1 / KAMAR MANDI (2.5m × 2m) -->
-  <rect x="15" y="175" width="50" height="40" rx="1" fill="#E0E7FF" stroke="#4338CA" stroke-width="1"/>
-  <text x="40" y="200" text-anchor="middle" fill="#3730A3" font-weight="600" font-size="9">KM 1</text>
-
-  <!-- KT MASTER (5m × 4m) -->
-  <rect x="65" y="175" width="90" height="75" rx="1" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.5"/>
-  <text x="110" y="215" text-anchor="middle" fill="#1E40AF" font-weight="600" font-size="10">KT MASTER</text>
-  <text x="110" y="230" fill="#1E3A8A" font-size="8">5 × 4 m</text>
-
-  <!-- KM 2 (2.5m × 2m) -->
-  <rect x="155" y="175" width="50" height="40" rx="1" fill="#E0E7FF" stroke="#4338CA" stroke-width="1"/>
-  <text x="180" y="200" text-anchor="middle" fill="#3730A3" font-weight="600" font-size="9">KM 2</text>
-
-  <!-- KT 2 (4m × 3.5m) -->
-  <rect x="205" y="175" width="70" height="75" rx="1" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.5"/>
-  <text x="240" y="215" text-anchor="middle" fill="#1E40AF" font-weight="600" font-size="10">KT 2</text>
-  <text x="240" y="230" fill="#1E3A8A" font-size="8">4 × 3.5 m</text>
-
-  <!-- KT 3 (4m × 3.5m) -->
-  <rect x="275" y="175" width="60" height="75" rx="1" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.5"/>
-  <text x="305" y="215" text-anchor="middle" fill="#1E40AF" font-weight="600" font-size="10">KT 3</text>
-  <text x="305" y="230" fill="#1E3A8A" font-size="8">4 × 3.5 m</text>
-
-  <!-- PINTU MASUK -->
-  <g stroke="#DC2626" stroke-width="2">
-    <line x1="145" y1="150" x2="145" y2="175"/>
-    <path d="M145,150 Q170,150 170,175" fill="none"/>
-  </g>
-  <text x="155" y="145" fill="#991B1B" font-size="7" font-weight="600">PINTU</text>
-
-  <!-- LEGENDA -->
-  <rect x="15" y="290" width="400" height="1" fill="#DDD"/>
-  <text x="15" y="305" font-size="8" fill="#666">
-    □ <tspan fill="#C6F6D5">Ruang Tamu</tspan> <tspan fill="#BFDBFE">Kamar Tidur</tspan> <tspan fill="#FEF3C7">Dining</tspan> <tspan fill="#FDE68A">Dapur</tspan> <tspan fill="#E0E7FF">Kamar Mandi</tspan> <tspan fill="#E5E5E5">Carport</tspan>
-  </text>
+const denahP1 = `<svg viewBox="0 0 680 720" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif">
+  <rect x="0" y="0" width="680" height="720" fill="#F8F7F4"/>
+ 
+  <!-- ── Header ── -->
+  <text x="40" y="28" font-size="13" font-weight="700" fill="#1a1a1a">DENAH 3 LANTAI — MANSION CLASSIC MODERN NEO-CLASSICAL</text>
+  <text x="40" y="46" font-size="9" fill="#777">600 m²  ·  3 Lantai  ·  3 KT + 2 KM  ·  Garasi 2 Mobil  ·  Skala 1:120  ·  Fasad: Hitam-Putih Elegan</text>
+ 
+  <!-- ══════════════════════════════════════════════════════
+       LANTAI 1 — PODIUM GARASI
+       Dari render: 2 pintu garasi panel terpisah (kiri & kanan),
+       area servis/utilitas di tengah, teras dengan tangga besi
+  ══════════════════════════════════════════════════════ -->
+  <rect x="38" y="62" width="120" height="14" rx="3" fill="#374151"/>
+  <text x="44" y="73" font-size="10" font-weight="700" fill="#fff">LANTAI 1 — PODIUM GARASI</text>
+ 
+  <!-- Outline bangunan L1 -->
+  <rect x="40" y="80" width="556" height="168" rx="4" fill="#fff" stroke="#555" stroke-width="1.5"/>
+ 
+  <!-- GARASI KIRI (dari render: pintu garasi kiri bawah, 1 mobil) -->
+  <rect x="40" y="80" width="200" height="168" rx="3" fill="#E5E7EB" stroke="#6B7280" stroke-width="1.2"/>
+  <!-- Pintu garasi kiri (panel gelap di atas) -->
+  <rect x="40" y="80" width="200" height="16" rx="2" fill="#4B5563"/>
+  <!-- Garis panel pintu -->
+  <line x1="107" y1="80" x2="107" y2="96" stroke="#9CA3AF" stroke-width="0.8"/>
+  <line x1="174" y1="80" x2="174" y2="96" stroke="#9CA3AF" stroke-width="0.8"/>
+  <text x="140" y="92" text-anchor="middle" font-size="8" fill="#E5E7EB">Pintu garasi lipat</text>
+  <!-- Label -->
+  <text x="140" y="158" text-anchor="middle" font-size="13" font-weight="700" fill="#374151">GARASI KIRI</text>
+  <text x="140" y="174" text-anchor="middle" font-size="10" fill="#555">7 × 6 m  —  1 Mobil</text>
+  <!-- Siluet mobil kiri -->
+  <rect x="56" y="110" width="112" height="50" rx="8" fill="#9CA3AF" opacity="0.45" stroke="#6B7280" stroke-width="1"/>
+  <rect x="74" y="104" width="76" height="22" rx="5" fill="#9CA3AF" opacity="0.3"/>
+  <ellipse cx="76"  cy="162" rx="11" ry="7" fill="#374151" opacity="0.65"/>
+  <ellipse cx="148" cy="162" rx="11" ry="7" fill="#374151" opacity="0.65"/>
+ 
+  <!-- AREA SERVIS + TANGGA (tengah) -->
+  <rect x="240" y="80" width="116" height="168" rx="2" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="0.8"/>
+  <text x="298" y="142" text-anchor="middle" font-size="11" font-weight="700" fill="#555">UTILITAS</text>
+  <text x="298" y="158" text-anchor="middle" font-size="9" fill="#777">Panel listrik</text>
+  <text x="298" y="172" text-anchor="middle" font-size="9" fill="#777">Pompa air</text>
+  <text x="298" y="186" text-anchor="middle" font-size="9" fill="#777">Tangga naik ↑</text>
+  <!-- Tangga ikon -->
+  <rect x="264" y="194" width="68" height="10" rx="1" fill="#9CA3AF" opacity="0.4"/>
+  <rect x="270" y="188" width="56" height="6"  rx="1" fill="#9CA3AF" opacity="0.3"/>
+  <rect x="276" y="182" width="44" height="6"  rx="1" fill="#9CA3AF" opacity="0.2"/>
+ 
+  <!-- GARASI KANAN (dari render: pintu garasi kanan, terpisah) -->
+  <rect x="356" y="80" width="240" height="168" rx="3" fill="#E5E7EB" stroke="#6B7280" stroke-width="1.2"/>
+  <!-- Pintu garasi kanan -->
+  <rect x="356" y="80" width="240" height="16" rx="2" fill="#4B5563"/>
+  <line x1="436" y1="80" x2="436" y2="96" stroke="#9CA3AF" stroke-width="0.8"/>
+  <line x1="516" y1="80" x2="516" y2="96" stroke="#9CA3AF" stroke-width="0.8"/>
+  <text x="476" y="92" text-anchor="middle" font-size="8" fill="#E5E7EB">Pintu garasi lipat</text>
+  <!-- Label -->
+  <text x="476" y="158" text-anchor="middle" font-size="13" font-weight="700" fill="#374151">GARASI KANAN</text>
+  <text x="476" y="174" text-anchor="middle" font-size="10" fill="#555">8 × 6 m  —  1 Mobil</text>
+  <!-- Siluet mobil kanan -->
+  <rect x="376" y="110" width="120" height="50" rx="8" fill="#9CA3AF" opacity="0.45" stroke="#6B7280" stroke-width="1"/>
+  <rect x="394" y="104" width="84" height="22" rx="5" fill="#9CA3AF" opacity="0.3"/>
+  <ellipse cx="396" cy="162" rx="11" ry="7" fill="#374151" opacity="0.65"/>
+  <ellipse cx="476" cy="162" rx="11" ry="7" fill="#374151" opacity="0.65"/>
+ 
+  <!-- TERAS DEPAN -->
+  <rect x="40" y="248" width="556" height="34" rx="2" fill="#D1FAE5" stroke="#059669" stroke-width="0.8" stroke-dasharray="6,3"/>
+  <text x="318" y="269" text-anchor="middle" font-size="10" font-weight="600" fill="#065F46">TERAS DEPAN LEBAR  +  Tangga besi klasik naik ke Lantai 2</text>
+ 
+  <!-- ══════════════════════════════════════════════════════
+       LANTAI 2 — RUANG UTAMA
+       Dari render: bay window menonjol kiri & kanan,
+       kanopi lengkung hitam di tengah (pintu masuk),
+       tangga besi berundak, balkon railing besi kanan
+  ══════════════════════════════════════════════════════ -->
+  <rect x="38" y="298" width="122" height="14" rx="3" fill="#1D4ED8"/>
+  <text x="44" y="309" font-size="10" font-weight="700" fill="#fff">LANTAI 2 — RUANG UTAMA</text>
+ 
+  <!-- Outline L2 -->
+  <rect x="40" y="314" width="556" height="188" rx="4" fill="#fff" stroke="#333" stroke-width="1.8"/>
+ 
+  <!-- BAY WINDOW KIRI — Ruang Tamu (dari render: tonjolan kiri, kaca gelap bergaris) -->
+  <rect x="40" y="314" width="170" height="136" rx="3" fill="#C6F6D5" stroke="#22C55E" stroke-width="1.3"/>
+  <!-- Bay window detail — strip kaca di atas -->
+  <rect x="40" y="314" width="170" height="14" rx="2" fill="#22C55E" opacity="0.55"/>
+  <text x="125" y="324" text-anchor="middle" font-size="8" fill="#14532D">Bay window — kaca gelap frame putih</text>
+  <!-- Garis kaca vertikal khas render -->
+  <line x1="96"  y1="314" x2="96"  y2="350" stroke="#22C55E" stroke-width="0.6" stroke-dasharray="3,2"/>
+  <line x1="125" y1="314" x2="125" y2="350" stroke="#22C55E" stroke-width="0.6" stroke-dasharray="3,2"/>
+  <line x1="154" y1="314" x2="154" y2="350" stroke="#22C55E" stroke-width="0.6" stroke-dasharray="3,2"/>
+  <text x="125" y="378" text-anchor="middle" font-size="13" font-weight="700" fill="#14532D">RUANG TAMU</text>
+  <text x="125" y="394" text-anchor="middle" font-size="9" fill="#166534">8 × 6.5 m  (open plan)</text>
+  <!-- Sofa -->
+  <rect x="56" y="416" width="100" height="26" rx="5" fill="#22C55E" opacity="0.22"/>
+ 
+  <!-- DINING (tengah kiri) -->
+  <rect x="210" y="314" width="104" height="90" rx="2" fill="#FEF3C7" stroke="#D97706" stroke-width="1"/>
+  <text x="262" y="354" text-anchor="middle" font-size="11" font-weight="700" fill="#78350F">DINING</text>
+  <text x="262" y="368" text-anchor="middle" font-size="9" fill="#92400E">5 × 4.5 m</text>
+  <!-- Meja makan -->
+  <ellipse cx="262" cy="344" rx="20" ry="13" fill="#F59E0B" opacity="0.35"/>
+ 
+  <!-- DAPUR (tengah kanan) -->
+  <rect x="314" y="314" width="100" height="90" rx="2" fill="#FDE68A" stroke="#D97706" stroke-width="1"/>
+  <text x="364" y="354" text-anchor="middle" font-size="11" font-weight="700" fill="#92400E">DAPUR</text>
+  <text x="364" y="368" text-anchor="middle" font-size="9" fill="#B45309">5 × 4.5 m</text>
+ 
+  <!-- KM TAMU (bawah dining) -->
+  <rect x="210" y="404" width="104" height="52" rx="2" fill="#E0E7FF" stroke="#4338CA" stroke-width="0.9"/>
+  <text x="262" y="433" text-anchor="middle" font-size="10" font-weight="600" fill="#3730A3">KM TAMU  —  2.5×2.5 m</text>
+ 
+  <!-- KORIDOR + TANGGA (bawah dapur) -->
+  <rect x="314" y="404" width="100" height="52" rx="2" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="0.8" stroke-dasharray="4,2"/>
+  <text x="364" y="428" text-anchor="middle" font-size="9" fill="#6B7280">Koridor</text>
+  <text x="364" y="442" text-anchor="middle" font-size="9" fill="#6B7280">+ Tangga ↑</text>
+ 
+  <!-- BAY WINDOW KANAN — Ruang Keluarga (dari render: bay window kanan simetris) -->
+  <rect x="414" y="314" width="182" height="142" rx="3" fill="#C6F6D5" stroke="#22C55E" stroke-width="1.3"/>
+  <rect x="414" y="314" width="182" height="14" rx="2" fill="#22C55E" opacity="0.55"/>
+  <text x="505" y="324" text-anchor="middle" font-size="8" fill="#14532D">Bay window — kaca gelap frame putih</text>
+  <line x1="466" y1="314" x2="466" y2="350" stroke="#22C55E" stroke-width="0.6" stroke-dasharray="3,2"/>
+  <line x1="505" y1="314" x2="505" y2="350" stroke="#22C55E" stroke-width="0.6" stroke-dasharray="3,2"/>
+  <line x1="544" y1="314" x2="544" y2="350" stroke="#22C55E" stroke-width="0.6" stroke-dasharray="3,2"/>
+  <text x="505" y="378" text-anchor="middle" font-size="13" font-weight="700" fill="#14532D">RUANG KELUARGA</text>
+  <text x="505" y="394" text-anchor="middle" font-size="9" fill="#166534">8 × 7 m</text>
+  <!-- Sofa -->
+  <rect x="434" y="416" width="110" height="26" rx="5" fill="#22C55E" opacity="0.22"/>
+ 
+  <!-- KANOPI LENGKUNG HITAM — PINTU MASUK UTAMA (dari render: arch hitam di tengah) -->
+  <rect x="218" y="464" width="136" height="38" rx="4" fill="#1F2937"/>
+  <path d="M218,464 Q286,448 354,464" fill="none" stroke="#1F2937" stroke-width="3"/>
+  <text x="286" y="480" text-anchor="middle" font-size="9" font-weight="700" fill="#fff">Kanopi lengkung hitam</text>
+  <text x="286" y="494" text-anchor="middle" font-size="8" fill="#9CA3AF">Pintu masuk utama + lampu dinding klasik</text>
+ 
+  <!-- Tangga besi berundak (dari render: iron stair ke atas) -->
+  <rect x="238" y="502" width="96" height="12" rx="1" fill="#374151" opacity="0.5"/>
+  <rect x="246" y="494" width="80" height="8"  rx="1" fill="#374151" opacity="0.35"/>
+  <rect x="254" y="487" width="64" height="7"  rx="1" fill="#374151" opacity="0.2"/>
+ 
+  <!-- ══════════════════════════════════════════════════════
+       LANTAI 3 — ZONA PRIVAT  +  ATAP MANSARD
+       Dari render: atap mansard slate hitam, dormer window
+       arched di tengah & sisi, jendela arched oval di lantai 3,
+       3 kamar tidur (master kiri, KT2 kanan, KT3 tengah kecil)
+  ══════════════════════════════════════════════════════ -->
+  <rect x="38" y="528" width="116" height="14" rx="3" fill="#7C3AED"/>
+  <text x="44" y="539" font-size="10" font-weight="700" fill="#fff">LANTAI 3 — ZONA PRIVAT</text>
+ 
+  <!-- Outline L3 (lebih sempit ikuti atap mansard) -->
+  <rect x="64" y="544" width="508" height="136" rx="6" fill="#fff" stroke="#333" stroke-width="1.8"/>
+ 
+  <!-- KT MASTER (kiri, dari render: kamar besar kiri, jendela arched oval) -->
+  <rect x="64" y="544" width="196" height="136" rx="4" fill="#DDD6FE" stroke="#7C3AED" stroke-width="1.4"/>
+  <!-- Jendela arched khas lantai 3 kiri -->
+  <rect x="80" y="544" width="80" height="14" rx="6" fill="#A78BFA" opacity="0.5"/>
+  <text x="104" y="554" text-anchor="middle" font-size="7" fill="#4C1D95">Jendela arched oval</text>
+  <text x="162" y="606" text-anchor="middle" font-size="13" font-weight="700" fill="#4C1D95">KT MASTER</text>
+  <text x="162" y="622" text-anchor="middle" font-size="9" fill="#5B21B6">10 × 6.8 m</text>
+  <text x="162" y="636" text-anchor="middle" font-size="9" fill="#5B21B6">Jendela arched + walk-in closet</text>
+  <!-- King bed -->
+  <rect x="96" y="648" width="130" height="28" rx="5" fill="#7C3AED" opacity="0.16"/>
+ 
+  <!-- KM MASTER en-suite -->
+  <rect x="260" y="544" width="94" height="64" rx="3" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1"/>
+  <text x="307" y="572" text-anchor="middle" font-size="10" font-weight="700" fill="#4C1D95">KM MASTER</text>
+  <text x="307" y="586" text-anchor="middle" font-size="9" fill="#5B21B6">En-suite  4×3 m</text>
+  <!-- Bak mandi icon -->
+  <rect x="272" y="594" width="70" height="10" rx="3" fill="#7C3AED" opacity="0.2"/>
+ 
+  <!-- KT 3 (tengah kecil, di bawah dormer tengah atap) -->
+  <rect x="260" y="608" width="94" height="72" rx="3" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1"/>
+  <!-- Dormer window tengah -->
+  <path d="M276,608 Q307,596 338,608" fill="none" stroke="#1D4ED8" stroke-width="1.2" stroke-dasharray="3,2"/>
+  <text x="307" y="640" text-anchor="middle" font-size="10" font-weight="700" fill="#1E3A8A">KT 3</text>
+  <text x="307" y="654" text-anchor="middle" font-size="9" fill="#1E40AF">4 × 3.6 m</text>
+  <text x="307" y="668" text-anchor="middle" font-size="9" fill="#1E40AF">Dormer kaca</text>
+ 
+  <!-- KT 2 (kanan, dari render: kamar kanan, dormer window) -->
+  <rect x="354" y="544" width="218" height="136" rx="4" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="1.4"/>
+  <!-- Dormer window kanan -->
+  <rect x="400" y="544" width="90" height="14" rx="6" fill="#93C5FD" opacity="0.5"/>
+  <text x="445" y="554" text-anchor="middle" font-size="7" fill="#1E3A8A">Dormer window arched</text>
+  <text x="463" y="606" text-anchor="middle" font-size="13" font-weight="700" fill="#1E3A8A">KT 2</text>
+  <text x="463" y="622" text-anchor="middle" font-size="9" fill="#1E40AF">8 × 6.8 m</text>
+  <text x="463" y="636" text-anchor="middle" font-size="9" fill="#1E40AF">Dormer window + balkon kecil</text>
+  <!-- Bed -->
+  <rect x="398" y="648" width="130" height="28" rx="5" fill="#1D4ED8" opacity="0.14"/>
+ 
+  <!-- ATAP MANSARD indicator -->
+  <rect x="64" y="680" width="508" height="14" rx="2" fill="#374151" opacity="0.1" stroke="#374151" stroke-width="0.5" stroke-dasharray="6,3"/>
+  <text x="318" y="690" text-anchor="middle" font-size="9" fill="#555" font-weight="600">Atap mansard — slate tile hitam  +  dormer window arched  +  ornamen klasik putih</text>
+ 
+  <!-- ══ LEGENDA ══ -->
+  <line x1="40" y1="700" x2="596" y2="700" stroke="#E5E7EB" stroke-width="0.8"/>
+ 
+  <rect x="40"  y="706" width="9" height="9" rx="1" fill="#E5E7EB" stroke="#6B7280" stroke-width="0.5"/>
+  <text x="53"  y="714" font-size="8" fill="#555">Garasi</text>
+  <rect x="104" y="706" width="9" height="9" rx="1" fill="#C6F6D5" stroke="#22C55E" stroke-width="0.5"/>
+  <text x="117" y="714" font-size="8" fill="#555">Ruang tamu / keluarga</text>
+  <rect x="236" y="706" width="9" height="9" rx="1" fill="#FDE68A" stroke="#D97706" stroke-width="0.5"/>
+  <text x="249" y="714" font-size="8" fill="#555">Dapur / Dining</text>
+  <rect x="320" y="706" width="9" height="9" rx="1" fill="#DDD6FE" stroke="#7C3AED" stroke-width="0.5"/>
+  <text x="333" y="714" font-size="8" fill="#555">KT Master</text>
+  <rect x="400" y="706" width="9" height="9" rx="1" fill="#BFDBFE" stroke="#1D4ED8" stroke-width="0.5"/>
+  <text x="413" y="714" font-size="8" fill="#555">Kamar tidur</text>
+  <rect x="476" y="706" width="9" height="9" rx="1" fill="#E0E7FF" stroke="#4338CA" stroke-width="0.5"/>
+  <text x="489" y="714" font-size="8" fill="#555">Kamar mandi</text>
 </svg>`;
 
 const denahP2 = `<svg viewBox="0 0 420 450" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="DM Sans,sans-serif" font-size="9"> <rect x="0" y="0" width="420" height="450" fill="#F0EDE8"/> <text x="10" y="16" font-size="10" fill="#888" font-weight="600" letter-spacing="1">DENAH 3 LANTAI — NEO-FUTURISTIK</text>
