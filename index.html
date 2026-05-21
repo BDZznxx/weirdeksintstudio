@@ -485,132 +485,411 @@
     </div>
  
     <!-- Widget Tab Proyek -->
-    <style>
-        h2.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
-        .tab-row { display:flex; gap:0; border-bottom:.5px solid var(--color-border-tertiary,#e5e7eb); margin-bottom:20px; }
-        .tab-btn { padding:9px 18px; font-size:13px; color:var(--color-text-secondary,#6b7280); border:none; background:none; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all .2s; }
-        .tab-btn.on { color:var(--color-text-primary,#111827); border-bottom-color:var(--color-text-primary,#111827); }
-        .panel { display:none; } .panel.on { display:block; }
-        .proj-card { background:var(--color-background-secondary,#f9fafb); border:.5px solid var(--color-border-tertiary,#e5e7eb); border-radius:10px; padding:12px 14px; margin-bottom:10px; cursor:pointer; transition:border-color .2s; }
-        .proj-card:hover { border-color:var(--color-border-primary,#9ca3af); }
-        .proj-card.active { border-color:var(--color-text-primary,#111827); }
-        .proj-row { display:flex; align-items:center; gap:10px; }
-        .proj-dot { width:12px; height:12px; border-radius:3px; flex-shrink:0; }
-        .proj-name { font-size:13px; font-weight:500; color:var(--color-text-primary,#111827); flex:1; }
-        .proj-type { font-size:11px; padding:2px 8px; border-radius:20px; background:var(--color-background-primary,#fff); border:.5px solid var(--color-border-tertiary,#e5e7eb); color:var(--color-text-secondary,#6b7280); }
-        .detail-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:10px; }
-        .detail-item { background:var(--color-background-primary,#fff); border-radius:6px; padding:8px 10px; border:.5px solid var(--color-border-tertiary,#e5e7eb); }
-        .detail-label { font-size:10px; color:var(--color-text-secondary,#6b7280); text-transform:uppercase; letter-spacing:.4px; margin-bottom:3px; }
-        .detail-val { font-size:13px; font-weight:500; color:var(--color-text-primary,#111827); }
-        .bar-row { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
-        .bar-label { font-size:12px; color:var(--color-text-secondary,#6b7280); width:130px; flex-shrink:0; text-align:right; }
-        .bar-track { flex:1; height:8px; background:var(--color-background-secondary,#f3f4f6); border-radius:4px; overflow:hidden; }
-        .bar-fill { height:100%; border-radius:4px; transition:width .4s ease; }
-        .bar-val { font-size:11px; color:var(--color-text-secondary,#6b7280); width:52px; text-align:right; flex-shrink:0; }
- 
-        svg .th { font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 600; fill: #fff; }
-        svg .ts { font-family: 'Poppins', sans-serif; font-size: 10px; fill: rgba(255,255,255,.75); }
-        svg .c-gray  rect { fill: #374151; stroke: #6b7280; }
-        svg .c-blue  rect { fill: #1d4ed8; stroke: #3b82f6; }
-        svg .c-purple rect { fill: #6d28d9; stroke: #8b5cf6; }
-        svg .c-teal  rect { fill: #0f766e; stroke: #14b8a6; }
-        svg .c-amber rect { fill: #b45309; stroke: #f59e0b; }
-        svg .c-coral rect { fill: #be123c; stroke: #f43f5e; }
-        svg .c-green rect { fill: #15803d; stroke: #22c55e; }
-        svg .c-gray .th { fill: #f9fafb; }
-    </style>
- 
-    <h2 class="sr-only">Timeline dan perbandingan detail 8 proyek arsitektur Weird Eksint Studio</h2>
- 
-    <div style="padding-top:1rem">
-        <div class="tab-row">
-            <button class="tab-btn on" onclick="showTab('list')">Daftar proyek</button>
-            <button class="tab-btn" onclick="showTab('compare')">Perbandingan</button>
-            <button class="tab-btn" onclick="showTab('flow')">Alur kerja</button>
-        </div>
- 
-        <div class="panel on" id="panel-list">
-            <div id="projList"></div>
-            <div id="projDetail" style="display:none;margin-top:4px;padding:14px;background:var(--color-background-primary,#fff);border:.5px solid var(--color-border-secondary,#d1d5db);border-radius:10px"></div>
-        </div>
- 
-        <div class="panel" id="panel-compare">
-            <div id="compareChart"></div>
-        </div>
- 
-        <div class="panel" id="panel-flow">
-            <svg width="100%" viewBox="0 0 680 480" role="img" xmlns="http://www.w3.org/2000/svg">
-                <title>Alur kerja desain arsitektur dari brief hingga serah terima</title>
-                <desc>Flowchart 7 tahap: brief klien, konsep, blocking massa, denah, fasad, gambar kerja, serah terima</desc>
-                <defs>
-                    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-                        <path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </marker>
-                </defs>
- 
-                <g class="c-gray">
-                    <rect x="260" y="20" width="160" height="44" rx="8" stroke-width=".5"/>
-                    <text class="th" x="340" y="38" text-anchor="middle" dominant-baseline="central">Brief klien</text>
-                    <text class="ts" x="340" y="55" text-anchor="middle" dominant-baseline="central">Kebutuhan, lokasi, budget</text>
-                </g>
-                <line x1="340" y1="64" x2="340" y2="88" stroke="#888780" stroke-width="1" marker-end="url(#arr)"/>
- 
-                <g class="c-blue">
-                    <rect x="220" y="88" width="240" height="44" rx="8" stroke-width=".5"/>
-                    <text class="th" x="340" y="106" text-anchor="middle" dominant-baseline="central">Konsep &amp; moodboard</text>
-                    <text class="ts" x="340" y="123" text-anchor="middle" dominant-baseline="central">Gaya, referensi, DNA visual</text>
-                </g>
-                <line x1="340" y1="132" x2="340" y2="156" stroke="#888780" stroke-width="1" marker-end="url(#arr)"/>
- 
-                <g class="c-purple">
-                    <rect x="220" y="156" width="240" height="44" rx="8" stroke-width=".5"/>
-                    <text class="th" x="340" y="174" text-anchor="middle" dominant-baseline="central">Blocking massa</text>
-                    <text class="ts" x="340" y="191" text-anchor="middle" dominant-baseline="central">Volume, proporsi, zoning tapak</text>
-                </g>
-                <line x1="340" y1="200" x2="340" y2="224" stroke="#888780" stroke-width="1" marker-end="url(#arr)"/>
- 
-                <g class="c-teal">
-                    <rect x="220" y="224" width="240" height="44" rx="8" stroke-width=".5"/>
-                    <text class="th" x="340" y="242" text-anchor="middle" dominant-baseline="central">Denah &amp; zoning ruang</text>
-                    <text class="ts" x="340" y="259" text-anchor="middle" dominant-baseline="central">Sirkulasi, publik vs privat</text>
-                </g>
-                <line x1="340" y1="268" x2="340" y2="292" stroke="#888780" stroke-width="1" marker-end="url(#arr)"/>
- 
-                <g class="c-amber">
-                    <rect x="220" y="292" width="240" height="44" rx="8" stroke-width=".5"/>
-                    <text class="th" x="340" y="310" text-anchor="middle" dominant-baseline="central">Desain fasad</text>
-                    <text class="ts" x="340" y="327" text-anchor="middle" dominant-baseline="central">Material, elemen khas, warna</text>
-                </g>
-                <line x1="340" y1="336" x2="340" y2="360" stroke="#888780" stroke-width="1" marker-end="url(#arr)"/>
- 
-                <g class="c-coral">
-                    <rect x="220" y="360" width="240" height="44" rx="8" stroke-width=".5"/>
-                    <text class="th" x="340" y="378" text-anchor="middle" dominant-baseline="central">Gambar kerja &amp; RAB</text>
-                    <text class="ts" x="340" y="395" text-anchor="middle" dominant-baseline="central">.dwg + .skp + .pdf + anggaran</text>
-                </g>
-                <line x1="340" y1="404" x2="340" y2="428" stroke="#888780" stroke-width="1" marker-end="url(#arr)"/>
- 
-                <g class="c-green">
-                    <rect x="220" y="428" width="240" height="44" rx="8" stroke-width=".5"/>
-                    <text class="th" x="340" y="446" text-anchor="middle" dominant-baseline="central">Serah terima &amp; render final</text>
-                    <text class="ts" x="340" y="463" text-anchor="middle" dominant-baseline="central">3D foto-realistis + dokumen klien</text>
-                </g>
- 
-                <g class="c-gray">
-                    <rect x="40" y="224" width="156" height="44" rx="8" stroke-width=".5"/>
-                    <text class="th" x="118" y="242" text-anchor="middle" dominant-baseline="central">Revisi klien</text>
-                    <text class="ts" x="118" y="259" text-anchor="middle" dominant-baseline="central">Feedback iteratif</text>
-                </g>
-                <path d="M220 246 L196 246" stroke="#888780" stroke-width="1" fill="none" marker-end="url(#arr)"/>
-                <path d="M118 268 L118 310 L220 310" stroke="#888780" stroke-width=".8" fill="none" stroke-dasharray="4,3" marker-end="url(#arr)"/>
- 
-                <g class="c-gray">
-                    <rect x="484" y="88" width="156" height="44" rx="8" stroke-width=".5"/>
-                    <text class="th" x="562" y="106" text-anchor="middle" dominant-baseline="central">Tools yang digunakan</text>
-                    <text class="ts" x="562" y="123" text-anchor="middle" dominant-baseline="central">AutoCAD, SketchUp, Revit</text>
-                </g>
-                <path d="M460 110 L484 110" stroke="#888780" stroke-width=".8" fill="none" stroke-dasharray="4,3"/>
-            </svg>
+    
+<style>
+  :root {
+    --z-pub: #6366f1; --z-pri: #0ea5e9; --z-ser: #f59e0b;
+    --z-grn: #22c55e; --z-gar: #94a3b8; --z-circ: #e879f9;
+  }
+  body { margin:0; font-family: var(--font-sans,'Poppins',sans-serif); }
+  .wrap { padding:12px 0 0; }
+  .top-bar { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:14px; }
+  .proj-btn {
+    padding:6px 12px; border-radius:20px; border:1px solid var(--color-border-tertiary);
+    background:var(--color-background-secondary); color:var(--color-text-secondary);
+    font-size:12px; cursor:pointer; transition:all .2s; font-weight:400;
+  }
+  .proj-btn.active {
+    background:var(--color-text-primary); color:var(--color-background-primary);
+    border-color:var(--color-text-primary);
+  }
+  .proj-btn:hover:not(.active) { border-color:var(--color-border-primary); color:var(--color-text-primary); }
+  .meta { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:10px; font-size:12px; color:var(--color-text-secondary); }
+  .meta span { display:flex; align-items:center; gap:5px; }
+  .badge { padding:2px 8px; border-radius:12px; font-size:11px; font-weight:500; }
+  .badge.res { background:#e0f2fe; color:#0369a1; }
+  .badge.kom { background:#fef3c7; color:#92400e; }
+  .legend { display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; }
+  .leg-item { display:flex; align-items:center; gap:5px; font-size:11px; color:var(--color-text-secondary); }
+  .leg-dot { width:10px; height:10px; border-radius:2px; flex-shrink:0; }
+  .floor-tabs { display:flex; gap:0; border-bottom:1px solid var(--color-border-tertiary); margin:10px 0 8px; }
+  .ftab { padding:7px 14px; font-size:12px; color:var(--color-text-secondary); cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all .2s; }
+  .ftab.on { color:var(--color-text-primary); border-bottom-color:var(--color-text-primary); font-weight:500; }
+  svg text { font-family: var(--font-sans,'Poppins',sans-serif); }
+</style>
+
+<div class="wrap">
+  <div class="top-bar" id="projBtns"></div>
+  <div id="metaBar" class="meta"></div>
+  <div class="floor-tabs" id="floorTabs"></div>
+  <svg id="denahSvg" width="100%" viewBox="0 0 640 380" style="border:1px solid var(--color-border-tertiary);border-radius:10px;background:var(--color-background-secondary);"></svg>
+  <div class="legend" id="legend"></div>
+</div>
+
+<script>
+const COLORS = {
+  pub:'#818cf8', pri:'#38bdf8', ser:'#fbbf24',
+  grn:'#4ade80', gar:'#94a3b8', circ:'#e879f9',
+  vd:'#f472b6', balkon:'#86efac', tangga:'#c4b5fd'
+};
+
+const LEGEND_GLOBAL = [
+  {c:COLORS.pub, l:'Ruang publik'},
+  {c:COLORS.pri, l:'Ruang privat'},
+  {c:COLORS.ser, l:'Servis (dapur/KM)'},
+  {c:COLORS.gar, l:'Garasi/carport'},
+  {c:COLORS.grn, l:'Taman/hijau'},
+  {c:COLORS.tangga, l:'Tangga'},
+];
+
+const projects = [
+  {
+    id:1, name:'Mansion Classic Modern', type:'res', luas:'600 m²', lantai:3,
+    floors:[
+      {label:'Lt 1',rooms:[
+        {x:20,y:20,w:180,h:90,c:COLORS.gar,l:'Garasi 2 Mobil'},
+        {x:210,y:20,w:120,h:90,c:COLORS.pub,l:'Foyer'},
+        {x:340,y:20,w:140,h:90,c:COLORS.ser,l:'Dapur'},
+        {x:490,y:20,w:130,h:90,c:COLORS.pub,l:'Ruang Makan'},
+        {x:20,y:120,w:240,h:100,c:COLORS.pub,l:'Ruang Tamu'},
+        {x:270,y:120,w:180,h:100,c:COLORS.pub,l:'Ruang Keluarga'},
+        {x:460,y:120,w:160,h:50,c:COLORS.ser,l:'KM Tamu'},
+        {x:460,y:180,w:160,h:40,c:COLORS.ser,l:'Gudang'},
+        {x:20,y:230,w:100,h:80,c:COLORS.tangga,l:'Tangga'},
+        {x:130,y:230,w:150,h:80,c:COLORS.grn,l:'Taman Depan'},
+        {x:290,y:230,w:130,h:80,c:COLORS.grn,l:'Taman Samping'},
+        {x:430,y:230,w:190,h:80,c:COLORS.grn,l:'Area Outdoor'},
+      ]},
+      {label:'Lt 2',rooms:[
+        {x:20,y:20,w:180,h:110,c:COLORS.pri,l:'Master Bedroom'},
+        {x:210,y:20,w:100,h:50,c:COLORS.ser,l:'Master KM'},
+        {x:210,y:80,w:100,h:50,c:COLORS.ser,l:'Walk-in Closet'},
+        {x:320,y:20,w:160,h:110,c:COLORS.pri,l:'Kamar Tidur 2'},
+        {x:490,y:20,w:130,h:50,c:COLORS.ser,l:'KM 2'},
+        {x:490,y:80,w:130,h:50,c:COLORS.ser,l:'Closet 2'},
+        {x:20,y:140,w:200,h:80,c:COLORS.balkon,l:'Balkon Utama'},
+        {x:230,y:140,w:180,h:80,c:COLORS.pub,l:'Ruang Keluarga Lt2'},
+        {x:420,y:140,w:200,h:80,c:COLORS.pri,l:'Kamar Tidur 3'},
+        {x:20,y:230,w:100,h:80,c:COLORS.tangga,l:'Tangga'},
+        {x:130,y:230,w:490,h:80,c:COLORS.pub,l:'Koridor'},
+      ]},
+      {label:'Lt 3',rooms:[
+        {x:20,y:20,w:300,h:130,c:COLORS.pub,l:'Rooftop / Ruang Serba Guna'},
+        {x:330,y:20,w:120,h:60,c:COLORS.ser,l:'KM Lt3'},
+        {x:330,y:90,w:120,h:60,c:COLORS.pri,l:'Kamar Tidur Lt3'},
+        {x:460,y:20,w:160,h:130,c:COLORS.balkon,l:'Balkon Atap'},
+        {x:20,y:160,w:100,h:80,c:COLORS.tangga,l:'Tangga'},
+        {x:130,y:160,w:490,h:80,c:COLORS.grn,l:'Taman Atap'},
+      ]},
+    ]
+  },
+  {
+    id:2, name:'Neo-Futuristik 3 Lantai', type:'res', luas:'260 m²', lantai:3,
+    floors:[
+      {label:'Lt 1',rooms:[
+        {x:20,y:20,w:200,h:100,c:COLORS.gar,l:'Garasi 2 Mobil'},
+        {x:230,y:20,w:130,h:50,c:COLORS.pub,l:'Entrance / Foyer'},
+        {x:230,y:80,w:130,h:40,c:COLORS.ser,l:'Toilet Tamu'},
+        {x:370,y:20,w:250,h:100,c:COLORS.pub,l:'Ruang Tamu Open Plan'},
+        {x:20,y:130,w:200,h:110,c:COLORS.pub,l:'Ruang Keluarga'},
+        {x:230,y:130,w:200,h:110,c:COLORS.ser,l:'Dapur + Dining'},
+        {x:440,y:130,w:180,h:110,c:COLORS.grn,l:'Taman Depan'},
+        {x:20,y:250,w:100,h:80,c:COLORS.tangga,l:'Tangga Kurva'},
+        {x:130,y:250,w:490,h:80,c:COLORS.pub,l:'Area Publik Bawah'},
+      ]},
+      {label:'Lt 2',rooms:[
+        {x:20,y:20,w:200,h:110,c:COLORS.pri,l:'Master Bedroom'},
+        {x:230,y:20,w:100,h:60,c:COLORS.ser,l:'Master KM'},
+        {x:230,y:90,w:100,h:40,c:COLORS.ser,l:'Closet'},
+        {x:340,y:20,w:280,h:110,c:COLORS.balkon,l:'Balkon Organik Kurva'},
+        {x:20,y:140,w:150,h:90,c:COLORS.pri,l:'Kamar Tidur 2'},
+        {x:180,y:140,w:130,h:90,c:COLORS.ser,l:'KM 2'},
+        {x:320,y:140,w:150,h:90,c:COLORS.pri,l:'Kamar Tidur 3'},
+        {x:480,y:140,w:140,h:90,c:COLORS.pub,l:'Ruang Baca'},
+        {x:20,y:240,w:100,h:80,c:COLORS.tangga,l:'Tangga'},
+        {x:130,y:240,w:490,h:80,c:COLORS.pub,l:'Koridor'},
+      ]},
+      {label:'Lt 3',rooms:[
+        {x:20,y:20,w:600,h:150,c:COLORS.balkon,l:'Balkon Kurva Lt3 (View 360°)'},
+        {x:20,y:180,w:200,h:110,c:COLORS.pub,l:'Ruang Serbaguna'},
+        {x:230,y:180,w:130,h:60,c:COLORS.ser,l:'KM Lt3'},
+        {x:230,y:250,w:130,h:40,c:COLORS.tangga,l:'Tangga'},
+        {x:370,y:180,w:250,h:110,c:COLORS.grn,l:'Sky Garden'},
+      ]},
+    ]
+  },
+  {
+    id:3, name:'Modern Tropis 2 Lantai', type:'res', luas:'260 m²', lantai:2,
+    floors:[
+      {label:'Lt 1',rooms:[
+        {x:20,y:20,w:160,h:100,c:COLORS.gar,l:'Carport 1 Mobil'},
+        {x:190,y:20,w:120,h:50,c:COLORS.pub,l:'Teras + Entrance'},
+        {x:190,y:80,w:120,h:40,c:COLORS.ser,l:'Toilet Tamu'},
+        {x:320,y:20,w:300,h:100,c:COLORS.pub,l:'Ruang Tamu + Keluarga'},
+        {x:20,y:130,w:200,h:110,c:COLORS.ser,l:'Dapur + Pantry'},
+        {x:230,y:130,w:180,h:110,c:COLORS.pub,l:'Ruang Makan'},
+        {x:420,y:130,w:200,h:110,c:COLORS.grn,l:'Taman Samping'},
+        {x:20,y:250,w:100,h:80,c:COLORS.tangga,l:'Tangga'},
+        {x:130,y:250,w:490,h:80,c:COLORS.grn,l:'Taman Belakang'},
+      ]},
+      {label:'Lt 2',rooms:[
+        {x:20,y:20,w:200,h:120,c:COLORS.pri,l:'Master Bedroom'},
+        {x:230,y:20,w:100,h:60,c:COLORS.ser,l:'Master KM'},
+        {x:230,y:90,w:100,h:50,c:COLORS.ser,l:'Walk-in Closet'},
+        {x:340,y:20,w:160,h:120,c:COLORS.pri,l:'Kamar Tidur 2'},
+        {x:510,y:20,w:110,h:60,c:COLORS.ser,l:'KM 2'},
+        {x:510,y:90,w:110,h:50,c:COLORS.balkon,l:'Balkon'},
+        {x:20,y:150,w:200,h:70,c:COLORS.balkon,l:'Balkon Kayu (Overhang)'},
+        {x:230,y:150,w:200,h:70,c:COLORS.pub,l:'Ruang Keluarga Lt2'},
+        {x:440,y:150,w:180,h:70,c:COLORS.pri,l:'Kamar Tidur 3'},
+        {x:20,y:230,w:100,h:80,c:COLORS.tangga,l:'Tangga'},
+        {x:130,y:230,w:490,h:80,c:COLORS.pub,l:'Koridor'},
+      ]},
+    ]
+  },
+  {
+    id:4, name:'Garasi Double 3 Lantai', type:'res', luas:'350 m²', lantai:3,
+    floors:[
+      {label:'Lt 1',rooms:[
+        {x:20,y:20,w:280,h:110,c:COLORS.gar,l:'Garasi 2 Mobil (Double)'},
+        {x:310,y:20,w:120,h:55,c:COLORS.pub,l:'Foyer'},
+        {x:310,y:85,w:120,h:45,c:COLORS.ser,l:'Toilet'},
+        {x:440,y:20,w:180,h:110,c:COLORS.pub,l:'Ruang Tamu'},
+        {x:20,y:140,w:200,h:110,c:COLORS.pub,l:'Ruang Keluarga'},
+        {x:230,y:140,w:200,h:110,c:COLORS.ser,l:'Dapur + Dining'},
+        {x:440,y:140,w:180,h:110,c:COLORS.grn,l:'Taman Belakang'},
+        {x:20,y:260,w:100,h:70,c:COLORS.tangga,l:'Tangga'},
+        {x:130,y:260,w:490,h:70,c:COLORS.pub,l:'Area Publik'},
+      ]},
+      {label:'Lt 2',rooms:[
+        {x:20,y:20,w:240,h:120,c:COLORS.pri,l:'Master Bedroom'},
+        {x:270,y:20,w:100,h:70,c:COLORS.ser,l:'Master KM'},
+        {x:270,y:100,w:100,h:40,c:COLORS.ser,l:'Walk-in Closet'},
+        {x:380,y:20,w:240,h:120,c:COLORS.balkon,l:'Balkon Kaca Lebar (Cantilever)'},
+        {x:20,y:150,w:180,h:100,c:COLORS.pri,l:'Kamar Tidur 2'},
+        {x:210,y:150,w:130,h:50,c:COLORS.ser,l:'KM 2'},
+        {x:210,y:210,w:130,h:40,c:COLORS.tangga,l:'Tangga'},
+        {x:350,y:150,w:160,h:100,c:COLORS.pri,l:'Kamar Tidur 3'},
+        {x:520,y:150,w:100,h:100,c:COLORS.pub,l:'Ruang Baca'},
+        {x:20,y:260,w:100,h:70,c:COLORS.tangga,l:'Tangga'},
+        {x:130,y:260,w:490,h:70,c:COLORS.pub,l:'Koridor'},
+      ]},
+      {label:'Lt 3',rooms:[
+        {x:20,y:20,w:600,h:140,c:COLORS.balkon,l:'Balkon Atap Kantilever (View Luas)'},
+        {x:20,y:170,w:200,h:110,c:COLORS.pub,l:'Ruang Multifungsi'},
+        {x:230,y:170,w:130,h:60,c:COLORS.ser,l:'KM Lt3'},
+        {x:230,y:240,w:130,h:40,c:COLORS.tangga,l:'Tangga'},
+        {x:370,y:170,w:250,h:110,c:COLORS.grn,l:'Roof Garden'},
+      ]},
+    ]
+  },
+  {
+    id:5, name:'Weird Coffee', type:'kom', luas:'50 m²', lantai:1,
+    floors:[
+      {label:'Lt 1',rooms:[
+        {x:20,y:20,w:200,h:130,c:COLORS.pub,l:'Area Indoor (15 kursi)'},
+        {x:230,y:20,w:120,h:60,c:COLORS.ser,l:'Bar Counter'},
+        {x:230,y:90,w:120,h:60,c:COLORS.ser,l:'Dapur Mini / Prep'},
+        {x:360,y:20,w:80,h:60,c:COLORS.ser,l:'KM Pengunjung'},
+        {x:360,y:90,w:80,h:60,c:COLORS.ser,l:'Storage'},
+        {x:450,y:20,w:170,h:60,c:COLORS.ser,l:'Ruang Staff'},
+        {x:450,y:90,w:170,h:60,c:COLORS.grn,l:'Planter Box'},
+        {x:20,y:160,w:600,h:100,c:COLORS.pub,l:'Area Outdoor Semi-Terbuka (9 kursi)'},
+        {x:20,y:270,w:300,h:70,c:COLORS.grn,l:'Taman + Planter'},
+        {x:330,y:270,w:290,h:70,c:COLORS.pub,l:'Area Parkir'},
+      ]},
+    ]
+  },
+  {
+    id:6, name:'Silinder Organik 3 Lantai', type:'res', luas:'420 m²', lantai:3,
+    floors:[
+      {label:'Lt 1',rooms:[
+        {x:20,y:20,w:300,h:110,c:COLORS.gar,l:'Garasi 3 Mobil'},
+        {x:330,y:20,w:130,h:60,c:COLORS.pub,l:'Foyer Besar'},
+        {x:330,y:90,w:130,h:40,c:COLORS.ser,l:'Toilet'},
+        {x:470,y:20,w:150,h:110,c:COLORS.pub,l:'Ruang Tamu'},
+        {x:20,y:140,w:220,h:100,c:COLORS.pub,l:'Ruang Keluarga'},
+        {x:250,y:140,w:180,h:100,c:COLORS.ser,l:'Dapur + Dining'},
+        {x:440,y:140,w:180,h:100,c:COLORS.grn,l:'Taman + Kolom Silinder'},
+        {x:20,y:250,w:100,h:80,c:COLORS.tangga,l:'Tangga'},
+        {x:130,y:250,w:490,h:80,c:COLORS.pub,l:'Koridor Silinder'},
+      ]},
+      {label:'Lt 2',rooms:[
+        {x:20,y:20,w:200,h:120,c:COLORS.pri,l:'Master Bedroom'},
+        {x:230,y:20,w:100,h:70,c:COLORS.ser,l:'Master KM Lux'},
+        {x:230,y:100,w:100,h:40,c:COLORS.ser,l:'Walk-in Closet'},
+        {x:340,y:20,w:280,h:120,c:COLORS.balkon,l:'Balkon Melingkar Lt2'},
+        {x:20,y:150,w:180,h:100,c:COLORS.pri,l:'Kamar Tidur 2'},
+        {x:210,y:150,w:120,h:50,c:COLORS.ser,l:'KM 2'},
+        {x:210,y:210,w:120,h:40,c:COLORS.tangga,l:'Tangga'},
+        {x:340,y:150,w:180,h:100,c:COLORS.pri,l:'Kamar Tidur 3'},
+        {x:530,y:150,w:90,h:100,c:COLORS.pub,l:'Ruang Duduk'},
+        {x:20,y:260,w:100,h:70,c:COLORS.tangga,l:'Tangga'},
+        {x:130,y:260,w:490,h:70,c:COLORS.pub,l:'Koridor'},
+      ]},
+      {label:'Lt 3',rooms:[
+        {x:20,y:20,w:600,h:130,c:COLORS.balkon,l:'Balkon Melingkar Lt3 (Full Perimeter)'},
+        {x:20,y:160,w:250,h:120,c:COLORS.pub,l:'Ruang Multifungsi'},
+        {x:280,y:160,w:130,h:70,c:COLORS.ser,l:'KM Lt3'},
+        {x:280,y:240,w:130,h:40,c:COLORS.tangga,l:'Tangga'},
+        {x:420,y:160,w:200,h:120,c:COLORS.grn,l:'Sky Garden Organik'},
+      ]},
+    ]
+  },
+  {
+    id:7, name:'Dark Concrete 2 Lantai', type:'res', luas:'240 m²', lantai:2,
+    floors:[
+      {label:'Lt 1',rooms:[
+        {x:20,y:20,w:260,h:120,c:COLORS.pub,l:'Ruang Tamu Open Plan + Curtain Wall'},
+        {x:290,y:20,w:180,h:60,c:COLORS.ser,l:'Dapur + Pantry'},
+        {x:290,y:90,w:180,h:50,c:COLORS.ser,l:'Ruang Makan'},
+        {x:480,y:20,w:140,h:120,c:COLORS.grn,l:'Taman Beton + Pohon'},
+        {x:20,y:150,w:180,h:90,c:COLORS.ser,l:'KM Tamu'},
+        {x:210,y:150,w:130,h:90,c:COLORS.tangga,l:'Tangga + Void'},
+        {x:350,y:150,w:180,h:90,c:COLORS.pub,l:'Ruang Kerja'},
+        {x:540,y:150,w:80,h:90,c:COLORS.ser,l:'Gudang'},
+        {x:20,y:250,w:600,h:80,c:COLORS.pub,l:'Teras Beton Ekspos'},
+      ]},
+      {label:'Lt 2',rooms:[
+        {x:20,y:20,w:600,h:100,c:COLORS.pub,l:'Skylight Segitiga Kaca (Void + Pencahayaan Alami)'},
+        {x:20,y:130,w:210,h:100,c:COLORS.pri,l:'Master Bedroom'},
+        {x:240,y:130,w:100,h:60,c:COLORS.ser,l:'Master KM'},
+        {x:240,y:200,w:100,h:30,c:COLORS.ser,l:'Closet'},
+        {x:350,y:130,w:190,h:100,c:COLORS.pri,l:'Kamar Tidur 2'},
+        {x:550,y:130,w:70,h:50,c:COLORS.ser,l:'KM 2'},
+        {x:550,y:190,w:70,h:40,c:COLORS.tangga,l:'Tangga'},
+        {x:20,y:240,w:300,h:90,c:COLORS.pub,l:'Ruang Keluarga Lt2'},
+        {x:330,y:240,w:290,h:90,c:COLORS.balkon,l:'Balkon Beton + Railing Kaca'},
+      ]},
+    ]
+  },
+  {
+    id:8, name:'Minimalis Tropis 2 Lantai', type:'res', luas:'260 m²', lantai:2,
+    floors:[
+      {label:'Lt 1',rooms:[
+        {x:20,y:20,w:160,h:100,c:COLORS.gar,l:'Garasi 1 Mobil'},
+        {x:190,y:20,w:120,h:50,c:COLORS.pub,l:'Teras + Entrance'},
+        {x:190,y:80,w:120,h:40,c:COLORS.ser,l:'Toilet Tamu'},
+        {x:320,y:20,w:300,h:100,c:COLORS.pub,l:'Ruang Tamu Minimalis'},
+        {x:20,y:130,w:210,h:100,c:COLORS.ser,l:'Dapur Open Kitchen'},
+        {x:240,y:130,w:180,h:100,c:COLORS.pub,l:'Ruang Makan'},
+        {x:430,y:130,w:190,h:100,c:COLORS.grn,l:'Taman + Louver Kayu'},
+        {x:20,y:240,w:100,h:90,c:COLORS.tangga,l:'Tangga'},
+        {x:130,y:240,w:490,h:90,c:COLORS.pub,l:'Ruang Keluarga'},
+      ]},
+      {label:'Lt 2',rooms:[
+        {x:20,y:20,w:210,h:120,c:COLORS.pri,l:'Master Bedroom'},
+        {x:240,y:20,w:100,h:70,c:COLORS.ser,l:'Master KM'},
+        {x:240,y:100,w:100,h:40,c:COLORS.ser,l:'Walk-in Closet'},
+        {x:350,y:20,w:270,h:120,c:COLORS.balkon,l:'Balkon Kaca Railing Transparan'},
+        {x:20,y:150,w:200,h:90,c:COLORS.pri,l:'Kamar Tidur 2'},
+        {x:230,y:150,w:120,h:50,c:COLORS.ser,l:'KM 2'},
+        {x:230,y:210,w:120,h:30,c:COLORS.tangga,l:'Tangga'},
+        {x:360,y:150,w:260,h:90,c:COLORS.pub,l:'Ruang Keluarga Lt2'},
+        {x:20,y:250,w:100,h:80,c:COLORS.tangga,l:'Tangga'},
+        {x:130,y:250,w:490,h:80,c:COLORS.pub,l:'Koridor + Area Louver'},
+      ]},
+    ]
+  },
+];
+
+let currentProj = 0;
+let currentFloor = 0;
+
+function renderBtns() {
+  const el = document.getElementById('projBtns');
+  el.innerHTML = projects.map((p,i) => `<button class="proj-btn${i===currentProj?' active':''}" onclick="selectProj(${i})">P${p.id}</button>`).join('');
+}
+
+function renderMeta() {
+  const p = projects[currentProj];
+  document.getElementById('metaBar').innerHTML = `
+    <span><strong style="color:var(--color-text-primary)">${p.name}</strong></span>
+    <span class="badge ${p.type==='res'?'res':'kom'}">${p.type==='res'?'Residensial':'Komersil'}</span>
+    <span><i class="ti ti-ruler-measure" aria-hidden="true"></i> ${p.luas}</span>
+    <span><i class="ti ti-building" aria-hidden="true"></i> ${p.lantai} lantai</span>
+  `;
+}
+
+function renderFloorTabs() {
+  const p = projects[currentProj];
+  const el = document.getElementById('floorTabs');
+  el.innerHTML = p.floors.map((f,i) => `<div class="ftab${i===currentFloor?' on':''}" onclick="selectFloor(${i})">${f.label}</div>`).join('');
+}
+
+function renderDenah() {
+  const p = projects[currentProj];
+  const fl = p.floors[currentFloor];
+  const svg = document.getElementById('denahSvg');
+
+  let roomsH = fl.rooms.reduce((m,r) => Math.max(m, r.y+r.h), 0) + 40;
+  let vbH = Math.max(340, roomsH + 10);
+  svg.setAttribute('viewBox', `0 0 640 ${vbH}`);
+
+  let html = '';
+  fl.rooms.forEach(r => {
+    const lx = r.x + r.w/2;
+    const ly = r.y + r.h/2;
+    const lines = r.l.split(' / ');
+    const fSize = r.w < 80 || r.h < 40 ? 9 : (r.w < 110 ? 10 : 11);
+    const fillOp = 0.85;
+
+    html += `<rect x="${r.x}" y="${r.y}" width="${r.w}" height="${r.h}" rx="4"
+      fill="${r.c}" fill-opacity="${fillOp}" stroke="${r.c}" stroke-width="1.5" stroke-opacity="0.6"/>`;
+
+    if (r.h >= 28 && r.w >= 40) {
+      if (lines.length === 1 && r.l.length <= 22) {
+        html += `<text x="${lx}" y="${ly}" text-anchor="middle" dominant-baseline="central"
+          font-size="${fSize}" font-weight="500" fill="#1e293b" font-family="Poppins,sans-serif">${r.l}</text>`;
+      } else {
+        const words = r.l.split(' ');
+        const mid = Math.ceil(words.length/2);
+        const line1 = words.slice(0,mid).join(' ');
+        const line2 = words.slice(mid).join(' ');
+        html += `<text text-anchor="middle" font-size="${fSize}" font-weight="500" fill="#1e293b" font-family="Poppins,sans-serif">
+          <tspan x="${lx}" y="${ly - 6}">${line1}</tspan>
+          <tspan x="${lx}" dy="13">${line2}</tspan>
+        </text>`;
+      }
+    }
+  });
+
+  html += `<text x="4" y="${vbH-6}" font-size="9" fill="var(--color-text-secondary)" font-family="Poppins,sans-serif">
+    Weird Eksint Studio · P${p.id} · ${p.name} · ${fl.label} · ${p.luas}
+  </text>`;
+
+  svg.innerHTML = html;
+}
+
+function renderLegend() {
+  document.getElementById('legend').innerHTML = LEGEND_GLOBAL.map(l =>
+    `<div class="leg-item"><div class="leg-dot" style="background:${l.c}"></div>${l.l}</div>`
+  ).join('') + `<div class="leg-item"><div class="leg-dot" style="background:${COLORS.balkon}"></div>Balkon/teras</div>`;
+}
+
+function selectProj(i) {
+  currentProj = i;
+  currentFloor = 0;
+  renderAll();
+}
+
+function selectFloor(i) {
+  currentFloor = i;
+  renderFloorTabs();
+  renderDenah();
+}
+
+function renderAll() {
+  renderBtns();
+  renderMeta();
+  renderFloorTabs();
+  renderDenah();
+  renderLegend();
+}
+
+renderAll();
+</script>
+
         </div>
     </div>
  
