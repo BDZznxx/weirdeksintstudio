@@ -525,9 +525,154 @@
   <svg id="denahSvg" width="100%" viewBox="0 0 640 380" style="border:1px solid var(--color-border-tertiary);border-radius:10px;background:var(--color-background-secondary);"></svg>
   <div class="legend" id="legend"></div>
 </div>
+        </div>
+    </div>
+ 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> Weird Eksint Studio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+ 
+    <!-- BUG FIX HTML #4: Array projects untuk widget tab DIHAPUS dari sini.
+         Sebelumnya ada duplikasi — array yang sama didefinisikan di script.js DAN di sini,
+         menyebabkan konflik karena array inline dieksekusi lebih dulu dan tidak memiliki
+         properti modal (emoji, desc, legend, files) yang dibutuhkan openModal().
+         Sekarang widget tab menggunakan array projects dari script.js secara langsung.
+         Script widget dipindah ke bawah script.js agar projects sudah tersedia. -->
+ 
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' });</script>
+ 
+    <!-- Stats Firebase (module) -->
+    <script type="module" src="stats.js"></script>
+ 
+    <!-- BUG FIX HTML #5: script.js dipindah ke sini tanpa defer agar projects array
+         tersedia untuk widget tab script di bawahnya.
+         Atau, jika tetap ingin defer, pindahkan widget script ke dalam DOMContentLoaded. -->
+    <script src="script.js"></script>
+ 
+    <!-- Widget Tab Script — menggunakan projects array dari script.js -->
+    <script>
+    // Mapping projects dari script.js ke format widget tab
+    // Pastikan script ini berjalan SETELAH script.js
+    const widgetProjects = [
+        {name:"Mansion classic modern",type:"Residensial",color:"#26215C",luas:600,lantai:3,kt:3,km:2,garasi:2,tahun:2026,style:"Neo-Classical",fasad:"Hitam-putih elegan",elemen:"Atap mansard + bay window + kanopi lengkung"},
+        {name:"Neo-Futuristik 3 lantai",type:"Residensial",color:"#185FA5",luas:260,lantai:3,kt:3,km:2,garasi:2,tahun:2026,style:"Neo-Futuristik",fasad:"Putih bersih + kaca kurva",elemen:"Fasad organik melengkung + balkon kurva"},
+        {name:"Modern tropis 2 lantai",type:"Residensial",color:"#854F0B",luas:260,lantai:2,kt:3,km:2,garasi:1,tahun:2023,style:"Modern Tropis",fasad:"Krem + kayu ulin",elemen:"Overhang kayu + carport terintegrasi"},
+        {name:"Garasi double 3 lantai",type:"Residensial",color:"#3B6D11",luas:350,lantai:3,kt:3,km:2,garasi:2,tahun:2026,style:"Angular Modern",fasad:"Krem angular + kaca",elemen:"Balkon kaca lebar + cantilever"},
+        {name:"Weird Coffee",type:"Komersil",color:"#374151",luas:50,lantai:1,kt:0,km:1,garasi:0,tahun:2026,style:"Box Commercial",fasad:"Dark grey aluminium",elemen:"LED garis vertikal + signage box"},
+        {name:"Silinder organik",type:"Residensial",color:"#534AB7",luas:420,lantai:3,kt:3,km:3,garasi:3,tahun:2026,style:"Organik",fasad:"Putih + silinder beton",elemen:"Kolom silinder bertumpuk + balkon melingkar"},
+        {name:"Dark concrete 2 lantai",type:"Residensial",color:"#444441",luas:240,lantai:2,kt:3,km:2,garasi:0,tahun:2026,style:"Dark Concrete",fasad:"Beton ekspos gelap",elemen:"Skylight segitiga kaca + curtain wall"},
+        {name:"Minimalis tropis 2 lantai",type:"Residensial",color:"#854F0B",luas:260,lantai:2,kt:2,km:2,garasi:1,tahun:2026,style:"Minimalis Tropis",fasad:"Krem warm + louver",elemen:"Louver kayu vertikal + balkon kaca"},
+    ];
+ 
+    let activeProjIdx = -1;
+ 
+    function renderList() {
+        const el = document.getElementById('projList');
+        if (!el) return;
+        el.innerHTML = widgetProjects.map((p, i) => `
+            <div class="proj-card${activeProjIdx === i ? ' active' : ''}" onclick="toggleDetail(${i})">
+                <div class="proj-row">
+                    <div class="proj-dot" style="background:${p.color}"></div>
+                    <span class="proj-name">P${i + 1} — ${p.name}</span>
+                    <span class="proj-type">${p.type}</span>
+                    <span style="font-size:11px;color:var(--color-text-secondary,#6b7280)">${p.luas} m²</span>
+                </div>
+                ${activeProjIdx === i ? `
+                <div class="detail-grid" style="margin-top:10px">
+                    <div class="detail-item"><div class="detail-label">Lantai</div><div class="detail-val">${p.lantai} lantai</div></div>
+                    <div class="detail-item"><div class="detail-label">Kamar tidur</div><div class="detail-val">${p.kt} KT</div></div>
+                    <div class="detail-item"><div class="detail-label">Kamar mandi</div><div class="detail-val">${p.km} KM</div></div>
+                    <div class="detail-item"><div class="detail-label">Garasi</div><div class="detail-val">${p.garasi ? p.garasi + ' mobil' : '—'}</div></div>
+                    <div class="detail-item"><div class="detail-label">Gaya</div><div class="detail-val">${p.style}</div></div>
+                    <div class="detail-item"><div class="detail-label">Tahun</div><div class="detail-val">${p.tahun}</div></div>
+                    <div class="detail-item" style="grid-column:1/-1"><div class="detail-label">Fasad</div><div class="detail-val">${p.fasad}</div></div>
+                    <div class="detail-item" style="grid-column:1/-1"><div class="detail-label">Elemen khas</div><div class="detail-val">${p.elemen}</div></div>
+                </div>` : ''}
+            </div>
+        `).join('');
+    }
+ 
+    function toggleDetail(i) {
+        activeProjIdx = activeProjIdx === i ? -1 : i;
+        renderList();
+    }
+ 
+    function renderCompare() {
+        const el = document.getElementById('compareChart');
+        if (!el) return;
+        const maxLuas = Math.max(...widgetProjects.map(p => p.luas));
+        const rows = [
+            {label:"Luas bangunan", key:"luas", max:maxLuas, unit:"m²", fmt: v => v},
+            {label:"Jumlah lantai",  key:"lantai", max:3, unit:"lt", fmt: v => v},
+            {label:"Kamar tidur",   key:"kt", max:3, unit:"KT", fmt: v => v},
+            {label:"Kamar mandi",   key:"km", max:3, unit:"KM", fmt: v => v},
+            {label:"Kapasitas garasi", key:"garasi", max:3, unit:"mobil", fmt: v => v || "—"},
+        ];
+ 
+        el.innerHTML = `
+            <div style="overflow-x:auto">
+                <table style="width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed">
+                    <colgroup>
+                        <col style="width:130px">
+                        ${widgetProjects.map(() => '<col style="width:70px">').join('')}
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th style="text-align:left;padding:6px 8px;color:var(--color-text-secondary,#6b7280);font-weight:400;border-bottom:.5px solid var(--color-border-tertiary,#e5e7eb)">Indikator</th>
+                            ${widgetProjects.map((p, i) => `<th style="text-align:center;padding:6px 4px;border-bottom:.5px solid var(--color-border-tertiary,#e5e7eb)"><div style="width:10px;height:10px;border-radius:2px;background:${p.color};margin:0 auto 3px"></div><span style="font-size:10px;color:var(--color-text-secondary,#6b7280)">P${i + 1}</span></th>`).join('')}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${rows.map(r => `
+                            <tr>
+                                <td style="padding:7px 8px;color:var(--color-text-secondary,#6b7280);border-bottom:.5px solid var(--color-border-tertiary,#e5e7eb)">${r.label}</td>
+                                ${widgetProjects.map(p => {
+                                    const v = p[r.key];
+                                    const pct = Math.round((v / r.max) * 100);
+                                    const isMax = v === Math.max(...widgetProjects.map(x => x[r.key]));
+                                    return `<td style="padding:7px 4px;text-align:center;border-bottom:.5px solid var(--color-border-tertiary,#e5e7eb)">
+                                        <div style="font-size:12px;font-weight:${isMax ? '500' : '400'};color:${isMax ? 'var(--color-text-primary,#111827)' : 'var(--color-text-secondary,#6b7280)'}">${r.fmt(v)}</div>
+                                        <div style="height:4px;background:var(--color-background-secondary,#f3f4f6);border-radius:2px;margin-top:3px;overflow:hidden"><div style="height:100%;width:${pct}%;background:${p.color};border-radius:2px;opacity:.7"></div></div>
+                                    </td>`;
+                                }).join('')}
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+            <div style="margin-top:14px;padding:12px;background:var(--color-background-secondary,#f9fafb);border-radius:8px;border:.5px solid var(--color-border-tertiary,#e5e7eb)">
+                <div style="font-size:12px;font-weight:500;color:var(--color-text-primary,#111827);margin-bottom:8px">Distribusi luas bangunan</div>
+                ${widgetProjects.map((p, i) => `
+                    <div class="bar-row">
+                        <span class="bar-label">P${i + 1} ${p.name.split(' ').slice(0, 2).join(' ')}</span>
+                        <div class="bar-track"><div class="bar-fill" style="width:${Math.round((p.luas / maxLuas) * 100)}%;background:${p.color};opacity:.8"></div></div>
+                        <span class="bar-val">${p.luas} m²</span>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+ 
+    function showTab(id) {
+        document.querySelectorAll('.tab-btn').forEach((b, i) => {
+            const ids = ['list', 'compare', 'flow'];
+            b.classList.toggle('on', ids[i] === id);
+        });
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('on'));
+        document.getElementById('panel-' + id).classList.add('on');
+        if (id === 'compare') renderCompare();
+    }
+ 
+    renderList();
 
-<script>
-const COLORS = {
+        const COLORS = {
   pub:'#818cf8', pri:'#38bdf8', ser:'#fbbf24',
   grn:'#4ade80', gar:'#94a3b8', circ:'#e879f9',
   vd:'#f472b6', balkon:'#86efac', tangga:'#c4b5fd'
@@ -888,154 +1033,7 @@ function renderAll() {
 }
 
 renderAll();
-</script>
-
-        </div>
-    </div>
- 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; <span id="year"></span> Weird Eksint Studio. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
- 
-    <!-- BUG FIX HTML #4: Array projects untuk widget tab DIHAPUS dari sini.
-         Sebelumnya ada duplikasi — array yang sama didefinisikan di script.js DAN di sini,
-         menyebabkan konflik karena array inline dieksekusi lebih dulu dan tidak memiliki
-         properti modal (emoji, desc, legend, files) yang dibutuhkan openModal().
-         Sekarang widget tab menggunakan array projects dari script.js secara langsung.
-         Script widget dipindah ke bawah script.js agar projects sudah tersedia. -->
- 
-    <!-- AOS JS -->
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' });</script>
- 
-    <!-- Stats Firebase (module) -->
-    <script type="module" src="stats.js"></script>
- 
-    <!-- BUG FIX HTML #5: script.js dipindah ke sini tanpa defer agar projects array
-         tersedia untuk widget tab script di bawahnya.
-         Atau, jika tetap ingin defer, pindahkan widget script ke dalam DOMContentLoaded. -->
-    <script src="script.js"></script>
- 
-    <!-- Widget Tab Script — menggunakan projects array dari script.js -->
-    <script>
-    // Mapping projects dari script.js ke format widget tab
-    // Pastikan script ini berjalan SETELAH script.js
-    const widgetProjects = [
-        {name:"Mansion classic modern",type:"Residensial",color:"#26215C",luas:600,lantai:3,kt:3,km:2,garasi:2,tahun:2026,style:"Neo-Classical",fasad:"Hitam-putih elegan",elemen:"Atap mansard + bay window + kanopi lengkung"},
-        {name:"Neo-Futuristik 3 lantai",type:"Residensial",color:"#185FA5",luas:260,lantai:3,kt:3,km:2,garasi:2,tahun:2026,style:"Neo-Futuristik",fasad:"Putih bersih + kaca kurva",elemen:"Fasad organik melengkung + balkon kurva"},
-        {name:"Modern tropis 2 lantai",type:"Residensial",color:"#854F0B",luas:260,lantai:2,kt:3,km:2,garasi:1,tahun:2023,style:"Modern Tropis",fasad:"Krem + kayu ulin",elemen:"Overhang kayu + carport terintegrasi"},
-        {name:"Garasi double 3 lantai",type:"Residensial",color:"#3B6D11",luas:350,lantai:3,kt:3,km:2,garasi:2,tahun:2026,style:"Angular Modern",fasad:"Krem angular + kaca",elemen:"Balkon kaca lebar + cantilever"},
-        {name:"Weird Coffee",type:"Komersil",color:"#374151",luas:50,lantai:1,kt:0,km:1,garasi:0,tahun:2026,style:"Box Commercial",fasad:"Dark grey aluminium",elemen:"LED garis vertikal + signage box"},
-        {name:"Silinder organik",type:"Residensial",color:"#534AB7",luas:420,lantai:3,kt:3,km:3,garasi:3,tahun:2026,style:"Organik",fasad:"Putih + silinder beton",elemen:"Kolom silinder bertumpuk + balkon melingkar"},
-        {name:"Dark concrete 2 lantai",type:"Residensial",color:"#444441",luas:240,lantai:2,kt:3,km:2,garasi:0,tahun:2026,style:"Dark Concrete",fasad:"Beton ekspos gelap",elemen:"Skylight segitiga kaca + curtain wall"},
-        {name:"Minimalis tropis 2 lantai",type:"Residensial",color:"#854F0B",luas:260,lantai:2,kt:2,km:2,garasi:1,tahun:2026,style:"Minimalis Tropis",fasad:"Krem warm + louver",elemen:"Louver kayu vertikal + balkon kaca"},
-    ];
- 
-    let activeProjIdx = -1;
- 
-    function renderList() {
-        const el = document.getElementById('projList');
-        if (!el) return;
-        el.innerHTML = widgetProjects.map((p, i) => `
-            <div class="proj-card${activeProjIdx === i ? ' active' : ''}" onclick="toggleDetail(${i})">
-                <div class="proj-row">
-                    <div class="proj-dot" style="background:${p.color}"></div>
-                    <span class="proj-name">P${i + 1} — ${p.name}</span>
-                    <span class="proj-type">${p.type}</span>
-                    <span style="font-size:11px;color:var(--color-text-secondary,#6b7280)">${p.luas} m²</span>
-                </div>
-                ${activeProjIdx === i ? `
-                <div class="detail-grid" style="margin-top:10px">
-                    <div class="detail-item"><div class="detail-label">Lantai</div><div class="detail-val">${p.lantai} lantai</div></div>
-                    <div class="detail-item"><div class="detail-label">Kamar tidur</div><div class="detail-val">${p.kt} KT</div></div>
-                    <div class="detail-item"><div class="detail-label">Kamar mandi</div><div class="detail-val">${p.km} KM</div></div>
-                    <div class="detail-item"><div class="detail-label">Garasi</div><div class="detail-val">${p.garasi ? p.garasi + ' mobil' : '—'}</div></div>
-                    <div class="detail-item"><div class="detail-label">Gaya</div><div class="detail-val">${p.style}</div></div>
-                    <div class="detail-item"><div class="detail-label">Tahun</div><div class="detail-val">${p.tahun}</div></div>
-                    <div class="detail-item" style="grid-column:1/-1"><div class="detail-label">Fasad</div><div class="detail-val">${p.fasad}</div></div>
-                    <div class="detail-item" style="grid-column:1/-1"><div class="detail-label">Elemen khas</div><div class="detail-val">${p.elemen}</div></div>
-                </div>` : ''}
-            </div>
-        `).join('');
-    }
- 
-    function toggleDetail(i) {
-        activeProjIdx = activeProjIdx === i ? -1 : i;
-        renderList();
-    }
- 
-    function renderCompare() {
-        const el = document.getElementById('compareChart');
-        if (!el) return;
-        const maxLuas = Math.max(...widgetProjects.map(p => p.luas));
-        const rows = [
-            {label:"Luas bangunan", key:"luas", max:maxLuas, unit:"m²", fmt: v => v},
-            {label:"Jumlah lantai",  key:"lantai", max:3, unit:"lt", fmt: v => v},
-            {label:"Kamar tidur",   key:"kt", max:3, unit:"KT", fmt: v => v},
-            {label:"Kamar mandi",   key:"km", max:3, unit:"KM", fmt: v => v},
-            {label:"Kapasitas garasi", key:"garasi", max:3, unit:"mobil", fmt: v => v || "—"},
-        ];
- 
-        el.innerHTML = `
-            <div style="overflow-x:auto">
-                <table style="width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed">
-                    <colgroup>
-                        <col style="width:130px">
-                        ${widgetProjects.map(() => '<col style="width:70px">').join('')}
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th style="text-align:left;padding:6px 8px;color:var(--color-text-secondary,#6b7280);font-weight:400;border-bottom:.5px solid var(--color-border-tertiary,#e5e7eb)">Indikator</th>
-                            ${widgetProjects.map((p, i) => `<th style="text-align:center;padding:6px 4px;border-bottom:.5px solid var(--color-border-tertiary,#e5e7eb)"><div style="width:10px;height:10px;border-radius:2px;background:${p.color};margin:0 auto 3px"></div><span style="font-size:10px;color:var(--color-text-secondary,#6b7280)">P${i + 1}</span></th>`).join('')}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${rows.map(r => `
-                            <tr>
-                                <td style="padding:7px 8px;color:var(--color-text-secondary,#6b7280);border-bottom:.5px solid var(--color-border-tertiary,#e5e7eb)">${r.label}</td>
-                                ${widgetProjects.map(p => {
-                                    const v = p[r.key];
-                                    const pct = Math.round((v / r.max) * 100);
-                                    const isMax = v === Math.max(...widgetProjects.map(x => x[r.key]));
-                                    return `<td style="padding:7px 4px;text-align:center;border-bottom:.5px solid var(--color-border-tertiary,#e5e7eb)">
-                                        <div style="font-size:12px;font-weight:${isMax ? '500' : '400'};color:${isMax ? 'var(--color-text-primary,#111827)' : 'var(--color-text-secondary,#6b7280)'}">${r.fmt(v)}</div>
-                                        <div style="height:4px;background:var(--color-background-secondary,#f3f4f6);border-radius:2px;margin-top:3px;overflow:hidden"><div style="height:100%;width:${pct}%;background:${p.color};border-radius:2px;opacity:.7"></div></div>
-                                    </td>`;
-                                }).join('')}
-                            </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
-            </div>
-            <div style="margin-top:14px;padding:12px;background:var(--color-background-secondary,#f9fafb);border-radius:8px;border:.5px solid var(--color-border-tertiary,#e5e7eb)">
-                <div style="font-size:12px;font-weight:500;color:var(--color-text-primary,#111827);margin-bottom:8px">Distribusi luas bangunan</div>
-                ${widgetProjects.map((p, i) => `
-                    <div class="bar-row">
-                        <span class="bar-label">P${i + 1} ${p.name.split(' ').slice(0, 2).join(' ')}</span>
-                        <div class="bar-track"><div class="bar-fill" style="width:${Math.round((p.luas / maxLuas) * 100)}%;background:${p.color};opacity:.8"></div></div>
-                        <span class="bar-val">${p.luas} m²</span>
-                    </div>
-                `).join('')}
-            </div>
-        `;
-    }
- 
-    function showTab(id) {
-        document.querySelectorAll('.tab-btn').forEach((b, i) => {
-            const ids = ['list', 'compare', 'flow'];
-            b.classList.toggle('on', ids[i] === id);
-        });
-        document.querySelectorAll('.panel').forEach(p => p.classList.remove('on'));
-        document.getElementById('panel-' + id).classList.add('on');
-        if (id === 'compare') renderCompare();
-    }
- 
-    renderList();
+        
     </script>
  
 </body>
