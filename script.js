@@ -5,28 +5,26 @@ const state = {
     isScrolled: false
 };
  
-// ✅ FIX: fetchGlobalStats diberi timeout 3 detik + response.ok check sebelum .json()
 async function fetchGlobalStats() {
     try {
         const controller = new AbortController();
         const timeoutId  = setTimeout(() => controller.abort(), 3000);
- 
+
         const response = await fetch('/simpanstats.php', { signal: controller.signal });
         clearTimeout(timeoutId);
- 
-        // BUG FIX #1: Tambahkan response.ok check — tanpa ini, HTTP 500 tetap di-parse dan crash
+
         if (!response.ok) return;
- 
+
         const stats = await response.json();
- 
+
         const visitorEl = document.querySelector('[data-visitor="true"]');
         const ratingEl  = document.querySelector('[data-rating="true"]');
         const daysEl    = document.querySelector('[data-days="true"]');
- 
+
         if (visitorEl) visitorEl.setAttribute('data-target', (stats.visitors / 1000).toFixed(1));
         if (ratingEl)  ratingEl.setAttribute('data-target', stats.rating);
         if (daysEl)    daysEl.setAttribute('data-target', stats.days);
- 
+
         console.log('✅ SERVER stats loaded:', stats);
     } catch (e) {
         // Timeout atau server tidak ada — pakai localStorage fallback (silent)
@@ -36,23 +34,17 @@ async function fetchGlobalStats() {
 const init = async () => {
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
- 
+
     setupEventListeners();
     initAnimations();
- 
-    // ✅ Preloader hilang saat window load ATAU maksimal 3 detik
+
     if (document.readyState === 'complete') {
         hidePreloader();
     } else {
         window.addEventListener('load', hidePreloader, { once: true });
-        setTimeout(hidePreloader, 3000); // failsafe
+        setTimeout(hidePreloader, 3000);
     }
- 
-    // BUG FIX #2: initStatsCounter() dihapus dari sini karena window.statsCounter
-    // sudah diinisialisasi di DOMContentLoaded sebelum init() dipanggil.
-    // Memanggil initStatsCounter() di sini tidak melakukan apa-apa (fungsinya kosong).
- 
-    // Stats fetch tidak boleh blokir init
+
     fetchGlobalStats().catch(() => {});
     setInterval(() => fetchGlobalStats().catch(() => {}), 30000);
 };
@@ -72,31 +64,31 @@ function getElements() {
  
 const setupEventListeners = () => {
     const el = getElements();
- 
+
     window.addEventListener('scroll', throttle(handleScroll, 16));
- 
+
     if (el.hamburger && el.navMenu) {
         el.hamburger.addEventListener('click', toggleMobileMenu);
     }
- 
+
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
             if (state.isMenuOpen) toggleMobileMenu();
         });
     });
- 
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', smoothScroll);
     });
- 
+
     if (el.contactForm) {
         el.contactForm.addEventListener('submit', handleContactFormNative);
     }
- 
+
     document.querySelectorAll('.contact-item').forEach(item => {
         item.addEventListener('click', copyContactInfo);
     });
- 
+
     ['input', 'blur'].forEach(event => {
         ['name', 'phone', 'message'].forEach(field => {
             const fieldEl = document.getElementById(field);
@@ -105,24 +97,21 @@ const setupEventListeners = () => {
     });
 };
  
-// ✅ hidePreloader yang benar — pakai display:none setelah transisi
 const hidePreloader = (() => {
     let called = false;
     return function () {
         if (called) return;
         called = true;
- 
+
         const preloader = document.getElementById('preloader');
         if (!preloader) return;
- 
+
         preloader.classList.add('hidden');
- 
+
         setTimeout(() => {
             preloader.style.display = 'none';
         }, 600);
- 
-        // BUG FIX #3: Hanya set overflow ke auto jika menu TIDAK sedang terbuka
-        // Sebelumnya ini selalu override state menu yang sedang terbuka
+
         if (!state.isMenuOpen) {
             document.body.style.overflow = 'auto';
         }
@@ -158,13 +147,13 @@ const smoothScroll = (e) => {
  
 const handleContactFormNative = async (e) => {
     e.preventDefault();
- 
+
     if (!validateForm()) return;
- 
+
     const contactForm = document.getElementById('contactForm');
     const submitBtn   = document.getElementById('submitBtn');
     showLoadingState(submitBtn);
- 
+
     try {
         const formData = new FormData(contactForm);
         const response = await fetch(contactForm.action, {
@@ -172,7 +161,7 @@ const handleContactFormNative = async (e) => {
             body: formData,
             headers: { 'Accept': 'application/json' }
         });
- 
+
         if (response.ok) {
             showSuccessMessage();
             contactForm.reset();
@@ -188,7 +177,7 @@ const handleContactFormNative = async (e) => {
  
 const validateForm = () => {
     let isValid = true;
- 
+
     ['name', 'phone', 'message'].forEach(field => {
         const el      = document.getElementById(field);
         const errorEl = document.querySelector(`[data-error="${field}"]`);
@@ -199,10 +188,8 @@ const validateForm = () => {
             hideFieldError(el, errorEl);
         }
     });
- 
+
     const phone = document.getElementById('phone')?.value;
-    // BUG FIX #4: Regex sebelumnya mengandung \+ duplikat di dalam character class [...]
-    // [\d\s\-()\+] sudah mencakup +, tidak perlu \+ lagi di luar. Diperbaiki:
     if (phone && phone.trim() && !/^\+?[\d\s\-()]{10,15}$/.test(phone.replace(/\s+/g, ''))) {
         showFieldError(
             document.getElementById('phone'),
@@ -211,7 +198,7 @@ const validateForm = () => {
         );
         isValid = false;
     }
- 
+
     const email = document.getElementById('email')?.value;
     if (email && email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         showFieldError(
@@ -221,7 +208,7 @@ const validateForm = () => {
         );
         isValid = false;
     }
- 
+
     return isValid;
 };
  
@@ -326,12 +313,10 @@ const initAnimations = () => {
             }
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
- 
+
     document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
 };
  
-// BUG FIX #5: Fungsi ini sebelumnya kosong dan tidak berguna.
-// Diisi dengan guard yang benar agar tidak double-init jika dipanggil lebih dari sekali.
 const initStatsCounter = () => {
     if (window.statsCounter) return;
     window.statsCounter = new AdvancedStatsCounter();
@@ -342,7 +327,7 @@ class AdvancedStatsCounter {
         this.companyStartDate = new Date('2023-01-01');
         this.init();
     }
- 
+
     init() {
         this.loadStats();
         this.setupAutoIncrement();
@@ -350,7 +335,7 @@ class AdvancedStatsCounter {
         this.periodicUpdate();
         this.trackClicks();
     }
- 
+
     loadStats() {
         this.stats = {
             totalVisitors: parseInt(localStorage.getItem('stats_totalVisitors') || '1247'),
@@ -361,19 +346,19 @@ class AdvancedStatsCounter {
             clickCount:    parseInt(localStorage.getItem('stats_clickCount') || '0')
         };
     }
- 
+
     saveStats() {
         Object.keys(this.stats).forEach(key => {
             localStorage.setItem(`stats_${key}`, this.stats[key]);
         });
     }
- 
+
     getActiveDays() {
         const now      = new Date();
         const diffTime = Math.abs(now - this.companyStartDate);
         return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     }
- 
+
     incrementVisitors() {
         const today = new Date().toDateString();
         if (this.stats.lastVisitDate !== today) {
@@ -385,38 +370,32 @@ class AdvancedStatsCounter {
         this.stats.totalVisitors++;
         this.saveStats();
     }
- 
+
     autoRating() {
-        // BUG FIX #6: activityScore bisa menghasilkan avgRating > 5.0.
-        // Tambahkan clamp agar rata-rata tidak pernah melebihi 5.0.
         const activityScore = Math.min(5, 4.7 + (this.stats.clickCount * 0.005) + (this.stats.dailyVisitors * 0.01));
         this.stats.totalRating += activityScore;
         this.stats.ratingCount++;
- 
-        // Clamp totalRating agar avgRating tidak pernah > 5.0
+
         const maxTotal = 5.0 * this.stats.ratingCount;
         if (this.stats.totalRating > maxTotal) {
             this.stats.totalRating = maxTotal;
         }
- 
+
         this.saveStats();
     }
- 
+
     trackClicks() {
-        // BUG FIX #7: Sebelumnya incrementVisitors() + autoRating() dipanggil setiap klik,
-        // sehingga visitor count membengkak sangat cepat dan tidak realistis.
-        // Sekarang hanya clickCount yang naik; visitor & rating hanya update display.
         document.addEventListener('click', (e) => {
             const isLink   = e.target.closest('a');
             const isButton = e.target.closest('button, .btn');
- 
+
             if (isLink || isButton || e.target.closest('.stats-grid')) {
                 this.stats.clickCount++;
                 this.saveStats();
                 this.updateDisplay();
             }
         });
- 
+
         let scrollCount = 0;
         window.addEventListener('scroll', () => {
             scrollCount++;
@@ -426,11 +405,11 @@ class AdvancedStatsCounter {
             }
         });
     }
- 
+
     setupAutoIncrement() {
         this.incrementVisitors();
         this.autoRating();
- 
+
         setInterval(() => {
             if (Math.random() > 0.7) {
                 this.stats.clickCount += 0.05;
@@ -439,11 +418,11 @@ class AdvancedStatsCounter {
             }
         }, 30000);
     }
- 
+
     animateStats() {
         const statsGrid = document.querySelector('.stats-grid');
         if (!statsGrid) return;
- 
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -453,30 +432,29 @@ class AdvancedStatsCounter {
                 }
             });
         }, { threshold: 0.3 });
- 
+
         observer.observe(statsGrid);
     }
- 
+
     updateDisplay(animate = false) {
         const daysEl    = document.querySelector('[data-days="true"]');
         const visitorEl = document.querySelector('[data-visitor="true"]');
         const ratingEl  = document.querySelector('[data-rating="true"]');
- 
+
         const activeDays        = this.getActiveDays();
         const formattedVisitors = (this.stats.totalVisitors / 1000).toFixed(1);
-        // BUG FIX #8: Clamp avgRating di display agar tidak pernah tampil > 5.0
-        const rawAvg  = this.stats.totalRating / this.stats.ratingCount;
-        const avgRating = Math.min(5.0, rawAvg).toFixed(1);
- 
+        const rawAvg            = this.stats.totalRating / this.stats.ratingCount;
+        const avgRating         = Math.min(5.0, rawAvg).toFixed(1);
+
         if (daysEl)    daysEl.setAttribute('data-target', activeDays);
         if (visitorEl) visitorEl.setAttribute('data-target', formattedVisitors);
         if (ratingEl)  ratingEl.setAttribute('data-target', avgRating);
- 
+
         if (animate) {
             this.animateNumbers();
         }
     }
- 
+
     animateNumbers() {
         const numbers = document.querySelectorAll('.stat-number');
         numbers.forEach(el => {
@@ -493,7 +471,7 @@ class AdvancedStatsCounter {
             }, 30);
         });
     }
- 
+
     periodicUpdate() {
         setInterval(() => {
             const today = new Date().toDateString();
@@ -510,16 +488,16 @@ function initChatNotification() {
     const chatNotif = document.getElementById('chatNotification');
     const chatBody  = document.getElementById('chatBody');
     const closeBtn  = document.getElementById('closeChatBtn');
- 
+
     if (!chatNotif || !chatBody || !closeBtn) return;
     if (localStorage.getItem('wes_chat_closed') === '1') return;
- 
+
     const messages = [
         "Halo! 👋 Selamat datang di Weird Eksint Studio",
         "Ada yang bisa kami bantu hari ini? 😊",
         "Kami siap membantu desain rumah, RAB lengkap, atau konsultasi proyek Anda."
     ];
- 
+
     function showTyping() {
         const el = document.createElement('div');
         el.className = 'typing-container';
@@ -532,23 +510,23 @@ function initChatNotification() {
         chatBody.scrollTop = chatBody.scrollHeight;
         return el;
     }
- 
+
     function typeMessage(text, onDone) {
         const old = document.getElementById('wes-typing');
         if (old) old.remove();
- 
+
         const bubble = document.createElement('div');
         bubble.className = 'message bot';
         chatBody.appendChild(bubble);
- 
+
         let i = 0;
         const speed = 28;
- 
+
         const tick = setInterval(() => {
             bubble.textContent += text.charAt(i);
             i++;
             chatBody.scrollTop = chatBody.scrollHeight;
- 
+
             if (i >= text.length) {
                 clearInterval(tick);
                 bubble.classList.add('show');
@@ -556,7 +534,7 @@ function initChatNotification() {
             }
         }, speed);
     }
- 
+
     function sendMessages(index) {
         if (index >= messages.length) return;
         const typingEl  = showTyping();
@@ -566,15 +544,15 @@ function initChatNotification() {
             typeMessage(messages[index], () => sendMessages(index + 1));
         }, thinkTime);
     }
- 
+
     const isMobile  = window.matchMedia('(max-width: 768px)').matches;
     const showDelay = isMobile ? 2800 : 4000;
- 
+
     const openTimer = setTimeout(() => {
         chatNotif.classList.add('show');
         setTimeout(() => sendMessages(0), 400);
     }, showDelay);
- 
+
     closeBtn.addEventListener('click', () => {
         chatNotif.classList.remove('show');
         clearTimeout(openTimer);
@@ -583,9 +561,6 @@ function initChatNotification() {
 }
  
 // ==================== PORTFOLIO MODAL ====================
-// BUG FIX #9: projects array hanya didefinisikan SEKALI di sini.
-// Sebelumnya ada duplikasi di index.html inline script yang menyebabkan
-// konflik — array di HTML override array ini karena dieksekusi lebih dulu.
 const projects = [
   {
     name: "Mansion classic modern 3 lantai",
@@ -757,8 +732,7 @@ function closeModal() {
 }
 
 // ============================================================
-// denahP1 — Mansion Classic Modern 3 Lantai (600 m²)
-// Neo-Classical, hitam-putih elegan, 3KT + 2KM, garasi 2 mobil
+// PROJECTS array untuk tab denah interaktif
 // ============================================================
 const PROJECTS=[
 {id:0,name:"Mansion Classic Modern",short:"Mansion",color:"#c9a96e",floors:[
@@ -1768,7 +1742,7 @@ function populateModal(idx) {
     const p = projects[idx];
     document.getElementById('modalTitle').textContent = p.name;
     document.getElementById('modalType').textContent  = p.type;
- 
+
     document.getElementById('konsepVisual').innerHTML =
         `<span style="font-size:64px">${p.emoji}</span>
          <span class="pf-preview-label">${p.type} — Visualisasi Konsep</span>`;
@@ -1779,10 +1753,9 @@ function populateModal(idx) {
            <div class="pf-info-value">${f.value}</div>
          </div>`
     ).join('');
- 
-    // BUG FIX #10: denahP1…denahP8 tidak pernah didefinisikan di file ini,
-    // menyebabkan ReferenceError. Diganti dengan placeholder SVG yang aman.
-    // Isi dengan SVG denah nyata jika tersedia, atau hubungkan ke file terpisah.
+
+    // ✅ FIX: Gunakan SVG dari array PROJECTS (huruf besar) yang sudah ada di atas.
+    // Sebelumnya referensi ke denahP1..denahP8 yang tidak terdefinisi → ReferenceError.
     const denahPlaceholder = `
         <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;
                     padding:40px;color:#888;text-align:center;gap:12px">
@@ -1790,17 +1763,22 @@ function populateModal(idx) {
             <p style="font-size:13px;margin:0">Denah untuk proyek ini belum tersedia.<br>
             Hubungi kami untuk gambar kerja lengkap.</p>
         </div>`;
- 
-    const denahMap = [denahP1, denahP2, denahP3, denahP4, denahP5, denahP6, denahP7, denahP8];
-document.getElementById('denahSvg').innerHTML = denahMap[idx] || denahPlaceholder;
- 
+
+    // Ambil SVG lantai pertama dari PROJECTS yang sesuai index, atau tampilkan placeholder
+    const matchedProject = PROJECTS.find(proj => proj.id === idx);
+    const denahSvg = matchedProject
+        ? matchedProject.floors.map(f => f.svg).join('<hr style="border-color:#333;margin:8px 0">')
+        : denahPlaceholder;
+
+    document.getElementById('denahSvg').innerHTML = denahSvg;
+
     document.getElementById('denahLegend').innerHTML = p.legend.map(l =>
         `<div class="pf-legend-item">
            <div class="pf-legend-dot" style="background:${l.color}"></div>
            <span>${l.label}</span>
          </div>`
     ).join('');
- 
+
     document.getElementById('storageList').innerHTML = p.files.map(f =>
         `<a class="pf-storage-item" href="${f.url}" target="_blank" rel="noopener" aria-label="Buka ${f.name}">
            <i class="ti ${f.icon} pf-storage-icon" aria-hidden="true"></i>
@@ -1811,48 +1789,41 @@ document.getElementById('denahSvg').innerHTML = denahMap[idx] || denahPlaceholde
            <i class="ti ti-download pf-storage-dl" aria-hidden="true"></i>
          </a>`
     ).join('');
- 
+
     document.getElementById('navCount').textContent = `${idx + 1} / ${projects.length}`;
     document.getElementById('btnPrev').disabled = idx === 0;
     document.getElementById('btnNext').disabled = idx === projects.length - 1;
 }
- 
+
 function navigate(dir) {
     const next = currentIndex + dir;
     if (next >= 0 && next < projects.length) openModal(next);
 }
- 
-// BUG FIX #11: switchTab() tidak mengupdate aria-selected pada tab,
-// melanggar aksesibilitas. Ditambahkan update aria-selected.
+
 function switchTab(tab) {
     ['konsep', 'denah', 'file'].forEach(t => {
         const tabEl = document.getElementById('tab-' + t);
         const contentEl = document.getElementById('content-' + t);
         const isActive = t === tab;
- 
+
         tabEl.classList.toggle('active', isActive);
         tabEl.setAttribute('aria-selected', isActive ? 'true' : 'false');
         contentEl.classList.toggle('active', isActive);
     });
 }
- 
+
 // ==================== ENTRY POINT ====================
 document.addEventListener('DOMContentLoaded', () => {
-    // BUG FIX #12: Inisialisasi statsCounter SEKALI di sini saja.
-    // Sebelumnya ada pemanggilan ganda: initStatsCounter() di dalam init()
-    // DAN new AdvancedStatsCounter() langsung di sini — menyebabkan dua instance.
     initStatsCounter();
     initChatNotification();
     init();
- 
-    // Update display setelah 1 detik untuk memberi waktu DOM siap
+
     setTimeout(() => {
         if (window.statsCounter) {
             window.statsCounter.updateDisplay(true);
         }
     }, 1000);
- 
-    // Portfolio item click listeners
+
     document.querySelectorAll('.portfolio-item').forEach(item => {
         item.addEventListener('click', () => openModal(+item.dataset.index));
         item.addEventListener('keydown', e => {
@@ -1862,16 +1833,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
- 
-    // Modal backdrop click
+
     const backdrop = document.getElementById('pfModalBackdrop');
     if (backdrop) {
         backdrop.addEventListener('click', function (e) {
             if (e.target === this) closeModal();
         });
     }
- 
-    // Keyboard nav modal
+
     document.addEventListener('keydown', e => {
         if (!document.getElementById('pfModalBackdrop').classList.contains('open')) return;
         if (e.key === 'Escape')     closeModal();
