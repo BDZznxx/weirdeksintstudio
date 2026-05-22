@@ -882,3 +882,493 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'ArrowLeft')  navigate(-1);
     });
 });
+
+const projects = [
+  /* ── P1: Mansion Classic Modern 3 Lantai ── 600 m² */
+  {
+    id:1, name:'Mansion Classic Modern', sub:'3 Lantai', type:'res',
+    luas:'600 m²', kt:3, km:3, garasi:2, tahun:2026,
+    floors:[
+      { label:'Lt 1 — Dasar', rooms:[
+        {x:20,  y:20,  w:220, h:100, c:C.gar,    l:'Garasi 2 Mobil'},
+        {x:250, y:20,  w:110, h:50,  c:C.pub,    l:'Foyer'},
+        {x:250, y:80,  w:110, h:40,  c:C.ser,    l:'Toilet Tamu'},
+        {x:370, y:20,  w:230, h:100, c:C.pub,    l:'Ruang Tamu Utama'},
+        {x:20,  y:130, w:220, h:100, c:C.pub,    l:'Ruang Keluarga'},
+        {x:250, y:130, w:180, h:100, c:C.ser,    l:'Dapur + Pantry'},
+        {x:440, y:130, w:160, h:50,  c:C.pub,    l:'Ruang Makan'},
+        {x:440, y:190, w:160, h:40,  c:C.ser,    l:'Gudang'},
+        {x:20,  y:240, w:100, h:80,  c:C.tangga, l:'Tangga Utama'},
+        {x:130, y:240, w:160, h:80,  c:C.grn,    l:'Taman Depan'},
+        {x:300, y:240, w:300, h:80,  c:C.grn,    l:'Taman Samping + Outdoor'},
+      ]},
+      { label:'Lt 2 — Kamar', rooms:[
+        {x:20,  y:20,  w:200, h:120, c:C.pri,    l:'Master Bedroom'},
+        {x:230, y:20,  w:100, h:70,  c:C.ser,    l:'Master KM Lux'},
+        {x:230, y:100, w:100, h:40,  c:C.ser,    l:'Walk-in Closet'},
+        {x:340, y:20,  w:180, h:120, c:C.pri,    l:'Kamar Tidur 2'},
+        {x:530, y:20,  w:70,  h:60,  c:C.ser,    l:'KM 2'},
+        {x:530, y:90,  w:70,  h:50,  c:C.balkon, l:'Balkon'},
+        {x:20,  y:150, w:250, h:80,  c:C.balkon, l:'Balkon Utama (Bay Window)'},
+        {x:280, y:150, w:180, h:80,  c:C.pub,    l:'Ruang Keluarga Lt2'},
+        {x:470, y:150, w:130, h:80,  c:C.pri,    l:'Kamar Tidur 3'},
+        {x:20,  y:240, w:100, h:80,  c:C.tangga, l:'Tangga'},
+        {x:130, y:240, w:470, h:80,  c:C.pub,    l:'Koridor'},
+      ]},
+      { label:'Lt 3 — Atap', rooms:[
+        {x:20,  y:20,  w:340, h:140, c:C.pub,    l:'Ruang Serba Guna / Sky Lounge'},
+        {x:370, y:20,  w:230, h:60,  c:C.balkon, l:'Balkon Atap Mansard'},
+        {x:370, y:90,  w:120, h:70,  c:C.pri,    l:'Kamar Tidur Lt3'},
+        {x:500, y:90,  w:100, h:70,  c:C.ser,    l:'KM Lt3'},
+        {x:20,  y:170, w:100, h:90,  c:C.tangga, l:'Tangga'},
+        {x:130, y:170, w:470, h:90,  c:C.grn,    l:'Taman Atap + Kanopi Lengkung'},
+      ]},
+    ],
+  },
+ 
+  /* ── P2: Neo-Futuristik 3 Lantai ── 260 m² */
+  {
+    id:2, name:'Neo-Futuristik', sub:'3 Lantai', type:'res',
+    luas:'260 m²', kt:3, km:2, garasi:2, tahun:2026,
+    floors:[
+      { label:'Lt 1', rooms:[
+        {x:20,  y:20,  w:190, h:100, c:C.gar,    l:'Garasi 2 Mobil'},
+        {x:220, y:20,  w:110, h:55,  c:C.pub,    l:'Entrance Kurva'},
+        {x:220, y:85,  w:110, h:35,  c:C.ser,    l:'Toilet Tamu'},
+        {x:340, y:20,  w:260, h:100, c:C.pub,    l:'Ruang Tamu Open Plan'},
+        {x:20,  y:130, w:190, h:100, c:C.pub,    l:'Ruang Keluarga'},
+        {x:220, y:130, w:200, h:100, c:C.ser,    l:'Dapur + Dining'},
+        {x:430, y:130, w:170, h:100, c:C.grn,    l:'Taman Depan'},
+        {x:20,  y:240, w:100, h:80,  c:C.tangga, l:'Tangga Organik'},
+        {x:130, y:240, w:470, h:80,  c:C.pub,    l:'Koridor Bawah'},
+      ]},
+      { label:'Lt 2', rooms:[
+        {x:20,  y:20,  w:200, h:120, c:C.pri,    l:'Master Bedroom'},
+        {x:230, y:20,  w:100, h:70,  c:C.ser,    l:'Master KM'},
+        {x:230, y:100, w:100, h:40,  c:C.ser,    l:'Closet'},
+        {x:340, y:20,  w:260, h:120, c:C.balkon, l:'Balkon Organik Kurva'},
+        {x:20,  y:150, w:160, h:90,  c:C.pri,    l:'Kamar Tidur 2'},
+        {x:190, y:150, w:120, h:50,  c:C.ser,    l:'KM 2'},
+        {x:190, y:210, w:120, h:30,  c:C.tangga, l:'Tangga'},
+        {x:320, y:150, w:160, h:90,  c:C.pri,    l:'Kamar Tidur 3'},
+        {x:490, y:150, w:110, h:90,  c:C.pub,    l:'Ruang Baca'},
+        {x:20,  y:250, w:100, h:70,  c:C.tangga, l:'Tangga'},
+        {x:130, y:250, w:470, h:70,  c:C.pub,    l:'Koridor'},
+      ]},
+      { label:'Lt 3', rooms:[
+        {x:20,  y:20,  w:580, h:130, c:C.balkon, l:'Balkon Kurva 360° (Fasad Organik)'},
+        {x:20,  y:160, w:220, h:120, c:C.pub,    l:'Ruang Multifungsi'},
+        {x:250, y:160, w:130, h:70,  c:C.ser,    l:'KM Lt3'},
+        {x:250, y:240, w:130, h:40,  c:C.tangga, l:'Tangga'},
+        {x:390, y:160, w:210, h:120, c:C.grn,    l:'Sky Garden'},
+      ]},
+    ],
+  },
+ 
+  /* ── P3: Modern Tropis 2 Lantai ── 260 m² */
+  {
+    id:3, name:'Modern Tropis', sub:'2 Lantai', type:'res',
+    luas:'260 m²', kt:3, km:2, garasi:1, tahun:2023,
+    floors:[
+      { label:'Lt 1', rooms:[
+        {x:20,  y:20,  w:160, h:100, c:C.gar,    l:'Carport 1 Mobil'},
+        {x:190, y:20,  w:120, h:55,  c:C.pub,    l:'Teras + Entrance'},
+        {x:190, y:85,  w:120, h:35,  c:C.ser,    l:'Toilet Tamu'},
+        {x:320, y:20,  w:280, h:100, c:C.pub,    l:'Ruang Tamu + Keluarga'},
+        {x:20,  y:130, w:200, h:100, c:C.ser,    l:'Dapur + Pantry'},
+        {x:230, y:130, w:180, h:100, c:C.pub,    l:'Ruang Makan'},
+        {x:420, y:130, w:180, h:100, c:C.grn,    l:'Taman Samping'},
+        {x:20,  y:240, w:100, h:90,  c:C.tangga, l:'Tangga'},
+        {x:130, y:240, w:470, h:90,  c:C.grn,    l:'Taman Belakang'},
+      ]},
+      { label:'Lt 2', rooms:[
+        {x:20,  y:20,  w:200, h:120, c:C.pri,    l:'Master Bedroom'},
+        {x:230, y:20,  w:100, h:70,  c:C.ser,    l:'Master KM'},
+        {x:230, y:100, w:100, h:40,  c:C.ser,    l:'Walk-in Closet'},
+        {x:340, y:20,  w:160, h:120, c:C.pri,    l:'Kamar Tidur 2'},
+        {x:510, y:20,  w:90,  h:60,  c:C.ser,    l:'KM 2'},
+        {x:510, y:90,  w:90,  h:50,  c:C.balkon, l:'Balkon'},
+        {x:20,  y:150, w:220, h:80,  c:C.balkon, l:'Balkon + Overhang Kayu Ulin'},
+        {x:250, y:150, w:180, h:80,  c:C.pub,    l:'Ruang Keluarga Lt2'},
+        {x:440, y:150, w:160, h:80,  c:C.pri,    l:'Kamar Tidur 3'},
+        {x:20,  y:240, w:100, h:80,  c:C.tangga, l:'Tangga'},
+        {x:130, y:240, w:470, h:80,  c:C.pub,    l:'Koridor'},
+      ]},
+    ],
+  },
+ 
+  /* ── P4: Garasi Double 3 Lantai ── 350 m² */
+  {
+    id:4, name:'Garasi Double', sub:'3 Lantai', type:'res',
+    luas:'350 m²', kt:3, km:2, garasi:2, tahun:2026,
+    floors:[
+      { label:'Lt 1', rooms:[
+        {x:20,  y:20,  w:280, h:110, c:C.gar,    l:'Garasi 2 Mobil (Double)'},
+        {x:310, y:20,  w:110, h:55,  c:C.pub,    l:'Foyer'},
+        {x:310, y:85,  w:110, h:45,  c:C.ser,    l:'Toilet'},
+        {x:430, y:20,  w:170, h:110, c:C.pub,    l:'Ruang Tamu'},
+        {x:20,  y:140, w:200, h:110, c:C.pub,    l:'Ruang Keluarga'},
+        {x:230, y:140, w:200, h:110, c:C.ser,    l:'Dapur + Dining'},
+        {x:440, y:140, w:160, h:110, c:C.grn,    l:'Taman Belakang'},
+        {x:20,  y:260, w:100, h:80,  c:C.tangga, l:'Tangga'},
+        {x:130, y:260, w:470, h:80,  c:C.pub,    l:'Area Publik'},
+      ]},
+      { label:'Lt 2', rooms:[
+        {x:20,  y:20,  w:230, h:120, c:C.pri,    l:'Master Bedroom'},
+        {x:260, y:20,  w:100, h:70,  c:C.ser,    l:'Master KM'},
+        {x:260, y:100, w:100, h:40,  c:C.ser,    l:'Walk-in Closet'},
+        {x:370, y:20,  w:230, h:120, c:C.balkon, l:'Balkon Kaca Cantilever'},
+        {x:20,  y:150, w:180, h:100, c:C.pri,    l:'Kamar Tidur 2'},
+        {x:210, y:150, w:120, h:55,  c:C.ser,    l:'KM 2'},
+        {x:210, y:215, w:120, h:35,  c:C.tangga, l:'Tangga'},
+        {x:340, y:150, w:160, h:100, c:C.pri,    l:'Kamar Tidur 3'},
+        {x:510, y:150, w:90,  h:100, c:C.pub,    l:'Ruang Baca'},
+        {x:20,  y:260, w:100, h:80,  c:C.tangga, l:'Tangga'},
+        {x:130, y:260, w:470, h:80,  c:C.pub,    l:'Koridor'},
+      ]},
+      { label:'Lt 3', rooms:[
+        {x:20,  y:20,  w:580, h:140, c:C.balkon, l:'Balkon Atap Kantilever Angular'},
+        {x:20,  y:170, w:220, h:110, c:C.pub,    l:'Ruang Multifungsi'},
+        {x:250, y:170, w:120, h:65,  c:C.ser,    l:'KM Lt3'},
+        {x:250, y:245, w:120, h:35,  c:C.tangga, l:'Tangga'},
+        {x:380, y:170, w:220, h:110, c:C.grn,    l:'Roof Garden'},
+      ]},
+    ],
+  },
+ 
+  /* ── P5: Weird Coffee ── 50 m² */
+  {
+    id:5, name:'Weird Coffee', sub:'Komersil 1 Lantai', type:'kom',
+    luas:'50 m²', kt:0, km:1, garasi:0, tahun:2026,
+    floors:[
+      { label:'Denah Lantai', rooms:[
+        {x:20,  y:20,  w:220, h:130, c:C.pub,    l:'Area Indoor — 15 Kursi'},
+        {x:250, y:20,  w:130, h:65,  c:C.ser,    l:'Bar Counter'},
+        {x:250, y:95,  w:130, h:55,  c:C.ser,    l:'Dapur / Prep Kitchen'},
+        {x:390, y:20,  w:80,  h:65,  c:C.ser,    l:'KM Pengunjung'},
+        {x:390, y:95,  w:80,  h:55,  c:C.ser,    l:'Storage'},
+        {x:480, y:20,  w:120, h:70,  c:C.ser,    l:'Ruang Staff'},
+        {x:480, y:100, w:120, h:50,  c:C.grn,    l:'Planter Box'},
+        {x:20,  y:160, w:580, h:100, c:C.pub,    l:'Area Outdoor Semi-Terbuka — 9 Kursi'},
+        {x:20,  y:270, w:300, h:80,  c:C.grn,    l:'Taman + Planter Kayu'},
+        {x:330, y:270, w:270, h:80,  c:C.gar,    l:'Area Parkir'},
+      ]},
+    ],
+  },
+ 
+  /* ── P6: Silinder Organik 3 Lantai ── 420 m² */
+  {
+    id:6, name:'Silinder Organik', sub:'3 Lantai', type:'res',
+    luas:'420 m²', kt:3, km:3, garasi:3, tahun:2026,
+    floors:[
+      { label:'Lt 1', rooms:[
+        {x:20,  y:20,  w:290, h:110, c:C.gar,    l:'Garasi 3 Mobil'},
+        {x:320, y:20,  w:120, h:60,  c:C.pub,    l:'Foyer Besar'},
+        {x:320, y:90,  w:120, h:40,  c:C.ser,    l:'Toilet'},
+        {x:450, y:20,  w:150, h:110, c:C.pub,    l:'Ruang Tamu'},
+        {x:20,  y:140, w:220, h:100, c:C.pub,    l:'Ruang Keluarga'},
+        {x:250, y:140, w:180, h:100, c:C.ser,    l:'Dapur + Dining'},
+        {x:440, y:140, w:160, h:100, c:C.grn,    l:'Taman + Kolom Silinder'},
+        {x:20,  y:250, w:100, h:80,  c:C.tangga, l:'Tangga Silinder'},
+        {x:130, y:250, w:470, h:80,  c:C.pub,    l:'Koridor Organik'},
+      ]},
+      { label:'Lt 2', rooms:[
+        {x:20,  y:20,  w:200, h:120, c:C.pri,    l:'Master Bedroom'},
+        {x:230, y:20,  w:100, h:70,  c:C.ser,    l:'Master KM Lux'},
+        {x:230, y:100, w:100, h:40,  c:C.ser,    l:'Walk-in Closet'},
+        {x:340, y:20,  w:260, h:120, c:C.balkon, l:'Balkon Melingkar Lt2'},
+        {x:20,  y:150, w:180, h:100, c:C.pri,    l:'Kamar Tidur 2'},
+        {x:210, y:150, w:120, h:55,  c:C.ser,    l:'KM 2'},
+        {x:210, y:215, w:120, h:35,  c:C.tangga, l:'Tangga'},
+        {x:340, y:150, w:180, h:100, c:C.pri,    l:'Kamar Tidur 3'},
+        {x:530, y:150, w:70,  h:100, c:C.pub,    l:'Ruang Duduk'},
+        {x:20,  y:260, w:100, h:70,  c:C.tangga, l:'Tangga'},
+        {x:130, y:260, w:470, h:70,  c:C.pub,    l:'Koridor'},
+      ]},
+      { label:'Lt 3', rooms:[
+        {x:20,  y:20,  w:580, h:130, c:C.balkon, l:'Balkon Melingkar Lt3 — Full Perimeter'},
+        {x:20,  y:160, w:250, h:110, c:C.pub,    l:'Ruang Multifungsi'},
+        {x:280, y:160, w:130, h:65,  c:C.ser,    l:'KM Lt3'},
+        {x:280, y:235, w:130, h:35,  c:C.tangga, l:'Tangga'},
+        {x:420, y:160, w:180, h:110, c:C.grn,    l:'Sky Garden Organik'},
+      ]},
+    ],
+  },
+ 
+  /* ── P7: Dark Concrete 2 Lantai ── 240 m² */
+  {
+    id:7, name:'Dark Concrete', sub:'2 Lantai', type:'res',
+    luas:'240 m²', kt:3, km:2, garasi:0, tahun:2026,
+    floors:[
+      { label:'Lt 1', rooms:[
+        {x:20,  y:20,  w:270, h:120, c:C.pub,    l:'Ruang Tamu Open — Curtain Wall'},
+        {x:300, y:20,  w:180, h:65,  c:C.ser,    l:'Dapur + Pantry'},
+        {x:300, y:95,  w:180, h:45,  c:C.pub,    l:'Ruang Makan'},
+        {x:490, y:20,  w:110, h:120, c:C.grn,    l:'Taman Beton'},
+        {x:20,  y:150, w:170, h:90,  c:C.ser,    l:'KM Tamu'},
+        {x:200, y:150, w:130, h:50,  c:C.tangga, l:'Tangga + Void'},
+        {x:200, y:210, w:130, h:30,  c:C.tangga, l:'Void'},
+        {x:340, y:150, w:180, h:90,  c:C.pub,    l:'Ruang Kerja'},
+        {x:530, y:150, w:70,  h:90,  c:C.ser,    l:'Gudang'},
+        {x:20,  y:250, w:580, h:80,  c:C.pub,    l:'Teras Beton Ekspos'},
+      ]},
+      { label:'Lt 2', rooms:[
+        {x:20,  y:20,  w:580, h:100, c:C.pub,    l:'SKYLIGHT SEGITIGA KACA — Void + Cahaya Alami'},
+        {x:20,  y:130, w:210, h:110, c:C.pri,    l:'Master Bedroom'},
+        {x:240, y:130, w:100, h:65,  c:C.ser,    l:'Master KM'},
+        {x:240, y:205, w:100, h:35,  c:C.ser,    l:'Closet'},
+        {x:350, y:130, w:190, h:110, c:C.pri,    l:'Kamar Tidur 2'},
+        {x:550, y:130, w:50,  h:55,  c:C.ser,    l:'KM 2'},
+        {x:550, y:195, w:50,  h:45,  c:C.tangga, l:'Tangga'},
+        {x:20,  y:250, w:290, h:90,  c:C.pub,    l:'Ruang Keluarga Lt2'},
+        {x:320, y:250, w:280, h:90,  c:C.balkon, l:'Balkon Beton + Railing Kaca'},
+      ]},
+    ],
+  },
+ 
+  /* ── P8: Minimalis Tropis 2 Lantai ── 260 m² */
+  {
+    id:8, name:'Minimalis Tropis', sub:'2 Lantai', type:'res',
+    luas:'260 m²', kt:2, km:2, garasi:1, tahun:2026,
+    floors:[
+      { label:'Lt 1', rooms:[
+        {x:20,  y:20,  w:160, h:100, c:C.gar,    l:'Garasi 1 Mobil'},
+        {x:190, y:20,  w:120, h:55,  c:C.pub,    l:'Teras + Entrance'},
+        {x:190, y:85,  w:120, h:35,  c:C.ser,    l:'Toilet Tamu'},
+        {x:320, y:20,  w:280, h:100, c:C.pub,    l:'Ruang Tamu Minimalis'},
+        {x:20,  y:130, w:210, h:100, c:C.ser,    l:'Dapur Open Kitchen'},
+        {x:240, y:130, w:180, h:100, c:C.pub,    l:'Ruang Makan'},
+        {x:430, y:130, w:170, h:100, c:C.grn,    l:'Taman + Louver Kayu'},
+        {x:20,  y:240, w:100, h:90,  c:C.tangga, l:'Tangga'},
+        {x:130, y:240, w:470, h:90,  c:C.pub,    l:'Ruang Keluarga'},
+      ]},
+      { label:'Lt 2', rooms:[
+        {x:20,  y:20,  w:210, h:120, c:C.pri,    l:'Master Bedroom'},
+        {x:240, y:20,  w:100, h:70,  c:C.ser,    l:'Master KM'},
+        {x:240, y:100, w:100, h:40,  c:C.ser,    l:'Walk-in Closet'},
+        {x:350, y:20,  w:250, h:120, c:C.balkon, l:'Balkon Kaca Railing Transparan'},
+        {x:20,  y:150, w:200, h:90,  c:C.pri,    l:'Kamar Tidur 2'},
+        {x:230, y:150, w:120, h:55,  c:C.ser,    l:'KM 2'},
+        {x:230, y:215, w:120, h:25,  c:C.tangga, l:'Tangga'},
+        {x:360, y:150, w:240, h:90,  c:C.pub,    l:'Ruang Keluarga Lt2'},
+        {x:20,  y:250, w:100, h:80,  c:C.tangga, l:'Tangga'},
+        {x:130, y:250, w:470, h:80,  c:C.pub,    l:'Koridor + Louver Kayu'},
+      ]},
+    ],
+  },
+];
+ 
+/* ─────────────────── STATE ─────────────────── */
+let curProj  = 0;
+let curFloor = 0;
+ 
+/* ─────────────────── RENDER ─────────────────── */
+function renderSidebar() {
+  const el = document.getElementById('sidebarList');
+  el.innerHTML = projects.map((p,i) => `
+    <div class="proj-item${i===curProj?' active':''}" onclick="selectProj(${i})">
+      <div class="proj-num">P${p.id}</div>
+      <div class="proj-dot" style="background:${p.type==='res'?'#38bdf8':'#fbbf24'}"></div>
+      <div class="proj-info">
+        <div class="proj-title">${p.name}</div>
+        <div class="proj-meta">
+          <span class="badge badge-${p.type}">${p.type==='res'?'Res':'Kom'}</span>
+          <span>${p.luas}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+ 
+function renderMobileSelect() {
+  const sel = document.getElementById('mobileSelect');
+  sel.innerHTML = projects.map((p,i) =>
+    `<option value="${i}"${i===curProj?' selected':''}>P${p.id} — ${p.name} (${p.luas})</option>`
+  ).join('');
+}
+ 
+function renderHeader() {
+  const p = projects[curProj];
+  document.getElementById('projTitle').textContent = `${p.name} — ${p.sub}`;
+  document.getElementById('projChips').innerHTML = `
+    <span class="chip chip-accent">${p.luas}</span>
+    <span class="chip">${p.lantai||1} lantai</span>
+    ${p.kt  ? `<span class="chip">${p.kt} KT</span>`  : ''}
+    ${p.km  ? `<span class="chip">${p.km} KM</span>`  : ''}
+    ${p.garasi ? `<span class="chip">${p.garasi} garasi</span>` : ''}
+    <span class="chip">${p.tahun}</span>
+    <span class="chip badge-${p.type}" style="border-radius:20px;padding:4px 10px;font-size:11px">${p.type==='res'?'Residensial':'Komersil'}</span>
+  `;
+  document.getElementById('footerLeft').textContent =
+    `Weird Eksint Studio · P${p.id} · ${p.name} · ${p.sub} · ${p.luas}`;
+}
+ 
+function renderFloorTabs() {
+  const p = projects[curProj];
+  document.getElementById('floorTabs').innerHTML = p.floors.map((f,i) =>
+    `<div class="ftab${i===curFloor?' on':''}" onclick="selectFloor(${i})">${f.label}</div>`
+  ).join('');
+}
+ 
+function renderDenah() {
+  const fl = projects[curProj].floors[curFloor];
+  const svg = document.getElementById('denahSvg');
+  const SVG_W = 640;
+  const PAD   = 20;
+ 
+  /* compute max extents */
+  let maxX = 0, maxY = 0;
+  fl.rooms.forEach(r => {
+    if (r.x + r.w > maxX) maxX = r.x + r.w;
+    if (r.y + r.h > maxY) maxY = r.y + r.h;
+  });
+  const svgH = maxY + PAD + 30;
+  svg.setAttribute('viewBox', `0 0 ${SVG_W} ${svgH}`);
+ 
+  let html = '';
+ 
+  /* rooms */
+  fl.rooms.forEach(r => {
+    const cx = r.x + r.w / 2;
+    const cy = r.y + r.h / 2;
+    const words = r.l.split(' ');
+ 
+    /* font size based on box size */
+    const fs = r.w < 90 || r.h < 40 ? 8.5 :
+               r.w < 130              ? 9.5 : 10.5;
+ 
+    /* line break: split at natural midpoint */
+    const mid  = Math.ceil(words.length / 2);
+    const row1 = words.slice(0, mid).join(' ');
+    const row2 = words.slice(mid).join(' ');
+    const twoLine = words.length > 2 && r.h >= 36 && r.w >= 60;
+ 
+    /* border: thicker for structural walls */
+    html += `<rect x="${r.x}" y="${r.y}" width="${r.w}" height="${r.h}" rx="4"
+      fill="${r.c}" fill-opacity="0.82"
+      stroke="${strokeFor(r.c)}" stroke-width="1.2" stroke-opacity="0.6"/>`;
+ 
+    /* hatching for circulation (tangga) */
+    if (r.c === C.tangga) {
+      html += hatch(r);
+    }
+ 
+    /* label */
+    if (r.h >= 24 && r.w >= 36) {
+      if (twoLine) {
+        html += `<text text-anchor="middle" font-size="${fs}" font-weight="500"
+          fill="#0f172a" font-family="Sora,sans-serif" letter-spacing="-0.2">
+          <tspan x="${cx}" y="${cy - fs*0.55}">${row1}</tspan>
+          <tspan x="${cx}" dy="${fs*1.3}">${row2}</tspan>
+        </text>`;
+      } else {
+        html += `<text x="${cx}" y="${cy}" text-anchor="middle" dominant-baseline="central"
+          font-size="${fs}" font-weight="500" fill="#0f172a"
+          font-family="Sora,sans-serif" letter-spacing="-0.2">${r.l}</text>`;
+      }
+    }
+  });
+ 
+  /* compass */
+  const cx2 = SVG_W - 22, cy2 = 22;
+  html += `
+    <circle cx="${cx2}" cy="${cy2}" r="14" fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+    <text x="${cx2}" y="${cy2-3}" text-anchor="middle" dominant-baseline="central"
+      font-size="9" fill="#f0ede8" font-family="DM Mono,monospace" font-weight="500">N</text>
+    <line x1="${cx2}" y1="${cy2-11}" x2="${cx2}" y2="${cy2-2}"
+      stroke="#c9a96e" stroke-width="1.5" stroke-linecap="round"/>
+  `;
+ 
+  /* scale bar */
+  html += `
+    <line x1="20" y1="${svgH-14}" x2="80" y2="${svgH-14}"
+      stroke="rgba(255,255,255,0.35)" stroke-width="2" stroke-linecap="square"/>
+    <line x1="20" y1="${svgH-18}" x2="20" y2="${svgH-10}"
+      stroke="rgba(255,255,255,0.35)" stroke-width="1.2"/>
+    <line x1="80" y1="${svgH-18}" x2="80" y2="${svgH-10}"
+      stroke="rgba(255,255,255,0.35)" stroke-width="1.2"/>
+    <text x="50" y="${svgH-5}" text-anchor="middle"
+      font-size="8.5" fill="rgba(255,255,255,0.45)" font-family="DM Mono,monospace">5 m</text>
+  `;
+ 
+  /* watermark */
+  html += `
+    <text x="${SVG_W-8}" y="${svgH-5}" text-anchor="end"
+      font-size="8.5" fill="rgba(255,255,255,0.25)" font-family="DM Mono,monospace">
+      Weird Eksint Studio · skematik denah
+    </text>
+  `;
+ 
+  svg.innerHTML = html;
+}
+ 
+/* ── diagonal hatch pattern for tangga ── */
+function hatch(r) {
+  let lines = '';
+  const step = 8;
+  for (let i = r.x - r.h; i < r.x + r.w + r.h; i += step) {
+    const x1 = Math.max(r.x, i);
+    const y1 = x1 === r.x ? r.y + (i - r.x + r.h) : r.y;
+    const x2 = Math.min(r.x + r.w, i + r.h);
+    const y2 = x2 === r.x + r.w ? r.y + (i - r.x + r.h - r.w) : r.y + r.h;
+    if (x2 > x1) {
+      lines += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"
+        stroke="rgba(100,80,200,0.25)" stroke-width="0.8"/>`;
+    }
+  }
+  return lines;
+}
+ 
+function strokeFor(fill) {
+  /* darkened version of fill */
+  const m = fill.match(/rgba\((\d+),(\d+),(\d+)/);
+  if (!m) return '#666';
+  return `rgba(${Math.max(0,m[1]-60)},${Math.max(0,m[2]-60)},${Math.max(0,m[3]-60)},0.9)`;
+}
+ 
+function renderLegend() {
+  document.getElementById('legend').innerHTML = LEGEND.map(l =>
+    `<div class="leg-item">
+      <div class="leg-dot" style="background:${l.c}"></div>
+      ${l.l}
+    </div>`
+  ).join('');
+}
+ 
+/* ─────────────────── ACTIONS ─────────────────── */
+function selectProj(i) {
+  curProj  = i;
+  curFloor = 0;
+  renderAll();
+}
+ 
+function selectFloor(i) {
+  curFloor = i;
+  renderFloorTabs();
+  renderDenah();
+}
+ 
+function renderAll() {
+  renderSidebar();
+  renderMobileSelect();
+  renderHeader();
+  renderFloorTabs();
+  renderDenah();
+  renderLegend();
+}
+ 
+/* ─────────────────── KEYBOARD ─────────────────── */
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+    const p = projects[curProj];
+    if (curFloor < p.floors.length - 1) selectFloor(curFloor + 1);
+    else if (curProj < projects.length - 1) selectProj(curProj + 1);
+  } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+    const p = projects[curProj];
+    if (curFloor > 0) selectFloor(curFloor - 1);
+    else if (curProj > 0) selectProj(curProj - 1);
+  }
+});
+ 
+/* ─────────────────── INIT ─────────────────── */
+renderAll();
