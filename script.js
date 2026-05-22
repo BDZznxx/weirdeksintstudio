@@ -1706,11 +1706,6 @@ const denahP8 = `
   <text x="232" y="348" fill="#92400e" font-size="7.5">Louver / Servis</text>
 </svg>`;
 
-// Export as module-style variables for easy use
-if (typeof module !== 'undefined') {
-  module.exports = { denahP1, denahP2, denahP3, denahP4, denahP5, denahP6, denahP7, denahP8 };
-}
-
 function populateModal(idx) {
     const p = projects[idx];
     document.getElementById('modalTitle').textContent = p.name;
@@ -1738,19 +1733,8 @@ function populateModal(idx) {
             Hubungi kami untuk gambar kerja lengkap.</p>
         </div>`;
  
-    // Jika variabel denah global ada (didefinisikan di file terpisah), gunakan.
-    // Fallback ke placeholder jika tidak ada.
-    const denahMap = [
-        (typeof denahP1 !== 'undefined' ? denahP1 : null),
-        (typeof denahP2 !== 'undefined' ? denahP2 : null),
-        (typeof denahP3 !== 'undefined' ? denahP3 : null),
-        (typeof denahP4 !== 'undefined' ? denahP4 : null),
-        (typeof denahP5 !== 'undefined' ? denahP5 : null),
-        (typeof denahP6 !== 'undefined' ? denahP6 : null),
-        (typeof denahP7 !== 'undefined' ? denahP7 : null),
-        (typeof denahP8 !== 'undefined' ? denahP8 : null),
-    ];
-    document.getElementById('denahSvg').innerHTML = denahMap[idx] || denahPlaceholder;
+    const denahMap = [denahP1, denahP2, denahP3, denahP4, denahP5, denahP6, denahP7, denahP8];
+document.getElementById('denahSvg').innerHTML = denahMap[idx] || denahPlaceholder;
  
     document.getElementById('denahLegend').innerHTML = p.legend.map(l =>
         `<div class="pf-legend-item">
