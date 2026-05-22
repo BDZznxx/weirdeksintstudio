@@ -123,6 +123,58 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 <body>
+<header>
+  <div class="brand">
+    <div class="brand-mark">WES</div>
+    <div>
+      <div class="brand-name">Weird Eksint Studio</div>
+      <div class="brand-sub">floor plan viewer · 8 projects</div>
+    </div>
+  </div>
+  <div class="header-tag">PONTIANAK · 2023–2026</div>
+</header>
+ 
+<div class="layout">
+ 
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-label">Proyek</div>
+    <div id="sidebarList"></div>
+  </div>
+ 
+  <!-- Main -->
+  <div class="main">
+    <select class="mobile-select" id="mobileSelect" onchange="selectProj(+this.value)"></select>
+ 
+    <div class="proj-header">
+      <div class="proj-header-left">
+        <h2 id="projTitle"></h2>
+        <div class="proj-chips" id="projChips"></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="scale-bar">
+          <div class="scale-line" style="width:40px"></div>
+          <span>5 m</span>
+        </div>
+        <div class="north" style="color:var(--muted);font-size:12px">↑ N</div>
+      </div>
+    </div>
+ 
+    <div class="floor-tabs" id="floorTabs"></div>
+ 
+    <div class="svg-wrap">
+      <svg id="denahSvg" class="denah-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+ 
+    <div class="legend" id="legend"></div>
+ 
+    <div class="footer-note">
+      <span id="footerLeft">Weird Eksint Studio · Pontianak, Kalimantan Barat</span>
+      <span>Gambar bersifat skematik — bukan gambar kerja resmi</span>
+    </div>
+  </div>
+</div>
+
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
