@@ -743,6 +743,82 @@ const projects = [
  
 let currentIndex = 0;
  
+// BUG FIX #13: FUNGSI YANG HILANG - renderDenahTabs()
+// Digunakan di populateModal() untuk menampilkan multiple denah lantai
+function renderDenahTabs(idx) {
+    const p = projects[idx];
+    const denahKey = `p${idx + 1}`; // p1, p2, p3, dst
+    const floors = denahData[denahKey] || [];
+    
+    if (!floors || floors.length === 0) {
+        document.getElementById('denahContainer').innerHTML = '<p style="color: #999; padding: 20px; text-align: center;">Denah tidak tersedia</p>';
+        return;
+    }
+ 
+    // Buat tab buttons
+    let tabButtonsHTML = floors.map((floor, i) => 
+        `<button class="pf-denah-tab ${i === 0 ? 'active' : ''}" 
+                 data-floor="${i}" 
+                 aria-selected="${i === 0 ? 'true' : 'false'}"
+                 role="tab">
+            ${floor.label}
+        </button>`
+    ).join('');
+ 
+    // Buat tab content
+    let tabContentHTML = floors.map((floor, i) =>
+        `<div class="pf-denah-content ${i === 0 ? 'active' : ''}" 
+              data-floor="${i}" 
+              role="tabpanel">
+            ${floor.svg}
+        </div>`
+    ).join('');
+ 
+    // Render ke container
+    const container = document.getElementById('denahContainer');
+    container.innerHTML = `
+        <div class="pf-denah-tabs" role="tablist">
+            ${tabButtonsHTML}
+        </div>
+        <div class="pf-denah-panels">
+            ${tabContentHTML}
+        </div>
+    `;
+ 
+    // Setup event listeners untuk tab switching
+    document.querySelectorAll('.pf-denah-tab').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const floorIdx = +e.target.dataset.floor;
+            switchDenahTab(floorIdx);
+        });
+        btn.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                e.preventDefault();
+                const tabs = Array.from(document.querySelectorAll('.pf-denah-tab'));
+                const currentIdx = tabs.indexOf(e.target);
+                const direction = e.key === 'ArrowLeft' ? -1 : 1;
+                const nextIdx = (currentIdx + direction + tabs.length) % tabs.length;
+                tabs[nextIdx].click();
+                tabs[nextIdx].focus();
+            }
+        });
+    });
+}
+ 
+// BUG FIX #14: FUNGSI YANG HILANG - switchDenahTab()
+// Untuk switch antar lantai di modal denah
+function switchDenahTab(floorIdx) {
+    document.querySelectorAll('.pf-denah-tab').forEach((tab, i) => {
+        const isActive = i === floorIdx;
+        tab.classList.toggle('active', isActive);
+        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+ 
+    document.querySelectorAll('.pf-denah-content').forEach((content, i) => {
+        content.classList.toggle('active', i === floorIdx);
+    });
+}
+ 
 function openModal(idx) {
     currentIndex = idx;
     populateModal(idx);
@@ -755,11 +831,6 @@ function closeModal() {
     document.getElementById('pfModalBackdrop').classList.remove('open');
     document.body.style.overflow = '';
 }
-
-// ============================================================
-// denahP1 — Mansion Classic Modern 3 Lantai (600 m²)
-// Neo-Classical, hitam-putih elegan, 3KT + 2KM, garasi 2 mobil
-// ============================================================
 
 const denahData = {
  
@@ -2190,19 +2261,18 @@ function populateModal(idx) {
        <div class="pf-info-value">${f.value}</div>
      </div>`
   ).join('');
-
- // Render denah multi-lantai dengan tab
-  renderDenahTabs(idx);
-
  
-    document.getElementById('denahLegend').innerHTML = p.legend.map(l =>
+  // ✅ BUG FIX #13: Panggil renderDenahTabs() untuk generate denah
+  renderDenahTabs(idx);
+ 
+  document.getElementById('denahLegend').innerHTML = p.legend.map(l =>
         `<div class="pf-legend-item">
            <div class="pf-legend-dot" style="background:${l.color}"></div>
            <span>${l.label}</span>
          </div>`
     ).join('');
  
-      document.getElementById('storageList').innerHTML = p.files.map(f =>
+  document.getElementById('storageList').innerHTML = p.files.map(f =>
     `<a class="pf-storage-item" href="${f.url}" target="_blank" rel="noopener" aria-label="Buka ${f.name}">
        <i class="ti ${f.icon} pf-storage-icon" aria-hidden="true"></i>
        <div class="pf-storage-meta">
@@ -2212,37 +2282,38 @@ function populateModal(idx) {
        <i class="ti ti-download pf-storage-dl" aria-hidden="true"></i>
      </a>`
   ).join('');
-
-    document.getElementById('navCount').textContent = `${idx + 1} / ${projects.length}`;
+ 
+  document.getElementById('navCount').textContent = `${idx + 1} / ${projects.length}`;
   document.getElementById('btnPrev').disabled = idx === 0;
   document.getElementById('btnNext').disabled = idx === projects.length - 1;
 }
-
+ 
  
 function navigate(dir) {
     const next = currentIndex + dir;
     if (next >= 0 && next < projects.length) openModal(next);
 }
  
-// BUG FIX #11: switchTab() tidak mengupdate aria-selected pada tab,
-// melanggar aksesibilitas. Ditambahkan update aria-selected.
+// BUG FIX #11: switchTab() sekarang dengan proper aria-selected
 function switchTab(tab) {
     ['konsep', 'denah', 'file'].forEach(t => {
         const tabEl = document.getElementById('tab-' + t);
         const contentEl = document.getElementById('content-' + t);
         const isActive = t === tab;
  
-        tabEl.classList.toggle('active', isActive);
-        tabEl.setAttribute('aria-selected', isActive ? 'true' : 'false');
-        contentEl.classList.toggle('active', isActive);
+        if (tabEl) {
+            tabEl.classList.toggle('active', isActive);
+            tabEl.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        }
+        if (contentEl) {
+            contentEl.classList.toggle('active', isActive);
+        }
     });
 }
  
 // ==================== ENTRY POINT ====================
 document.addEventListener('DOMContentLoaded', () => {
-    // BUG FIX #12: Inisialisasi statsCounter SEKALI di sini saja.
-    // Sebelumnya ada pemanggilan ganda: initStatsCounter() di dalam init()
-    // DAN new AdvancedStatsCounter() langsung di sini — menyebabkan dua instance.
+    // BUG FIX #12: Inisialisasi statsCounter SEKALI saja
     initStatsCounter();
     initChatNotification();
     init();
@@ -2273,11 +2344,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
  
+    // BUG FIX #15: Setup navigation button listeners
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+    if (btnPrev) btnPrev.addEventListener('click', () => navigate(-1));
+    if (btnNext) btnNext.addEventListener('click', () => navigate(1));
+ 
     // Keyboard nav modal
     document.addEventListener('keydown', e => {
-        if (!document.getElementById('pfModalBackdrop').classList.contains('open')) return;
+        if (!document.getElementById('pfModalBackdrop')?.classList.contains('open')) return;
         if (e.key === 'Escape')     closeModal();
         if (e.key === 'ArrowRight') navigate(1);
         if (e.key === 'ArrowLeft')  navigate(-1);
     });
 });
+
