@@ -119,6 +119,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.47.0/tabler-icons.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="hero.css">
     <!-- AOS CSS di <head> agar tidak FOUC -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
@@ -174,23 +175,170 @@
         </div>
     </div>
  
-    <!-- Hero Section -->
-    <section id="home" class="hero-video">
-        <video class="hero-video-bg" autoplay muted loop playsinline preload="auto" poster="assets/images/portofolio/project8.jpeg" onerror="this.style.display='none'">
-            <source src="assets/videos/vid1.mp4" type="video/mp4">
-            <img src="assets/images/portofolio/project8.jpeg" alt="Hero Background" class="hero-fallback" loading="lazy">
-        </video>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1 class="hero-title">Mewujudkan <span class="gradient-text">Bangunan Impian</span> Anda</h1>
-            <p class="hero-subtitle">Perencana bangunan yang mampu menciptakan ruang fungsional dengan estetika modern</p>
+    <!-- ============================================================
+     HERO SECTION — Weird Eksint Studio
+     Cara pakai:
+     1. Taruh <link rel="stylesheet" href="hero.css"> di dalam <head>
+     2. Copy seluruh <section> ini ke dalam <body> (ganti hero lama)
+     3. Taruh <script src="hero.js"></script> sebelum </body>
+     ============================================================ -->
+
+<section id="home" class="hero-section">
+
+    <!-- ── Background layers ── -->
+    <div class="hero-bg-gradient"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="hero-particles" id="heroParticles"></div>
+
+    <!-- ── Main content ── -->
+    <div class="hero-content">
+
+        <!-- LEFT: Text -->
+        <div class="hero-text-side">
+
+            <div class="hero-badge">
+                <div class="hero-badge-dot"></div>
+                <span>Perencana Bangunan Profesional</span>
+            </div>
+
+            <h1 class="hero-title">
+                Mewujudkan
+                <span class="hero-gradient-text">Bangunan Impian</span>
+                Anda
+            </h1>
+
+            <p class="hero-subtitle">
+                Studio arsitektur modern di Pontianak. Kami merancang ruang
+                fungsional dengan estetika premium — dari desain hingga serah terima.
+            </p>
+
+            <div class="hero-features">
+                <div class="hero-feature-pill">
+                    <i class="fas fa-drafting-compass"></i>
+                    <span>Desain 3D</span>
+                </div>
+                <div class="hero-feature-pill">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>RAB Lengkap</span>
+                </div>
+                <div class="hero-feature-pill">
+                    <i class="fas fa-hard-hat"></i>
+                    <span>Pengawasan Proyek</span>
+                </div>
+                <div class="hero-feature-pill">
+                    <i class="fas fa-comments"></i>
+                    <span>Konsultasi Gratis</span>
+                </div>
+            </div>
+
             <div class="hero-buttons">
-                <a href="#contact" class="btn-primary">Konsultasi Gratis</a>
-                <a href="#services" class="btn-secondary">Lihat Layanan</a>
+                <a href="#contact" class="btn-hero-primary">
+                    <i class="fas fa-paper-plane"></i>
+                    Konsultasi Gratis
+                </a>
+                <a href="#portfolio" class="btn-hero-secondary">
+                    <i class="fas fa-th-large"></i>
+                    Lihat Portofolio
+                </a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-num">8<span>+</span></div>
+                    <div class="hero-stat-label">Proyek Selesai</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num">2<span>+</span></div>
+                    <div class="hero-stat-label">Tahun Pengalaman</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num">4.8<span>★</span></div>
+                    <div class="hero-stat-label">Rating Klien</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT: OG Image Showcase -->
+        <div class="hero-visual-side">
+            <div class="hero-og-card" id="heroOgCard">
+
+                <!-- Animated glow border -->
+                <div class="hero-og-glow"></div>
+
+                <!-- Image wrapper -->
+                <div class="hero-og-inner">
+                    <img
+                        src="assets/images/og-image.jpeg"
+                        alt="Weird Eksint Studio — Desain Arsitektur Pontianak"
+                        class="hero-og-image"
+                        loading="eager"
+                        onerror="this.style.background='linear-gradient(135deg,#1e3a8a,#7c3aed)';this.style.minHeight='280px';"
+                    />
+                    <div class="hero-og-overlay"></div>
+
+                    <div class="hero-og-badge">
+                        <i class="fas fa-star"></i>
+                        Weird Eksint Studio
+                    </div>
+
+                    <div class="hero-og-info">
+                        <h3>Perencana Bangunan Pontianak</h3>
+                        <p>Desain Arsitektur &nbsp;·&nbsp; RAB &nbsp;·&nbsp; Project Management</p>
+                    </div>
+                </div>
+
+                <!-- Floating card 1 — top right -->
+                <div class="float-card float-card-1">
+                    <div class="float-card-icon float-icon-blue">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="float-card-text">
+                        <div class="fct-label">Proyek Aktif</div>
+                        <div class="fct-value">Residensial & Komersil</div>
+                    </div>
+                </div>
+
+                <!-- Floating card 2 — left -->
+                <div class="float-card float-card-2">
+                    <div class="float-card-icon float-icon-purple">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <div class="float-card-text">
+                        <div class="fct-label">Mulai dari</div>
+                        <div class="fct-value">Konsultasi Gratis</div>
+                    </div>
+                </div>
+
+                <!-- Floating card 3 — bottom right -->
+                <div class="float-card float-card-3">
+                    <div class="float-card-icon float-icon-teal">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="float-card-text">
+                        <div class="fct-label">Lokasi</div>
+                        <div class="fct-value">Pontianak, Kalbar</div>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </section>
- 
+
+    </div>
+
+    <!-- ── Scroll hint ── -->
+    <div class="hero-scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-mouse">
+            <div class="scroll-mouse-dot"></div>
+        </div>
+    </div>
+
+</section>
+    
     <!-- Services -->
     <section id="services" class="services section-padding">
         <div class="container">
