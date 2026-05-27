@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -43,9 +42,13 @@
     <link rel="apple-touch-icon" sizes="152x152" href="assets/images/favicon/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-icon-180x180.png">
     <link rel="icon" type="image/jpeg" href="assets/images/logo.jpeg">
+ 
+    <!-- BUG FIX HTML #1: Duplikasi preconnect Google Fonts dihapus — sebelumnya ada 2x -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ 
     <title>Weird Eksint Studio - Studio Kreatif Arsitektur</title>
+ 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -113,11 +116,13 @@
       }
     }
     </script>
+ 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.47.0/tabler-icons.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="hero.css">
+    <!-- AOS CSS di <head> agar tidak FOUC -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 <body>
@@ -142,7 +147,7 @@
             </div>
         </div>
     </nav>
-
+ 
     <!-- Preloader -->
     <div id="preloader">
         <div class="loader-container">
@@ -171,149 +176,148 @@
             </div>
         </div>
     </div>
+ 
+    
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <!-- Background layers -->
-        <div class="hero-bg-gradient"></div>
-        <div class="hero-grid"></div>
-        <div class="hero-orb hero-orb-1"></div>
-        <div class="hero-orb hero-orb-2"></div>
-        <div class="hero-orb hero-orb-3"></div>
-        <div class="hero-particles" id="heroParticles"></div>
+<section id="home" class="hero-section">
 
-        <!-- Main content -->
-        <div class="hero-content">
+    <!-- ── Background layers ── -->
+    <div class="hero-bg-gradient"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="hero-particles" id="heroParticles"></div>
 
-            <!-- LEFT: Text -->
-            <div class="hero-text-side">
+    <!-- ── Main content ── -->
+    <div class="hero-content">
 
-                <div class="hero-badge">
-                    <div class="hero-badge-dot"></div>
-                    <span>Studio Kreatif Arsitektur</span>
-                </div>
+        <!-- LEFT: Text -->
+        <div class="hero-text-side">
 
-                <h1 class="hero-title">
-                    Mewujudkan
-                    <span class="hero-gradient-text">Bangunan Impian</span>
-                    Anda
-                </h1>
-
-                <p class="hero-subtitle">
-                    Studio kreatif arsitektur di Pontianak. Kami merancang ruang
-                    fungsional dengan estetika modern — dari desain hingga serah terima.
-                </p>
-
-                <div class="hero-features">
-                    <div class="hero-feature-pill">
-                        <i class="fas fa-drafting-compass"></i>
-                        <span>Desain 3D</span>
-                    </div>
-                    <div class="hero-feature-pill">
-                        <i class="fas fa-chart-bar"></i>
-                        <span>RAB Lengkap</span>
-                    </div>
-                    <div class="hero-feature-pill">
-                        <i class="fas fa-hard-hat"></i>
-                        <span>Detail Engineering Drawing</span>
-                    </div>
-                    <div class="hero-feature-pill">
-                        <i class="fas fa-comments"></i>
-                        <span>Konsultasi Gratis</span>
-                    </div>
-                </div>
-
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn-hero-primary">
-                        <i class="fas fa-paper-plane"></i>
-                        Konsultasi Gratis
-                    </a>
-                    <a href="#portfolio" class="btn-hero-secondary">
-                        <i class="fas fa-th-large"></i>
-                        Lihat Portofolio
-                    </a>
-                </div>
-
+            <div class="hero-badge">
+                <div class="hero-badge-dot"></div>
+                <span>Studio Kreatif Arsitektur</span>
             </div>
-            <!-- *** FIX HTML #1: Tutup .hero-text-side sebelum .hero-visual-side *** -->
 
-            <!-- RIGHT: OG Image Showcase -->
-            <div class="hero-visual-side">
-                <div class="hero-og-card" id="heroOgCard">
+            <h1 class="hero-title">
+                Mewujudkan
+                <span class="hero-gradient-text">Bangunan Impian</span>
+                Anda
+            </h1>
 
-                    <!-- Animated glow border -->
-                    <div class="hero-og-glow"></div>
+            <p class="hero-subtitle">
+                Studio kreatif arsitektur di Pontianak. Kami merancang ruang
+                fungsional dengan estetika modern — dari desain hingga serah terima.
+            </p>
 
-                    <!-- Image wrapper -->
-                    <div class="hero-og-inner">
-                        <img
-                            src="assets/images/logo.jpeg"
-                            alt="Weird Eksint Studio — Desain Arsitektur Pontianak"
-                            class="hero-og-image"
-                            loading="eager"
-                            onerror="this.style.background='linear-gradient(135deg,#1e3a8a,#7c3aed)';this.style.minHeight='280px';"
-                        />
-                        <div class="hero-og-overlay"></div>
-
-                        <div class="hero-og-badge">
-                            <i class="fas fa-star"></i>
-                            Weird Eksint Studio
-                        </div>
-
-                        <div class="hero-og-info">
-                            <h3>Studio Kreatif Bangunan Pontianak</h3>
-                            <p>Desain Arsitektur &nbsp;·&nbsp; RAB &nbsp;·&nbsp; Project Management</p>
-                        </div>
-                    </div>
-
-                    <!-- Floating card 1 — top right -->
-                    <div class="float-card float-card-1">
-                        <div class="float-card-icon float-icon-blue">
-                            <i class="fas fa-building"></i>
-                        </div>
-                        <div class="float-card-text">
-                            <div class="fct-label">Proyek Aktif</div>
-                            <div class="fct-value">Residensial & Komersil</div>
-                        </div>
-                    </div>
-
-                    <!-- Floating card 2 — left -->
-                    <div class="float-card float-card-2">
-                        <div class="float-card-icon float-icon-purple">
-                            <i class="fas fa-ruler-combined"></i>
-                        </div>
-                        <div class="float-card-text">
-                            <div class="fct-label">Mulai dari</div>
-                            <div class="fct-value">Konsultasi Gratis</div>
-                        </div>
-                    </div>
-
-                    <!-- Floating card 3 — bottom right -->
-                    <div class="float-card float-card-3">
-                        <div class="float-card-icon float-icon-teal">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="float-card-text">
-                            <div class="fct-label">Lokasi</div>
-                            <div class="fct-value">Pontianak, Kalbar</div>
-                        </div>
-                    </div>
-
+            <div class="hero-features">
+                <div class="hero-feature-pill">
+                    <i class="fas fa-drafting-compass"></i>
+                    <span>Desain 3D</span>
+                </div>
+                <div class="hero-feature-pill">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>RAB Lengkap</span>
+                </div>
+                <div class="hero-feature-pill">
+                    <i class="fas fa-hard-hat"></i>
+                    <span>Detail Enginering Drawing</span>
+                </div>
+                <div class="hero-feature-pill">
+                    <i class="fas fa-comments"></i>
+                    <span>Konsultasi Gratis</span>
                 </div>
             </div>
 
-        </div>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-hero-primary">
+                    <i class="fas fa-paper-plane"></i>
+                    Konsultasi Gratis
+                </a>
+                <a href="#portfolio" class="btn-hero-secondary">
+                    <i class="fas fa-th-large"></i>
+                    Lihat Portofolio
+                </a>
+            </div>
 
-        <!-- Scroll hint -->
-        <div class="hero-scroll-hint">
-            <span>Scroll</span>
-            <div class="scroll-mouse">
-                <div class="scroll-mouse-dot"></div>
+        <!-- RIGHT: OG Image Showcase -->
+        <div class="hero-visual-side">
+            <div class="hero-og-card" id="heroOgCard">
+
+                <!-- Animated glow border -->
+                <div class="hero-og-glow"></div>
+
+                <!-- Image wrapper -->
+                <div class="hero-og-inner">
+                    <img
+                        src="assets/images/logo.jpeg"
+                        alt="Weird Eksint Studio — Desain Arsitektur Pontianak"
+                        class="hero-og-image"
+                        loading="eager"
+                        onerror="this.style.background='linear-gradient(135deg,#1e3a8a,#7c3aed)';this.style.minHeight='280px';"
+                    />
+                    <div class="hero-og-overlay"></div>
+
+                    <div class="hero-og-badge">
+                        <i class="fas fa-star"></i>
+                        Weird Eksint Studio
+                    </div>
+
+                    <div class="hero-og-info">
+                        <h3>Studio Kreatif Bangunan Pontianak</h3>
+                        <p>Desain Arsitektur &nbsp;·&nbsp; RAB &nbsp;·&nbsp; Project Management</p>
+                    </div>
+                </div>
+
+                <!-- Floating card 1 — top right -->
+                <div class="float-card float-card-1">
+                    <div class="float-card-icon float-icon-blue">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="float-card-text">
+                        <div class="fct-label">Proyek Aktif</div>
+                        <div class="fct-value">Residensial & Komersil</div>
+                    </div>
+                </div>
+
+                <!-- Floating card 2 — left -->
+                <div class="float-card float-card-2">
+                    <div class="float-card-icon float-icon-purple">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <div class="float-card-text">
+                        <div class="fct-label">Mulai dari</div>
+                        <div class="fct-value">Konsultasi Gratis</div>
+                    </div>
+                </div>
+
+                <!-- Floating card 3 — bottom right -->
+                <div class="float-card float-card-3">
+                    <div class="float-card-icon float-icon-teal">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="float-card-text">
+                        <div class="fct-label">Lokasi</div>
+                        <div class="fct-value">Pontianak, Kalbar</div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-    </section>
+    </div>
 
+    <!-- ── Scroll hint ── -->
+    <div class="hero-scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-mouse">
+            <div class="scroll-mouse-dot"></div>
+        </div>
+    </div>
+
+</section>
+    
     <!-- Services -->
     <section id="services" class="services section-padding">
         <div class="container">
@@ -337,13 +341,13 @@
             </div>
         </div>
     </section>
-
+ 
     <!-- Portfolio -->
     <section id="portfolio" class="portfolio">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Portofolio Terbaik</h2>
             <div class="portfolio-grid" id="portfolioGrid">
-
+ 
                 <div class="portfolio-item" data-index="0" tabindex="0" role="button"
                      style="position:relative; aspect-ratio:4/3; overflow:hidden; display:block;">
                     <img src="assets/images/portofolio/project1.jpeg" alt="Mansion classic modern 3 lantai" loading="lazy"
@@ -351,7 +355,7 @@
                     <div class="portfolio-overlay"><h3>Mansion classic modern 3 lantai</h3></div>
                     <span class="portfolio-badge">Residensial</span>
                 </div>
-
+ 
                 <div class="portfolio-item" data-index="1" tabindex="0" role="button"
                      style="position:relative; aspect-ratio:4/3; overflow:hidden; display:block;">
                     <img src="assets/images/portofolio/project2.jpeg" alt="Rumah Hunian 3 Lantai Neo-Futuristik" loading="lazy"
@@ -359,7 +363,7 @@
                     <div class="portfolio-overlay"><h3>Rumah Hunian 3 Lantai Neo-Futuristik</h3></div>
                     <span class="portfolio-badge">Residensial</span>
                 </div>
-
+ 
                 <div class="portfolio-item" data-index="2" tabindex="0" role="button"
                      style="position:relative; aspect-ratio:4/3; overflow:hidden; display:block;">
                     <img src="assets/images/portofolio/project3.jpeg" alt="Rumah Hunian 2 Lantai Modern Tropis" loading="lazy"
@@ -367,7 +371,7 @@
                     <div class="portfolio-overlay"><h3>Rumah Hunian 2 Lantai Modern Tropis</h3></div>
                     <span class="portfolio-badge">Residensial</span>
                 </div>
-
+ 
                 <div class="portfolio-item" data-index="3" tabindex="0" role="button"
                      style="position:relative; aspect-ratio:4/3; overflow:hidden; display:block;">
                     <img src="assets/images/portofolio/project4.jpeg" alt="Rumah Hunian 3 Lantai-Garasi Double" loading="lazy"
@@ -375,7 +379,7 @@
                     <div class="portfolio-overlay"><h3>Rumah Hunian 3 Lantai-Garasi Double</h3></div>
                     <span class="portfolio-badge">Residensial</span>
                 </div>
-
+ 
                 <div class="portfolio-item" data-index="4" tabindex="0" role="button"
                      style="position:relative; aspect-ratio:4/3; overflow:hidden; display:block;">
                     <img src="assets/images/portofolio/project5.jpeg" alt="Weird Coffee" loading="lazy"
@@ -383,7 +387,7 @@
                     <div class="portfolio-overlay"><h3>Weird Coffee</h3></div>
                     <span class="portfolio-badge">Komersil</span>
                 </div>
-
+ 
                 <div class="portfolio-item" data-index="5" tabindex="0" role="button"
                      style="position:relative; aspect-ratio:4/3; overflow:hidden; display:block;">
                     <img src="assets/images/portofolio/project6.jpeg" alt="Rumah Minimalis-Silinder Organik" loading="lazy"
@@ -391,7 +395,7 @@
                     <div class="portfolio-overlay"><h3>Rumah Minimalis-Silinder Organik</h3></div>
                     <span class="portfolio-badge">Residensial</span>
                 </div>
-
+ 
                 <div class="portfolio-item" data-index="6" tabindex="0" role="button"
                      style="position:relative; aspect-ratio:4/3; overflow:hidden; display:block;">
                     <img src="assets/images/portofolio/project7.jpeg" alt="Rumah Hunian 2 Lantai-Dark Concrete" loading="lazy"
@@ -399,7 +403,7 @@
                     <div class="portfolio-overlay"><h3>Rumah Hunian 2 Lantai-Dark Concrete</h3></div>
                     <span class="portfolio-badge">Residensial</span>
                 </div>
-
+ 
                 <div class="portfolio-item" data-index="7" tabindex="0" role="button"
                      style="position:relative; aspect-ratio:4/3; overflow:hidden; display:block;">
                     <img src="assets/images/portofolio/project8.jpeg" alt="Rumah Hunian 2 Lantai-Minimalis Tropis" loading="lazy"
@@ -407,15 +411,15 @@
                     <div class="portfolio-overlay"><h3>Rumah Hunian 2 Lantai-Minimalis Tropis</h3></div>
                     <span class="portfolio-badge">Residensial</span>
                 </div>
-
+ 
             </div>
         </div>
     </section>
-
+ 
     <!-- Modal Portfolio -->
     <div class="pf-modal-backdrop" id="pfModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="pf-modal">
-
+ 
             <!-- Header -->
             <div class="pf-modal-header">
                 <div class="pf-modal-title-wrap">
@@ -426,8 +430,10 @@
                     <i class="ti ti-x" aria-hidden="true"></i>
                 </button>
             </div>
-
+ 
             <!-- Tabs -->
+            <!-- BUG FIX HTML #2: aria-selected awalnya tidak diupdate saat tab berganti.
+                 Sekarang switchTab() di script.js menangani ini secara dinamis. -->
             <div class="pf-tabs" role="tablist">
                 <div class="pf-tab active" id="tab-konsep" onclick="switchTab('konsep')"
                      role="tab" aria-selected="true" aria-controls="content-konsep">
@@ -442,27 +448,27 @@
                     <i class="ti ti-folder" aria-hidden="true"></i> Penyimpanan File
                 </div>
             </div>
-
+ 
             <!-- Body -->
             <div class="pf-modal-body">
-
+ 
                 <div class="pf-tab-content active" id="content-konsep" role="tabpanel" aria-labelledby="tab-konsep">
                     <div class="pf-preview-box" id="konsepVisual"></div>
                     <p class="pf-desc" id="konsepDesc"></p>
                     <div class="pf-info-grid" id="infoGrid"></div>
                 </div>
-
+ 
                 <div class="pf-tab-content" id="content-denah" role="tabpanel" aria-labelledby="tab-denah">
                     <div class="pf-plan-wrap" id="denahSvg"></div>
                     <div class="pf-legend" id="denahLegend"></div>
                 </div>
-
+ 
                 <div class="pf-tab-content" id="content-file" role="tabpanel" aria-labelledby="tab-file">
                     <div class="pf-storage-list" id="storageList"></div>
                 </div>
-
+ 
             </div>
-
+ 
             <!-- Navigation -->
             <div class="pf-nav-row">
                 <button class="pf-nav-btn" id="btnPrev" onclick="navigate(-1)">
@@ -473,10 +479,10 @@
                     Berikutnya <i class="ti ti-arrow-right" aria-hidden="true"></i>
                 </button>
             </div>
-
+ 
         </div>
     </div>
-
+ 
     <!-- About -->
     <section id="about" class="about section-padding">
         <div class="container">
@@ -509,7 +515,7 @@
             </div>
         </div>
     </section>
-
+ 
     <!-- Contact -->
     <section id="contact" class="contact section-padding">
         <div class="container">
@@ -544,7 +550,7 @@
                     <form id="contactForm" action="https://formspree.io/f/mlgzyaao" method="POST" novalidate>
                         <input type="hidden" name="_subject" value="New Project Brief - Weird Eksint Studio">
                         <input type="hidden" name="_next" value="https://weird-eksint-studio.netlify.app/thank-you.html">
-
+ 
                         <div class="form-group">
                             <input type="text" name="name" id="name" placeholder="Nama Lengkap *" required maxlength="50">
                             <span class="error-message" data-error="name"></span>
@@ -570,7 +576,7 @@
             </div>
         </div>
     </section>
-
+ 
     <a href="https://t.me/Lazarus991?text=Saya%20tertarik%20dengan%20layanan%20Weird%20Eksint%20Studio"
        class="telegram-float"
        target="_blank"
@@ -578,7 +584,7 @@
        aria-label="Chat via Telegram">
         <i class="fab fa-telegram-plane"></i>
     </a>
-
+ 
     <!-- Chat Notification Bot -->
     <div id="chatNotification" class="chat-notification">
         <div class="chat-header">
@@ -587,6 +593,8 @@
             </div>
             <div class="chat-info">
                 <h4>Weird Eksint Studio</h4>
+                <!-- BUG FIX HTML #3: Ganti class .typing-indicator dengan .status-dot
+                     agar sesuai CSS, atau gunakan keduanya (CSS sudah diperbaiki untuk support keduanya) -->
                 <p class="status"><span class="status-dot"></span> Online</p>
             </div>
             <button id="closeChatBtn" class="close-btn" aria-label="Tutup chat">✕</button>
@@ -602,7 +610,7 @@
             </a>
         </div>
     </div>
-
+ 
     <!-- Widget Tab Proyek -->
     <style>
         h2.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
@@ -626,6 +634,7 @@
         .bar-track { flex:1; height:8px; background:var(--color-background-secondary,#f3f4f6); border-radius:4px; overflow:hidden; }
         .bar-fill { height:100%; border-radius:4px; transition:width .4s ease; }
         .bar-val { font-size:11px; color:var(--color-text-secondary,#6b7280); width:52px; text-align:right; flex-shrink:0; }
+ 
         svg .th { font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 600; fill: #fff; }
         svg .ts { font-family: 'Poppins', sans-serif; font-size: 10px; fill: rgba(255,255,255,.75); }
         svg .c-gray  rect { fill: #374151; stroke: #6b7280; }
@@ -637,25 +646,25 @@
         svg .c-green rect { fill: #15803d; stroke: #22c55e; }
         svg .c-gray .th { fill: #f9fafb; }
     </style>
-
+ 
     <h2 class="sr-only">Timeline dan perbandingan detail 8 proyek arsitektur Weird Eksint Studio</h2>
-
+ 
     <div style="padding-top:1rem">
         <div class="tab-row">
             <button class="tab-btn on" onclick="showTab('list')">Daftar proyek</button>
             <button class="tab-btn" onclick="showTab('compare')">Perbandingan</button>
             <button class="tab-btn" onclick="showTab('flow')">Alur kerja</button>
         </div>
-
+ 
         <div class="panel on" id="panel-list">
             <div id="projList"></div>
             <div id="projDetail" style="display:none;margin-top:4px;padding:14px;background:var(--color-background-primary,#fff);border:.5px solid var(--color-border-secondary,#d1d5db);border-radius:10px"></div>
         </div>
-
+ 
         <div class="panel" id="panel-compare">
             <div id="compareChart"></div>
         </div>
-
+ 
         <div class="panel" id="panel-flow">
             <svg width="100%" viewBox="0 0 680 480" role="img" xmlns="http://www.w3.org/2000/svg">
                 <title>Alur kerja desain arsitektur dari brief hingga serah terima</title>
@@ -665,55 +674,55 @@
                         <path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </marker>
                 </defs>
-
+ 
                 <g class="c-gray">
                     <rect x="260" y="20" width="160" height="44" rx="8" stroke-width=".5"/>
                     <text class="th" x="340" y="38" text-anchor="middle" dominant-baseline="central">Brief klien</text>
                     <text class="ts" x="340" y="55" text-anchor="middle" dominant-baseline="central">Kebutuhan, lokasi, budget</text>
                 </g>
                 <line x1="340" y1="64" x2="340" y2="88" stroke="#888780" stroke-width="1" marker-end="url(#arr)"/>
-
+ 
                 <g class="c-blue">
                     <rect x="220" y="88" width="240" height="44" rx="8" stroke-width=".5"/>
                     <text class="th" x="340" y="106" text-anchor="middle" dominant-baseline="central">Konsep &amp; moodboard</text>
                     <text class="ts" x="340" y="123" text-anchor="middle" dominant-baseline="central">Gaya, referensi, DNA visual</text>
                 </g>
                 <line x1="340" y1="132" x2="340" y2="156" stroke="#888780" stroke-width="1" marker-end="url(#arr)"/>
-
+ 
                 <g class="c-purple">
                     <rect x="220" y="156" width="240" height="44" rx="8" stroke-width=".5"/>
                     <text class="th" x="340" y="174" text-anchor="middle" dominant-baseline="central">Blocking massa</text>
                     <text class="ts" x="340" y="191" text-anchor="middle" dominant-baseline="central">Volume, proporsi, zoning tapak</text>
                 </g>
                 <line x1="340" y1="200" x2="340" y2="224" stroke="#888780" stroke-width="1" marker-end="url(#arr)"/>
-
+ 
                 <g class="c-teal">
                     <rect x="220" y="224" width="240" height="44" rx="8" stroke-width=".5"/>
                     <text class="th" x="340" y="242" text-anchor="middle" dominant-baseline="central">Denah &amp; zoning ruang</text>
                     <text class="ts" x="340" y="259" text-anchor="middle" dominant-baseline="central">Sirkulasi, publik vs privat</text>
                 </g>
                 <line x1="340" y1="268" x2="340" y2="292" stroke="#888780" stroke-width="1" marker-end="url(#arr)"/>
-
+ 
                 <g class="c-amber">
                     <rect x="220" y="292" width="240" height="44" rx="8" stroke-width=".5"/>
                     <text class="th" x="340" y="310" text-anchor="middle" dominant-baseline="central">Desain fasad</text>
                     <text class="ts" x="340" y="327" text-anchor="middle" dominant-baseline="central">Material, elemen khas, warna</text>
                 </g>
                 <line x1="340" y1="336" x2="340" y2="360" stroke="#888780" stroke-width="1" marker-end="url(#arr)"/>
-
+ 
                 <g class="c-coral">
                     <rect x="220" y="360" width="240" height="44" rx="8" stroke-width=".5"/>
                     <text class="th" x="340" y="378" text-anchor="middle" dominant-baseline="central">Gambar kerja &amp; RAB</text>
                     <text class="ts" x="340" y="395" text-anchor="middle" dominant-baseline="central">.dwg + .skp + .pdf + anggaran</text>
                 </g>
                 <line x1="340" y1="404" x2="340" y2="428" stroke="#888780" stroke-width="1" marker-end="url(#arr)"/>
-
+ 
                 <g class="c-green">
                     <rect x="220" y="428" width="240" height="44" rx="8" stroke-width=".5"/>
                     <text class="th" x="340" y="446" text-anchor="middle" dominant-baseline="central">Serah terima &amp; render final</text>
                     <text class="ts" x="340" y="463" text-anchor="middle" dominant-baseline="central">3D foto-realistis + dokumen klien</text>
                 </g>
-
+ 
                 <g class="c-gray">
                     <rect x="40" y="224" width="156" height="44" rx="8" stroke-width=".5"/>
                     <text class="th" x="118" y="242" text-anchor="middle" dominant-baseline="central">Revisi klien</text>
@@ -721,7 +730,7 @@
                 </g>
                 <path d="M220 246 L196 246" stroke="#888780" stroke-width="1" fill="none" marker-end="url(#arr)"/>
                 <path d="M118 268 L118 310 L220 310" stroke="#888780" stroke-width=".8" fill="none" stroke-dasharray="4,3" marker-end="url(#arr)"/>
-
+ 
                 <g class="c-gray">
                     <rect x="484" y="88" width="156" height="44" rx="8" stroke-width=".5"/>
                     <text class="th" x="562" y="106" text-anchor="middle" dominant-baseline="central">Tools yang digunakan</text>
@@ -731,7 +740,7 @@
             </svg>
         </div>
     </div>
-
+ 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -740,19 +749,22 @@
             </div>
         </div>
     </footer>
-
+ 
+    
+ 
     <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' });</script>
-
+ 
     <!-- Stats Firebase (module) -->
     <script type="module" src="stats.js"></script>
-
+ 
+    
     <script src="script.js"></script>
-    <script src="hero.js"></script>
-
-    <!-- Widget Tab Script -->
+ 
+    <!-- Widget Tab Script — menggunakan projects array dari script.js -->
     <script>
+ 
     const widgetProjects = [
         {name:"Mansion classic modern",type:"Residensial",color:"#26215C",luas:600,lantai:3,kt:3,km:2,garasi:2,tahun:2026,style:"Neo-Classical",fasad:"Hitam-putih elegan",elemen:"Atap mansard + bay window + kanopi lengkung"},
         {name:"Neo-Futuristik 3 lantai",type:"Residensial",color:"#185FA5",luas:260,lantai:3,kt:3,km:2,garasi:2,tahun:2026,style:"Neo-Futuristik",fasad:"Putih bersih + kaca kurva",elemen:"Fasad organik melengkung + balkon kurva"},
@@ -763,9 +775,9 @@
         {name:"Dark concrete 2 lantai",type:"Residensial",color:"#444441",luas:240,lantai:2,kt:3,km:2,garasi:0,tahun:2026,style:"Dark Concrete",fasad:"Beton ekspos gelap",elemen:"Skylight segitiga kaca + curtain wall"},
         {name:"Minimalis tropis 2 lantai",type:"Residensial",color:"#854F0B",luas:260,lantai:2,kt:2,km:2,garasi:1,tahun:2026,style:"Minimalis Tropis",fasad:"Krem warm + louver",elemen:"Louver kayu vertikal + balkon kaca"},
     ];
-
+ 
     let activeProjIdx = -1;
-
+ 
     function renderList() {
         const el = document.getElementById('projList');
         if (!el) return;
@@ -791,12 +803,12 @@
             </div>
         `).join('');
     }
-
+ 
     function toggleDetail(i) {
         activeProjIdx = activeProjIdx === i ? -1 : i;
         renderList();
     }
-
+ 
     function renderCompare() {
         const el = document.getElementById('compareChart');
         if (!el) return;
@@ -808,7 +820,7 @@
             {label:"Kamar mandi",   key:"km", max:3, unit:"KM", fmt: v => v},
             {label:"Kapasitas garasi", key:"garasi", max:3, unit:"mobil", fmt: v => v || "—"},
         ];
-
+ 
         el.innerHTML = `
             <div style="overflow-x:auto">
                 <table style="width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed">
@@ -852,7 +864,7 @@
             </div>
         `;
     }
-
+ 
     function showTab(id) {
         document.querySelectorAll('.tab-btn').forEach((b, i) => {
             const ids = ['list', 'compare', 'flow'];
@@ -862,14 +874,11 @@
         document.getElementById('panel-' + id).classList.add('on');
         if (id === 'compare') renderCompare();
     }
-
+ 
     renderList();
     </script>
-
+    
+ <script src="hero.js"></script>
+    
 </body>
 </html>
-HTMLEOF
-echo "HTML done: $?"
-
-Output
-HTML done: 0
