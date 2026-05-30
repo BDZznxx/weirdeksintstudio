@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://weird-eksint-studio.netlify.app/sitemap.xml
+
+# Disallow admin/private paths
+Disallow: /simpanstats.php
+Disallow: /thank-you.html
